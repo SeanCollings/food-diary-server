@@ -5,3 +5,6 @@ export const INPUT_MAX_LENGTH = 100;
 export const TEXTAREA_MAX_LENGTH = 256;
 
 export const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+export const MAX_CALENDAR_ENTRIES_RANGE = 6;
+export const MAX_SUMMARY_MONTH_RANGE = 6;
