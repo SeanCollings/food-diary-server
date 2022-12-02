@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// https://www.prisma.io/nestjs
+// https://docs.nestjs.com/recipes/prisma
+// https://blog.logrocket.com/how-to-use-nestjs-prisma/
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  password  String
+  avatar    String?
+  createdAt DateTime   @default(now())
+  lastLogin DateTime   @default(now())
+  shareLink ShareLink?
+  diaryDay  DiaryDay[]
+
+  userPreferenceShowDayStreak       Boolean  @default(true)
+  userPreferenceShowWeeklyExcercise Boolean?
+  userPreferenceShowWeeklyWater     Boolean?
+
+  statLastActivity DateTime?
+  statDayStreak    Int?
+}
+
+model ShareLink {
+  id       Int     @id @default(autoincrement())
+  user     User    @relation(fields: [userId], references: [id])
+  userId   Int     @unique
+  link     String  @unique
+  isShared Boolean
+}
+
+model DiaryDay {
+  id                       Int     @id @default(autoincrement())
+  user                     User    @relation(fields: [userId], references: [id])
+  userId                   Int
+  date                     String
+  mealBreakfast            Json?
+  mealSnack1               Json?
+  mealLunch                Json?
+  mealSnack2               Json?
+  mealDinner               Json?
+  wellnessWater            Float?
+  wellnessTeaCoffee        Float?
+  wellnessAlcohol          Float?
+  wellnessExcercise        String?
+  wellnessExcerciseDetails String?
+
+  hasMealBreakfast     Boolean?
+  hasMealSnack1        Boolean?
+  hasMealLunch         Boolean?
+  hasMealSnack2        Boolean?
+  hasMealDinner        Boolean?
+  hasWellnessExcercise Boolean?
+
+  @@unique([userId, date])
+}
