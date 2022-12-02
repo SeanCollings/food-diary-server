@@ -59,6 +59,23 @@ export const setDateMidnightISOString = (date: TDate) => {
 /******************************** GET ***********************************/
 
 /**
+ * Compare 2 dates if they are equal
+ * @param firstDate string | Date
+ * @param secondDate string | Date
+ * @returns boolean
+ */
+export const getBothDatesEqual = (firstDate: TDate, secondDate: TDate) => {
+  if (!firstDate || !secondDate) {
+    return false;
+  }
+
+  return (
+    setDateToMidnight(firstDate).getTime() ===
+    setDateToMidnight(secondDate).getTime()
+  );
+};
+
+/**
  * Gets the current month and year from a date
  * @param date string | date
  * @returns [number, number]
@@ -226,6 +243,19 @@ export const getDateMonthsAgo = (date: TDate, monthsAgo: number) => {
   monthsAgoDate.setMonth(monthsAgoDate.getMonth() - monthsAgo);
 
   return monthsAgoDate;
+};
+
+/**
+ * Get a date that is n number of days ago inclusive of date
+ * @param date string | Date
+ * @param daysAgo number
+ * @returns string
+ */
+export const getDateDaysAgo = (daysAgo: number, date: Date = new Date()) => {
+  const daysAgoDate = new Date(date);
+  daysAgoDate.setDate(daysAgoDate.getDate() - daysAgo);
+
+  return formatToServerDate(daysAgoDate);
 };
 
 /******************************** OTHER ***********************************/

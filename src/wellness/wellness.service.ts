@@ -1,5 +1,10 @@
 import { PrismaService } from '@/prisma.service';
-import { formatToServerDate, isDateInFuture } from '@/utils/date-utils';
+import {
+  formatToServerDate,
+  getBothDatesEqual,
+  isDateInFuture,
+  setDaysFromDate,
+} from '@/utils/date-utils';
 import { Injectable } from '@nestjs/common';
 import { DiaryDay } from '@prisma/client';
 import { WellnessEntry } from './dtos/wellness-entry.dto';
@@ -27,7 +32,7 @@ export class WellnessService {
   constructor(private prisma: PrismaService) {}
 
   async updateWellnessEntries(userId: number, entries: WellnessEntry[]) {
-    return entries.map(async (entry) => {
+    entries.forEach(async (entry) => {
       const date = formatToServerDate(entry.date);
 
       if (isDateInFuture(date)) {
@@ -36,7 +41,7 @@ export class WellnessService {
 
       const transformed = transformToEntryDB(entry);
 
-      return this.prisma.diaryDay.upsert({
+      await this.prisma.diaryDay.upsert({
         where: {
           userId_date: {
             userId,
@@ -53,5 +58,29 @@ export class WellnessService {
         },
       });
     });
+
+    const today = new Date();
+    const yesterday = setDaysFromDate(-1, today);
+
+    const { statDayStreak, statLastActivity } =
+      await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { statLastActivity: true, statDayStreak: true },
+      });
+
+    if (!getBothDatesEqual(statLastActivity, today)) {
+      let currentStreak = 1;
+
+      if (getBothDatesEqual(statLastActivity, yesterday)) {
+        currentStreak = statDayStreak + 1;
+      }
+
+      await this.prisma.user.update({
+        where: { id: userId },
+        data: { statLastActivity: today, statDayStreak: currentStreak },
+      });
+    }
+
+    return;
   }
 }

@@ -15,7 +15,7 @@ export const getSplitTime = (value: string) => {
  */
 export const convertTimeStringToMinutes = (timeString: string) => {
   if (!timeString || !timeString.includes(':')) {
-    return;
+    return 0;
   }
 
   const [hours, minutes] = timeString.split(':');
