@@ -9,4 +9,8 @@ export class CreateUserDTO extends LoginUserDTO {
   @Transform(({ value }: TransformFnParams) => value?.trim())
   @MaxLength(INPUT_MAX_LENGTH)
   name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  token: string;
 }

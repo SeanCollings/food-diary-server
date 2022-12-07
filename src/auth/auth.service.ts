@@ -1,9 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UsersService } from '@/users/users.service';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '@/prisma.service';
+import { CreateUserDTO } from './dtos/create-user.dto';
+import { GoogleAdapter } from './adapter/google.adapter';
 
 const scrypt = promisify(_scrypt);
 
@@ -13,6 +15,7 @@ export class AuthService {
     private readonly userService: UsersService,
     private jwtService: JwtService,
     private prisma: PrismaService,
+    private googleAdapter: GoogleAdapter,
   ) {}
 
   async validateUser(email: string, password: string) {
@@ -30,19 +33,17 @@ export class AuthService {
     return null;
   }
 
-  async signup({
-    email,
-    name,
-    password,
-  }: {
-    email: string;
-    name: string;
-    password: string;
-  }) {
+  async signup({ email, name, password, token }: CreateUserDTO) {
+    const isVerified = await this.googleAdapter.verifySite(token);
+
+    if (!isVerified) {
+      throw new Error('Something went wrong!');
+    }
+
     const user = await this.userService.findOne(email);
 
     if (user) {
-      throw new BadRequestException('Email in use!');
+      throw new Error('Email in use!');
     }
 
     const salt = randomBytes(8).toString('hex');

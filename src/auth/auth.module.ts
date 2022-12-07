@@ -9,9 +9,12 @@ import { LocalStrategy } from '@/auth/local.strategy';
 import { JwtStrategy } from '@/auth/jwt.strategy';
 import { UsersService } from '@/users/users.service';
 import { PrismaService } from '@/prisma.service';
+import { GoogleAdapter } from './adapter/google.adapter';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
+    HttpModule.register({ timeout: 2000 }),
     UsersModule,
     PassportModule,
     JwtModule.register({
@@ -26,6 +29,7 @@ import { PrismaService } from '@/prisma.service';
     JwtStrategy,
     UsersService,
     PrismaService,
+    GoogleAdapter,
   ],
   exports: [AuthService],
 })

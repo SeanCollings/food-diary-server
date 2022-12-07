@@ -9,9 +9,13 @@ import { WellnessModule } from './wellness/wellness.module';
 import { TrendsModule } from './trends/trends.module';
 import { ShareModule } from './share/share.module';
 import { SummaryModule } from './summary/summary.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     UsersModule,
     DiaryModule,
     AuthModule,
