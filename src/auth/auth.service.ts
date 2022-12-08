@@ -4,8 +4,8 @@ import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '@/prisma.service';
-import { CreateUserDTO } from './dtos/create-user.dto';
 import { GoogleAdapter } from './adapter/google.adapter';
+import { CreateUserDTO, ResetPasswordDto } from './dtos';
 
 const scrypt = promisify(_scrypt);
 
@@ -55,16 +55,32 @@ export class AuthService {
     });
   }
 
-  async login(user: { email: string; id: number }) {
+  async login(args: { email: string; id: number; token: string }) {
+    const isVerified = await this.googleAdapter.verifySite(args.token);
+
+    if (!isVerified) {
+      throw new Error('Something went wrong!');
+    }
+
     await this.prisma.user.update({
-      where: { id: user.id },
+      where: { id: args.id },
       data: { lastLogin: new Date() },
     });
 
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: args.email, sub: args.id };
 
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  async resetPassword(args: ResetPasswordDto) {
+    const isVerified = await this.googleAdapter.verifySite(args.token);
+
+    if (!isVerified) {
+      throw new Error('Something went wrong!');
+    }
+
+    return { message: 'Reset link sent' };
   }
 }
