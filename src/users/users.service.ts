@@ -163,4 +163,28 @@ export class UsersService {
 
     return;
   }
+
+  async updateUserStreak(userId: number) {
+    const today = new Date();
+    const yesterday = setDaysFromDate(-1, today);
+
+    const { statDayStreak, statLastActivity } =
+      await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { statLastActivity: true, statDayStreak: true },
+      });
+
+    if (!getBothDatesEqual(statLastActivity, today)) {
+      let currentStreak = 1;
+
+      if (getBothDatesEqual(statLastActivity, yesterday)) {
+        currentStreak = statDayStreak + 1;
+      }
+
+      await this.prisma.user.update({
+        where: { id: userId },
+        data: { statLastActivity: today, statDayStreak: currentStreak },
+      });
+    }
+  }
 }

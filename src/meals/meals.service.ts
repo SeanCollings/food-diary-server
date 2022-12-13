@@ -9,6 +9,7 @@ import { formatToServerDate } from '@/utils/date-utils';
 import { UpdateMealItemDto } from './dtos/update-meal-item.dto';
 import { DeleteMealItemDto } from './dtos/delete-meal-item.dto';
 import { DiaryDay } from '@prisma/client';
+import { UsersService } from '@/users/users.service';
 
 const mealColumnNameLookup = (mealType: MealTypes) => {
   const lookup: { [key in MealTypes]: keyof DiaryDay } = {
@@ -105,7 +106,10 @@ const removeMealContent = (
 
 @Injectable()
 export class MealsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private usersService: UsersService,
+  ) {}
 
   async createMealEntry(userId: number, date: string, meal: CreateMealItemDTO) {
     const mealColumnName = mealColumnNameLookup(meal.mealId);
@@ -125,7 +129,7 @@ export class MealsService {
     ] as MealContent[];
     const mealContent = buildMealContent(currentMealContent, meal);
 
-    return this.prisma.diaryDay.upsert({
+    await this.prisma.diaryDay.upsert({
       where: {
         userId_date: {
           date: formatToServerDate(date),
@@ -143,6 +147,8 @@ export class MealsService {
         [hasMealContentColumn]: true,
       },
     });
+
+    return this.usersService.updateUserStreak(userId);
   }
 
   async updateMealEntry(userId: number, date: string, meal: UpdateMealItemDto) {
@@ -176,7 +182,7 @@ export class MealsService {
       currentMealContents,
     });
 
-    return this.prisma.diaryDay.update({
+    await this.prisma.diaryDay.update({
       where: {
         userId_date: {
           date: formatToServerDate(date),
@@ -187,6 +193,8 @@ export class MealsService {
         ...updatedContent,
       },
     });
+
+    return this.usersService.updateUserStreak(userId);
   }
 
   async deleteMealEntry(userId: number, date: string, meal: DeleteMealItemDto) {
@@ -206,7 +214,7 @@ export class MealsService {
       | MealContent[];
     const updatedContent = removeMealContent(currentMealContent, meal);
 
-    return this.prisma.diaryDay.update({
+    await this.prisma.diaryDay.update({
       where: {
         userId_date: {
           date: formatToServerDate(date),
@@ -218,5 +226,7 @@ export class MealsService {
         [hasMealContentColumn]: !!updatedContent?.length,
       },
     });
+
+    return this.usersService.updateUserStreak(userId);
   }
 }
