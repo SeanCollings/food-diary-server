@@ -1,8 +1,9 @@
 import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 import { Controller } from '@nestjs/common';
 import {
   Get,
-  BadRequestException,
+  InternalServerErrorException,
   UseGuards,
   Request,
   Query,
@@ -27,8 +28,8 @@ export class SummaryController {
         query.dateTo,
       );
     } catch (err) {
-      console.error('[Summary::/]:', err.message);
-      throw new BadRequestException();
+      console.error('[summary::_get_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 }

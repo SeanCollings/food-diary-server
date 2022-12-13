@@ -1,5 +1,13 @@
 import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
-import { Controller, Get, Query, Request, UseGuards } from '@nestjs/common';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
+import {
+  Controller,
+  Get,
+  Query,
+  Request,
+  UseGuards,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { TrendsService } from './trends.service';
 import { GetTrendsQuery, RequestWithUser } from './types';
 
@@ -13,7 +21,12 @@ export class TrendsController {
     @Request() req: RequestWithUser,
     @Query() query: GetTrendsQuery,
   ) {
-    return this.mealsService.getMealTrends(req.user.userId, query.type);
+    try {
+      return this.mealsService.getMealTrends(req.user.userId, query.type);
+    } catch (err) {
+      console.error('[trends::_get_meal-trends]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Get('/beverage-trends')
@@ -22,7 +35,12 @@ export class TrendsController {
     @Request() req: RequestWithUser,
     @Query() query: GetTrendsQuery,
   ) {
-    return this.mealsService.getBeverageTrends(req.user.userId, query.type);
+    try {
+      return this.mealsService.getBeverageTrends(req.user.userId, query.type);
+    } catch (err) {
+      console.error('[trends::_get_beverage-trends]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Get('/excercise-trends')
@@ -31,6 +49,11 @@ export class TrendsController {
     @Request() req: RequestWithUser,
     @Query() query: GetTrendsQuery,
   ) {
-    return this.mealsService.getExcerciseTrends(req.user.userId, query.type);
+    try {
+      return this.mealsService.getExcerciseTrends(req.user.userId, query.type);
+    } catch (err) {
+      console.error('[trends::_get_excercise-trends]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 }

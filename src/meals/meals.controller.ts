@@ -8,6 +8,7 @@ import {
   Query,
   Request,
   UseGuards,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { MealsService } from '@/meals/meals.service';
 import { CreateMealItemDTO } from '@/meals/dtos/create-meal-item.dto';
@@ -19,6 +20,7 @@ import {
 } from '@/meals/types';
 import { UpdateMealItemDto } from '@/meals/dtos/update-meal-item.dto';
 import { DeleteMealItemDto } from './dtos/delete-meal-item.dto';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 
 @Controller('meals')
 export class MealsController {
@@ -31,7 +33,16 @@ export class MealsController {
     @Query() query: CreateMealEntryQuery,
     @Body() body: CreateMealItemDTO,
   ) {
-    return this.mealsService.createMealEntry(req.user.userId, query.date, body);
+    try {
+      return this.mealsService.createMealEntry(
+        req.user.userId,
+        query.date,
+        body,
+      );
+    } catch (err) {
+      console.error('[meals::_post_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Put('/')
@@ -41,7 +52,16 @@ export class MealsController {
     @Query() query: UpdateMealEntryQuery,
     @Body() body: UpdateMealItemDto,
   ) {
-    return this.mealsService.updateMealEntry(req.user.userId, query.date, body);
+    try {
+      return this.mealsService.updateMealEntry(
+        req.user.userId,
+        query.date,
+        body,
+      );
+    } catch (err) {
+      console.error('[meals::_put_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Delete('/')
@@ -51,6 +71,15 @@ export class MealsController {
     @Query() query: DeleteMealEntryQuery,
     @Body() body: DeleteMealItemDto,
   ) {
-    return this.mealsService.deleteMealEntry(req.user.userId, query.date, body);
+    try {
+      return this.mealsService.deleteMealEntry(
+        req.user.userId,
+        query.date,
+        body,
+      );
+    } catch (err) {
+      console.error('[meals::_delete_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 }

@@ -1,10 +1,11 @@
 import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 import {
   Controller,
   Put,
   UseGuards,
   Request,
-  BadRequestException,
+  InternalServerErrorException,
   Body,
   Get,
   Query,
@@ -26,8 +27,8 @@ export class ShareController {
         query.dateTo,
       );
     } catch (err) {
-      console.error('[Share:/]:', err.message);
-      throw new BadRequestException();
+      console.error('[share::_get_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 
@@ -37,8 +38,8 @@ export class ShareController {
     try {
       return await this.shareService.generateShareLink(req.user.userId);
     } catch (err) {
-      console.error('[Share:generate-link]:', err.message);
-      throw new BadRequestException();
+      console.error('[share::_put_generate-link]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 
@@ -54,8 +55,8 @@ export class ShareController {
         body.isShared,
       );
     } catch (err) {
-      console.error('[Share:link-shareable]:', err.message);
-      throw new BadRequestException();
+      console.error('[share::_put_link-shareable]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 }

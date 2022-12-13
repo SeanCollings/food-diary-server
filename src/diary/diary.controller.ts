@@ -1,4 +1,11 @@
-import { Controller, Get, Query, Request, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Request,
+  UseGuards,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { DiaryService } from '@/diary/diary.service';
 import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
 import {
@@ -6,6 +13,7 @@ import {
   GetDiaryEntriesQuery,
   RequestWithUser,
 } from '@/diary/types';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 
 // https://github.com/hiro1107/nestjs-supabase-auth
 
@@ -22,8 +30,13 @@ export class DiaryController {
     @Query() query: GetDiaryEntriesQuery,
     @Request() req: RequestWithUser,
   ) {
-    const { date } = query;
-    return this.diaryService.getDiaryEntries(date, req.user.userId);
+    try {
+      const { date } = query;
+      return this.diaryService.getDiaryEntries(date, req.user.userId);
+    } catch (err) {
+      console.error('[diary::_get_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Get('/calendar-entries')
@@ -32,7 +45,16 @@ export class DiaryController {
     @Request() req: RequestWithUser,
     @Query() query: GetCalendarEntriesQuery,
   ) {
-    const { date, months } = query;
-    return this.diaryService.getCalendarEntries(req.user.userId, date, months);
+    try {
+      const { date, months } = query;
+      return this.diaryService.getCalendarEntries(
+        req.user.userId,
+        date,
+        months,
+      );
+    } catch (err) {
+      console.error('[diary::_get_calendar-entries]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 }

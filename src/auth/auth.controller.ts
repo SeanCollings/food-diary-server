@@ -4,12 +4,13 @@ import {
   Post,
   Request,
   UseGuards,
-  BadRequestException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { AuthService } from '@/auth/auth.service';
 import { LocalAuthGuard } from '@/auth//local-auth.guard';
 import { RequestWithUser } from './types';
 import { CreateUserDTO, LoginUserDTO, ResetPasswordDto } from './dtos';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 
 @Controller('auth')
 export class AuthController {
@@ -20,8 +21,8 @@ export class AuthController {
     try {
       return await this.authService.signup(body);
     } catch (err) {
-      console.error('[auth::signup]::', err.message);
-      throw new BadRequestException(err.message || 'Something went wrong');
+      console.error('[auth::_post_signup]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 
@@ -32,8 +33,8 @@ export class AuthController {
       const { id, email } = req?.user || {};
       return await this.authService.login({ id, email, token: body.token });
     } catch (err) {
-      console.error('[auth::login]::', err.message);
-      throw new BadRequestException(err.message || 'Something went wrong');
+      console.error('[auth::_post_login]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 
@@ -43,8 +44,8 @@ export class AuthController {
       const { email, token } = body;
       return await this.authService.resetPassword({ email, token });
     } catch (err) {
-      console.error('[auth::reset]::', err.message);
-      throw new BadRequestException(err.message || 'Something went wrong');
+      console.error('[auth::_post_reset]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 }

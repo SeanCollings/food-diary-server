@@ -5,7 +5,7 @@ import {
   Get,
   Request,
   UseGuards,
-  BadRequestException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { UsersService } from '@/users/users.service';
 import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
@@ -13,6 +13,7 @@ import { UpdateUserDTO, UpdatePreferencesDTO } from './dtos';
 import { RequestWithUser } from './types';
 import { UserDto } from './dtos/user.dto';
 import { Serialize } from '@/interceptors/serialize.interceptor';
+import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 
 @Controller('user')
 export class UsersController {
@@ -27,15 +28,20 @@ export class UsersController {
 
       return this.usersService.getUserProfile(userId);
     } catch (err) {
-      console.error('[Users::profile]:', err.message);
-      throw new BadRequestException();
+      console.error('[user::_get_profile]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
     }
   }
 
   @Patch('/')
   @UseGuards(JwtAuthGuard)
   updateUser(@Body() body: UpdateUserDTO, @Request() req: RequestWithUser) {
-    return this.usersService.updateUser(req.user.userId, body);
+    try {
+      return this.usersService.updateUser(req.user.userId, body);
+    } catch (err) {
+      console.error('[user::_patch_]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 
   @Patch('/preferences')
@@ -44,6 +50,11 @@ export class UsersController {
     @Body() body: UpdatePreferencesDTO,
     @Request() req: RequestWithUser,
   ) {
-    return this.usersService.updateUserPreferences(req.user.userId, body);
+    try {
+      return this.usersService.updateUserPreferences(req.user.userId, body);
+    } catch (err) {
+      console.error('[user::_patch_preferences]:', err.message);
+      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+    }
   }
 }
