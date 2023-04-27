@@ -22,14 +22,15 @@ export class SummaryController {
     @Query() query: GetUserSummaryQuery,
   ) {
     try {
-      return this.summaryService.getUserSummary(
+      return await this.summaryService.getUserSummary(
         req.user.userId,
         query.dateFrom,
         query.dateTo,
       );
     } catch (err) {
-      console.error('[summary::_get_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[summary::_get_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }
