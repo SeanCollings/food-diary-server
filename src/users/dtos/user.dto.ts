@@ -8,22 +8,22 @@ export class UserDto {
   email: string;
 
   @Expose()
-  avatar: string;
+  avatar: string | null;
 
   @Expose()
-  shareLink: string;
+  shareLink: string | null;
 
   @Expose()
   preferences: {
     showDayStreak: boolean;
-    showWeeklyExcercise: boolean;
-    showWeeklyWater: boolean;
-    isProfileShared: boolean;
+    showWeeklyExcercise: boolean | null;
+    showWeeklyWater: boolean | null;
+    isProfileShared: boolean | null;
   };
 
   @Expose()
   stats: {
-    dayStreak: number;
+    dayStreak: number | null;
     weeklyExercise: number;
     weeklyWater: number;
   };

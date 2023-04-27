@@ -15,8 +15,10 @@ export class GoogleAdapter {
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
   ) {
-    this.recaptchaVerifyUrl = this.configService.get('RECAPTCHA_VERIFY_URL');
-    this.recaptchaSecretKey = this.configService.get('RECAPTCHA_SECRET_KEY');
+    this.recaptchaVerifyUrl =
+      this.configService.get('RECAPTCHA_VERIFY_URL') || '';
+    this.recaptchaSecretKey =
+      this.configService.get('RECAPTCHA_SECRET_KEY') || '';
   }
 
   async verifySite(token: string) {
@@ -30,7 +32,7 @@ export class GoogleAdapter {
         .post<RecaptchaResponse>(this.recaptchaVerifyUrl, null, { params })
         .pipe(
           catchError((error: AxiosError) => {
-            console.error(error.response.data);
+            console.error(error.response?.data);
             throw 'A verification error ocurred!';
           }),
         ),

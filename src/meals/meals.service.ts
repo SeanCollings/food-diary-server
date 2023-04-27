@@ -70,11 +70,14 @@ const updateMealContent = ({
   newMealContents: MealContent[] | null;
 }) => {
   const contentId = content.id;
-  const contentIndex = currentMealContents?.findIndex(
+  const contentIndex = (currentMealContents || []).findIndex(
     (meal) => meal.id === contentId,
   );
 
-  if (newMealColumnName === currentMealColumnName) {
+  if (
+    currentMealContents?.length &&
+    newMealColumnName === currentMealColumnName
+  ) {
     const updatedMealContents = [...currentMealContents];
     updatedMealContents[contentIndex] = content;
 
@@ -84,7 +87,7 @@ const updateMealContent = ({
   const updatedOldMealContents = (currentMealContents || [])?.filter(
     (content) => content.id !== contentId,
   );
-  const updatedNewMealContents = [...newMealContents, content];
+  const updatedNewMealContents = [...(newMealContents || []), content];
 
   return {
     [currentMealColumnName]: updatedOldMealContents,

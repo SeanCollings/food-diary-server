@@ -143,6 +143,10 @@ const getExceriseTrendData = (
       const excerciseTime = entry.wellnessExcercise || '';
       const time = convertTimeStringToMinutes(excerciseTime);
 
+      if (!time) {
+        return acc;
+      }
+
       if (time > highestValue) {
         highestValue = time;
       }

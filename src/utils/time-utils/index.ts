@@ -13,9 +13,9 @@ export const getSplitTime = (value: string) => {
  * @param timeString string
  * @returns number
  */
-export const convertTimeStringToMinutes = (timeString: string) => {
+export const convertTimeStringToMinutes = (timeString: string | null) => {
   if (!timeString || !timeString.includes(':')) {
-    return 0;
+    return null;
   }
 
   const [hours, minutes] = timeString.split(':');
@@ -26,7 +26,7 @@ export const convertTimeStringToMinutes = (timeString: string) => {
     isNaN(+hours) ||
     isNaN(+minutes)
   ) {
-    return;
+    return null;
   }
 
   return +hours * 60 + +minutes;

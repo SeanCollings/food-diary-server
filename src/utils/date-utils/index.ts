@@ -64,7 +64,10 @@ export const setDateMidnightISOString = (date: TDate) => {
  * @param secondDate string | Date
  * @returns boolean
  */
-export const getBothDatesEqual = (firstDate: TDate, secondDate: TDate) => {
+export const getBothDatesEqual = (
+  firstDate: TDate | null,
+  secondDate?: TDate | null,
+) => {
   if (!firstDate || !secondDate) {
     return false;
   }

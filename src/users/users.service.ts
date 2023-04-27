@@ -22,7 +22,7 @@ const preferenceColumnNameLookup = (preference: keyof UpdatePreferencesDTO) => {
     showWeeklyWater: 'userPreferenceShowWeeklyWater',
   };
 
-  return lookup[preference];
+  return lookup[preference] || '';
 };
 
 const mapUserPreferenceUpdate = (
@@ -55,14 +55,20 @@ const mapUserPreferenceUpdate = (
 };
 
 const transformUserProfile = (
-  userWithShareLink: User & {
-    shareLink: {
-      link: string;
-      isShared: boolean;
-    };
-  },
+  userWithShareLink:
+    | (User & {
+        shareLink: {
+          link: string;
+          isShared: boolean;
+        } | null;
+      })
+    | null,
   diaryDays: DiaryDay[],
-): UserDto => {
+): UserDto | null => {
+  if (!userWithShareLink) {
+    return null;
+  }
+
   const yesterday = setDaysFromDate(-1, new Date());
   const isLastActivityTodayOrYesterday =
     getBothDatesEqual(userWithShareLink.statLastActivity, new Date()) ||
@@ -73,10 +79,9 @@ const transformUserProfile = (
 
   const { statWeeklyExercise, statWeeklyWater } = diaryDays.reduce(
     (acc, day) => {
-      acc.statWeeklyExercise += convertTimeStringToMinutes(
-        day.wellnessExcercise,
-      );
-      acc.statWeeklyWater += day.wellnessWater;
+      acc.statWeeklyExercise +=
+        convertTimeStringToMinutes(day.wellnessExcercise) || 0;
+      acc.statWeeklyWater += day.wellnessWater || 0;
 
       return acc;
     },
@@ -87,12 +92,12 @@ const transformUserProfile = (
     name: userWithShareLink.name,
     email: userWithShareLink.email,
     avatar: userWithShareLink.avatar,
-    shareLink: userWithShareLink.shareLink?.link,
+    shareLink: userWithShareLink.shareLink?.link ?? null,
     preferences: {
       showDayStreak: userWithShareLink.userPreferenceShowDayStreak,
       showWeeklyExcercise: userWithShareLink.userPreferenceShowWeeklyExcercise,
       showWeeklyWater: userWithShareLink.userPreferenceShowWeeklyWater,
-      isProfileShared: userWithShareLink.shareLink?.isShared,
+      isProfileShared: userWithShareLink.shareLink?.isShared ?? null,
     },
     stats: {
       dayStreak: statDayStreak,
@@ -118,7 +123,7 @@ export class UsersService {
     });
   }
 
-  async getUserProfile(userId: number): Promise<UserDto> {
+  async getUserProfile(userId: number): Promise<UserDto | null> {
     const dateAgo = getDateDaysAgo(6);
     const past7DaysDates = getInclusiveDatesBetweenDates(dateAgo);
 
@@ -168,17 +173,22 @@ export class UsersService {
     const today = new Date();
     const yesterday = setDaysFromDate(-1, today);
 
-    const { statDayStreak, statLastActivity } =
-      await this.prisma.user.findUnique({
-        where: { id: userId },
-        select: { statLastActivity: true, statDayStreak: true },
-      });
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { statLastActivity: true, statDayStreak: true },
+    });
+
+    if (!user) {
+      return;
+    }
+
+    const { statDayStreak, statLastActivity } = user;
 
     if (!getBothDatesEqual(statLastActivity, today)) {
       let currentStreak = 1;
 
       if (getBothDatesEqual(statLastActivity, yesterday)) {
-        currentStreak = statDayStreak + 1;
+        currentStreak = (statDayStreak ?? 0) + 1;
       }
 
       await this.prisma.user.update({

@@ -2,16 +2,24 @@ import { PrismaService } from '@/prisma.service';
 import { UsersService } from '@/users/users.service';
 import { formatToServerDate, isDateInFuture } from '@/utils/date-utils';
 import { Injectable } from '@nestjs/common';
-import { DiaryDay } from '@prisma/client';
 import { WellnessEntry } from './dtos/wellness-entry.dto';
 
 const EXERCISE_NO_TIME = '00:00';
 
-const transformToEntryDB = (entry: WellnessEntry): Partial<DiaryDay> => {
+interface TransformedDiaryDay {
+  wellnessWater: number | null;
+  wellnessTeaCoffee: number | null;
+  wellnessAlcohol: number | null;
+  wellnessExcercise: string | null;
+  wellnessExcerciseDetails: string | null;
+  hasWellnessExcercise: boolean;
+}
+
+const transformToEntryDB = (entry: WellnessEntry): TransformedDiaryDay => {
   const hasWellnessExcercise =
     (!!entry.excercise?.time.length &&
       entry.excercise?.time !== EXERCISE_NO_TIME) ||
-    !!entry.excercise?.details.length;
+    !!entry.excercise?.details?.length;
 
   return {
     wellnessWater: entry.water?.value || null,
