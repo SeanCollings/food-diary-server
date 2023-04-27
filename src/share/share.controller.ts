@@ -27,8 +27,9 @@ export class ShareController {
         query.dateTo,
       );
     } catch (err) {
-      console.error('[share::_get_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[share::_get_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -38,8 +39,9 @@ export class ShareController {
     try {
       return await this.shareService.generateShareLink(req.user.userId);
     } catch (err) {
-      console.error('[share::_put_generate-link]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[share::_put_generate-link]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -55,8 +57,9 @@ export class ShareController {
         body.isShared,
       );
     } catch (err) {
-      console.error('[share::_put_link-shareable]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[share::_put_link-shareable]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }

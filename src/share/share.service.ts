@@ -20,7 +20,7 @@ export class ShareService {
     });
 
     if (!shareLink) {
-      throw new Error(`Share page with link: ${shareLink} does not exist`);
+      throw new Error(`Share page with link: ${link} does not exist`);
     }
 
     const diaryDays = await this.prisma.diaryDay.findMany({
@@ -55,6 +55,8 @@ export class ShareService {
           link: shareLink,
         },
       });
+
+      return { shareLink };
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         if (e.code === 'P2002') {
@@ -65,8 +67,6 @@ export class ShareService {
       }
       throw e;
     }
-
-    return { shareLink };
   }
 
   async linkShareable(userId: number, isShared: boolean) {
