@@ -35,7 +35,7 @@ describe('ShareController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('/', () => {
+  describe('get /', () => {
     it('should get shared-summary', async () => {
       await controller.getSharedSummary({
         link: 'mock_link',
@@ -89,7 +89,7 @@ describe('ShareController', () => {
     });
   });
 
-  describe('/generate-link', () => {
+  describe('put /generate-link', () => {
     it('should return a share-link', async () => {
       await controller.generateShareLink({
         user: { userId: 1234, email: 'test@email.com' },
@@ -134,7 +134,7 @@ describe('ShareController', () => {
     });
   });
 
-  describe('/link-shareable', () => {
+  describe('put /link-shareable', () => {
     it('should toggle a link as shareable', async () => {
       await controller.linkShareable(
         {

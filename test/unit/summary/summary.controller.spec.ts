@@ -33,7 +33,7 @@ describe('SummaryController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('/', () => {
+  describe('get /', () => {
     const mockUser = {
       user: { userId: 1234, email: 'test@email.com' },
     } as RequestWithUser;

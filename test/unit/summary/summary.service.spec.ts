@@ -42,7 +42,7 @@ describe('SummaryService', () => {
           mealDinner: undefined as any,
           wellnessWater: 0,
         },
-      ] as DiaryDay[]);
+      ] as unknown as DiaryDay[]);
 
       const result = await service.getUserSummary(
         1234,
