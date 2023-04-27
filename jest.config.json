@@ -1,0 +1,31 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "moduleNameMapper": {
+    "@/(.*)$": ["<rootDir>/src/$1"],
+    "@utils/(.*)$": ["<rootDir>/src/utils/$1"],
+    "@lib/(.*)$": ["<rootDir>/src/lib/$1"]
+  },
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "coverageDirectory": "./coverage",
+  "testEnvironment": "node",
+  "setupFilesAfterEnv": [],
+  "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/src/.", "/config/"],
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.module.{js,jsx,ts,tsx}",
+    "!**/node_modules/**"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "lines": 100,
+      "statements": 100,
+      "branches": 100,
+      "functions": 100
+    }
+  },
+  "setupFiles": [],
+  "modulePathIgnorePatterns": []
+}
