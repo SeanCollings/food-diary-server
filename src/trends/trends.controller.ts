@@ -22,10 +22,11 @@ export class TrendsController {
     @Query() query: GetTrendsQuery,
   ) {
     try {
-      return this.mealsService.getMealTrends(req.user.userId, query.type);
+      return await this.mealsService.getMealTrends(req.user.userId, query.type);
     } catch (err) {
-      console.error('[trends::_get_meal-trends]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[trends::_get_meal-trends]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -36,10 +37,14 @@ export class TrendsController {
     @Query() query: GetTrendsQuery,
   ) {
     try {
-      return this.mealsService.getBeverageTrends(req.user.userId, query.type);
+      return await this.mealsService.getBeverageTrends(
+        req.user.userId,
+        query.type,
+      );
     } catch (err) {
-      console.error('[trends::_get_beverage-trends]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[trends::_get_beverage-trends]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -50,10 +55,14 @@ export class TrendsController {
     @Query() query: GetTrendsQuery,
   ) {
     try {
-      return this.mealsService.getExcerciseTrends(req.user.userId, query.type);
+      return await this.mealsService.getExcerciseTrends(
+        req.user.userId,
+        query.type,
+      );
     } catch (err) {
-      console.error('[trends::_get_excercise-trends]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[trends::_get_excercise-trends]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }

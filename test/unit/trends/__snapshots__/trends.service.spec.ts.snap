@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrendsService getBeverageTrends should get beverage trends for a month 1`] = `
+Object {
+  "beveragesPerDay": Array [
+    Object {
+      "alcohol": 1,
+      "tea_coffee": 0,
+      "water": 2,
+    },
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 0,
+      "water": 4,
+    },
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 0,
+      "water": 0,
+    },
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 0,
+      "water": 2,
+    },
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 3,
+      "water": 0,
+    },
+  ],
+  "highestValue": 4,
+  "legend": Array [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ],
+}
+`;
+
+exports[`TrendsService getBeverageTrends should get beverage trends for a week 1`] = `
+Object {
+  "beveragesPerDay": Array [
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 0,
+      "water": 0,
+    },
+    Object {
+      "alcohol": 0,
+      "tea_coffee": 2,
+      "water": 4,
+    },
+    Object {
+      "alcohol": 1,
+      "tea_coffee": 0,
+      "water": 2,
+    },
+  ],
+  "highestValue": 4,
+  "legend": Array [
+    "M",
+    "T",
+    "W",
+    "T",
+    "F",
+    "S",
+    "S",
+  ],
+}
+`;
+
+exports[`TrendsService getExcerciseTrends should get excercise trends for a month 1`] = `
+Object {
+  "excercisePerDay": Array [
+    75,
+    0,
+    0,
+    30,
+    0,
+  ],
+  "highestValue": 75,
+  "legend": Array [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ],
+}
+`;
+
+exports[`TrendsService getExcerciseTrends should get excercise trends for a week 1`] = `
+Object {
+  "excercisePerDay": Array [
+    0,
+    0,
+    75,
+  ],
+  "highestValue": 75,
+  "legend": Array [
+    "M",
+    "T",
+    "W",
+    "T",
+    "F",
+    "S",
+    "S",
+  ],
+}
+`;
+
+exports[`TrendsService getMealTrends should get meal trends for a month 1`] = `
+Object {
+  "legend": Array [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ],
+  "mealTotals": Object {
+    "breakfast": 4,
+    "dinner": 3,
+    "lunch": 4,
+    "snack_1": 2,
+    "snack_2": 1,
+  },
+  "mealsPerDay": Array [
+    Object {
+      "id": "day_1",
+      "meals": Array [
+        1,
+        1,
+        1,
+        1,
+        1,
+      ],
+    },
+    Object {
+      "id": "day_2",
+      "meals": Array [
+        1,
+        0,
+        1,
+        0,
+        0,
+      ],
+    },
+    Object {
+      "id": "day_3",
+      "meals": Array [
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+    },
+    Object {
+      "id": "day_4",
+      "meals": Array [
+        1,
+        1,
+        1,
+        0,
+        1,
+      ],
+    },
+    Object {
+      "id": "day_5",
+      "meals": Array [
+        1,
+        0,
+        1,
+        0,
+        1,
+      ],
+    },
+  ],
+  "totalValues": 5,
+}
+`;
+
+exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
+Object {
+  "legend": Array [
+    "M",
+    "T",
+    "W",
+    "T",
+    "F",
+    "S",
+    "S",
+  ],
+  "mealTotals": Object {
+    "breakfast": 2,
+    "dinner": 1,
+    "lunch": 1,
+    "snack_1": 1,
+    "snack_2": 0,
+  },
+  "mealsPerDay": Array [
+    Object {
+      "id": "day_1",
+      "meals": Array [
+        0,
+        0,
+        0,
+        0,
+        0,
+      ],
+    },
+    Object {
+      "id": "day_2",
+      "meals": Array [
+        1,
+        0,
+        1,
+        0,
+        0,
+      ],
+    },
+    Object {
+      "id": "day_3",
+      "meals": Array [
+        1,
+        1,
+        0,
+        0,
+        1,
+      ],
+    },
+  ],
+  "totalValues": 7,
+}
+`;
