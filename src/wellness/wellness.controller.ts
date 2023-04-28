@@ -23,13 +23,14 @@ export class WellnessController {
     @Body() body: WellnessEntryDto,
   ) {
     try {
-      return this.wellnessService.updateWellnessEntries(
+      return await this.wellnessService.updateWellnessEntries(
         req.user.userId,
         body.data,
       );
     } catch (err) {
-      console.error('[wellness::_put_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[wellness::_put_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }
