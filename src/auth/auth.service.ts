@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '@/prisma.service';
 import { GoogleAdapter } from './adapter/google.adapter';
 import { CreateUserDTO, ResetPasswordDto } from './dtos';
+import { dateNow } from '@/utils/date-utils';
 
 const scrypt = promisify(_scrypt);
 
@@ -64,7 +65,7 @@ export class AuthService {
 
     await this.prisma.user.update({
       where: { id: args.id },
-      data: { lastLogin: new Date() },
+      data: { lastLogin: new Date(dateNow()) },
     });
 
     const payload = { email: args.email, sub: args.id };

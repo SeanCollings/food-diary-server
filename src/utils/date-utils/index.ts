@@ -18,7 +18,7 @@ export const formatToServerDate = (date: TDate) => {
  * @returns string
  */
 export const formatMonthNumberYear = (date?: TDate) => {
-  const d = date || new Date();
+  const d = date || new Date(dateNow());
   return getMonthAndYearFromDate(d).join('-');
 };
 
@@ -31,7 +31,7 @@ export const formatMonthNumberYear = (date?: TDate) => {
  * @returns Date
  */
 export const setDaysFromDate = (days: number, date?: TDate) => {
-  const d = date ? new Date(date) : new Date();
+  const d = date ? new Date(date) : new Date(dateNow());
   d.setDate(d.getDate() + days);
 
   return d;
@@ -90,7 +90,7 @@ export const getBothDatesEqual = (
  * @returns [number, number]
  */
 export const getMonthAndYearFromDate = (date?: TDate) => {
-  const d = new Date(date || new Date());
+  const d = new Date(date || new Date(dateNow()));
   const currentMonth = d.getMonth();
   const currentYear = d.getFullYear();
 
@@ -275,7 +275,7 @@ export const getDateDaysAgo = (daysAgo: number, date: Date = dateNow()) => {
  * @returns boolean
  */
 export const isDateInFuture = (date: TDate) => {
-  const today = formatToServerDate(new Date());
+  const today = formatToServerDate(new Date(dateNow()));
   const compareDate = formatToServerDate(new Date(date));
 
   return compareDate > today;

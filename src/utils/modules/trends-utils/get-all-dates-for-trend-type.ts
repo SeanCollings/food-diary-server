@@ -1,5 +1,6 @@
 import { TrendType } from '@/trends/types';
 import {
+  dateNow,
   formatToServerDate,
   getDateRangeBackTillDayOfWeek,
   getMidnightISODaysInMonth,
@@ -8,7 +9,7 @@ import {
 } from '@/utils/date-utils';
 
 export const getAllDatesForType = (type: TrendType) => {
-  const today = formatToServerDate(new Date());
+  const today = formatToServerDate(new Date(dateNow()));
   let dateRangeFromToday: string[];
 
   if (type === 'week') {
