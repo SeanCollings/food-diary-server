@@ -5,107 +5,15 @@ import {
   getInclusiveDatesBetweenDates,
   setDaysFromDate,
 } from '@/utils/date-utils';
-import { convertTimeStringToMinutes } from '@/utils/time-utils';
 import { Injectable } from '@nestjs/common';
-import { DiaryDay, Prisma, User } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { UpdateUserDTO } from './dtos';
 import { UpdatePreferencesDTO } from './dtos';
 import { UserDto } from './dtos/user.dto';
-import { PreferenceColumnNames } from './types';
-
-const preferenceColumnNameLookup = (preference: keyof UpdatePreferencesDTO) => {
-  const lookup: {
-    [key in keyof UpdatePreferencesDTO]: PreferenceColumnNames;
-  } = {
-    showDayStreak: 'userPreferenceShowDayStreak',
-    showWeeklyExcercise: 'userPreferenceShowWeeklyExcercise',
-    showWeeklyWater: 'userPreferenceShowWeeklyWater',
-  };
-
-  return lookup[preference] || '';
-};
-
-const mapUserPreferenceUpdate = (
-  preferences: UpdatePreferencesDTO,
-): { [key in PreferenceColumnNames]?: boolean } => {
-  const hasPrefDayStreak = preferences.showDayStreak !== undefined;
-  const hasPrefWeeklyExercise = preferences.showWeeklyExcercise !== undefined;
-  const hasPrefWeeklyWater = preferences.showWeeklyWater !== undefined;
-
-  return {
-    ...(hasPrefDayStreak
-      ? {
-          [preferenceColumnNameLookup('showDayStreak')]:
-            preferences.showDayStreak,
-        }
-      : {}),
-    ...(hasPrefWeeklyExercise
-      ? {
-          [preferenceColumnNameLookup('showWeeklyExcercise')]:
-            preferences.showWeeklyExcercise,
-        }
-      : {}),
-    ...(hasPrefWeeklyWater
-      ? {
-          [preferenceColumnNameLookup('showWeeklyWater')]:
-            preferences.showWeeklyWater,
-        }
-      : {}),
-  };
-};
-
-const transformUserProfile = (
-  userWithShareLink:
-    | (User & {
-        shareLink: {
-          link: string;
-          isShared: boolean;
-        } | null;
-      })
-    | null,
-  diaryDays: DiaryDay[],
-): UserDto | null => {
-  if (!userWithShareLink) {
-    return null;
-  }
-
-  const yesterday = setDaysFromDate(-1, new Date());
-  const isLastActivityTodayOrYesterday =
-    getBothDatesEqual(userWithShareLink.statLastActivity, new Date()) ||
-    getBothDatesEqual(userWithShareLink.statLastActivity, yesterday);
-  const statDayStreak = isLastActivityTodayOrYesterday
-    ? userWithShareLink.statDayStreak
-    : 0;
-
-  const { statWeeklyExercise, statWeeklyWater } = diaryDays.reduce(
-    (acc, day) => {
-      acc.statWeeklyExercise +=
-        convertTimeStringToMinutes(day.wellnessExcercise) || 0;
-      acc.statWeeklyWater += day.wellnessWater || 0;
-
-      return acc;
-    },
-    { statWeeklyExercise: 0, statWeeklyWater: 0 },
-  );
-
-  return {
-    name: userWithShareLink.name,
-    email: userWithShareLink.email,
-    avatar: userWithShareLink.avatar,
-    shareLink: userWithShareLink.shareLink?.link ?? null,
-    preferences: {
-      showDayStreak: userWithShareLink.userPreferenceShowDayStreak,
-      showWeeklyExcercise: userWithShareLink.userPreferenceShowWeeklyExcercise,
-      showWeeklyWater: userWithShareLink.userPreferenceShowWeeklyWater,
-      isProfileShared: userWithShareLink.shareLink?.isShared ?? null,
-    },
-    stats: {
-      dayStreak: statDayStreak,
-      weeklyExercise: statWeeklyExercise,
-      weeklyWater: statWeeklyWater,
-    },
-  };
-};
+import {
+  mapUserPreferenceUpdate,
+  transformUserProfile,
+} from '@/utils/modules/users-utils';
 
 @Injectable()
 export class UsersService {

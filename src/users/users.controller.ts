@@ -22,39 +22,48 @@ export class UsersController {
   @Get('/profile')
   @Serialize(UserDto)
   @UseGuards(JwtAuthGuard)
-  getUserProfile(@Request() req: RequestWithUser) {
+  async getUserProfile(@Request() req: RequestWithUser) {
     try {
       const { userId } = req.user;
 
-      return this.usersService.getUserProfile(userId);
+      return await this.usersService.getUserProfile(userId);
     } catch (err) {
-      console.error('[user::_get_profile]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[user::_get_profile]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
   @Patch('/')
   @UseGuards(JwtAuthGuard)
-  updateUser(@Body() body: UpdateUserDTO, @Request() req: RequestWithUser) {
+  async updateUser(
+    @Request() req: RequestWithUser,
+    @Body() body: UpdateUserDTO,
+  ) {
     try {
-      return this.usersService.updateUser(req.user.userId, body);
+      return await this.usersService.updateUser(req.user.userId, body);
     } catch (err) {
-      console.error('[user::_patch_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[user::_patch_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
   @Patch('/preferences')
   @UseGuards(JwtAuthGuard)
-  updateUserPreferences(
-    @Body() body: UpdatePreferencesDTO,
+  async updateUserPreferences(
     @Request() req: RequestWithUser,
+    @Body() body: UpdatePreferencesDTO,
   ) {
     try {
-      return this.usersService.updateUserPreferences(req.user.userId, body);
+      return await this.usersService.updateUserPreferences(
+        req.user.userId,
+        body,
+      );
     } catch (err) {
-      console.error('[user::_patch_preferences]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[user::_patch_preferences]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }

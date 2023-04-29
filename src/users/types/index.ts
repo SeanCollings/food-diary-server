@@ -10,3 +10,12 @@ export type PreferenceColumnNames = keyof Pick<
   | 'userPreferenceShowWeeklyExcercise'
   | 'userPreferenceShowWeeklyWater'
 >;
+
+export type UserWithShareLink =
+  | (User & {
+      shareLink: {
+        link: string;
+        isShared: boolean;
+      } | null;
+    })
+  | null;

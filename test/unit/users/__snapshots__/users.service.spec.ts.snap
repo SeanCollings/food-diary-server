@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersService getUserProfile should  1`] = `
+Object {
+  "avatar": undefined,
+  "email": "test@email.com",
+  "name": "Mock Name",
+  "preferences": Object {
+    "isProfileShared": true,
+    "showDayStreak": true,
+    "showWeeklyExcercise": undefined,
+    "showWeeklyWater": undefined,
+  },
+  "shareLink": "mock_sharelink",
+  "stats": Object {
+    "dayStreak": 0,
+    "weeklyExercise": 75,
+    "weeklyWater": 6,
+  },
+}
+`;
