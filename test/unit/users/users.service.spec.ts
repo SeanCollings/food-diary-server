@@ -1,18 +1,15 @@
 import { PrismaService } from '@/prisma.service';
+import { UpdatePreferencesDTO, UpdateUserDTO } from '@/users/dtos';
 import { UserWithShareLink } from '@/users/types';
 import { UsersService } from '@/users/users.service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { DiaryDay, PrismaClient } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
-jest.mock('@/utils/date-utils', () => ({
-  ...jest.requireActual('@/utils/date-utils'),
-  setDaysFromDate: jest.fn().mockReturnValue('2023-04-26T22:00:00.000Z'),
-}));
-
 describe('UsersService', () => {
   const mockUserId = 1234;
-  const mockDate = '2023-04-27T22:00:00.000Z';
+  const mockDateToday = '2023-04-27T22:00:00.000Z';
+  const mockDateYesterday = '2023-04-26T22:00:00.000Z';
   let service: UsersService;
   let prisma: DeepMockProxy<PrismaClient>;
 
@@ -20,7 +17,7 @@ describe('UsersService', () => {
     {
       id: '1',
       userId: mockUserId,
-      date: mockDate,
+      date: mockDateToday,
       hasMealBreakfast: true,
       hasMealSnack1: true,
       hasMealDinner: true,
@@ -32,13 +29,17 @@ describe('UsersService', () => {
     {
       id: '2',
       userId: mockUserId,
-      date: '2023-04-26T22:00:00.000Z',
+      date: mockDateYesterday,
       hasMealBreakfast: true,
       hasMealLunch: true,
       wellnessWater: 4,
       wellnessTeaCoffee: 2,
     },
   ];
+
+  beforeAll(() => {
+    jest.spyOn(Date, 'now').mockImplementation(() => 1682632800000); // '2022-04-27'
+  });
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -115,7 +116,7 @@ describe('UsersService', () => {
     const userWithShareLink: Partial<UserWithShareLink> = {
       name: 'Mock Name',
       email: 'test@email.com',
-      statLastActivity: new Date(mockDate),
+      statLastActivity: new Date(mockDateToday),
       statDayStreak: 4,
       userPreferenceShowDayStreak: true,
       shareLink: {
@@ -124,13 +125,94 @@ describe('UsersService', () => {
       },
     };
 
-    it('should ', async () => {
+    it('should get user profile', async () => {
       prisma.user.findUnique.mockResolvedValue(userWithShareLink as any);
       prisma.diaryDay.findMany.mockResolvedValue(mockDiaryDays as any);
 
-      const result = await service.getUserProfile(1234);
+      const result = await service.getUserProfile(mockUserId);
 
       expect(result).toMatchSnapshot();
+      expect(prisma.user.findUnique.mock.calls[0][0]).toMatchSnapshot();
+      expect(prisma.diaryDay.findMany.mock.calls[0][0]).toMatchSnapshot();
+    });
+  });
+
+  describe('updateUser', () => {
+    const mockUserUpdate: UpdateUserDTO = { name: 'Mock Name' };
+
+    it('should update user', async () => {
+      prisma.user.update.mockResolvedValue({} as any);
+      await service.updateUser(1234, mockUserUpdate);
+      expect(prisma.user.update.mock.calls[0][0]).toMatchSnapshot();
+    });
+  });
+
+  describe('updateUserPreferences', () => {
+    const mockUserPreferences: UpdatePreferencesDTO = {
+      showDayStreak: true,
+      showWeeklyExcercise: true,
+      showWeeklyWater: true,
+    };
+
+    it('should update users preferences', async () => {
+      prisma.user.update.mockResolvedValue({} as any);
+
+      await service.updateUserPreferences(mockUserId, mockUserPreferences);
+      expect(prisma.user.update.mock.calls[0][0]).toMatchSnapshot();
+    });
+
+    it('should update users preferences without preferences', async () => {
+      await service.updateUserPreferences(mockUserId, {});
+      expect(prisma.user.update).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('updateUserStreak', () => {
+    it('should update a users streak if last activity date was yesterday', async () => {
+      prisma.user.findUnique.mockResolvedValue({
+        statLastActivity: new Date(mockDateYesterday),
+        statDayStreak: 4,
+      } as any);
+      prisma.user.update.mockResolvedValue({} as any);
+
+      await service.updateUserStreak(mockUserId);
+
+      expect(prisma.user.findUnique).toBeCalledTimes(1);
+      expect(prisma.user.update.mock.calls[0][0]).toMatchSnapshot();
+    });
+
+    it('should not update a users streak if last activity date was today', async () => {
+      prisma.user.findUnique.mockResolvedValue({
+        statLastActivity: new Date(mockDateToday),
+        statDayStreak: 4,
+      } as any);
+      prisma.user.update.mockResolvedValue({} as any);
+
+      await service.updateUserStreak(mockUserId);
+
+      expect(prisma.user.findUnique).toBeCalledTimes(1);
+      expect(prisma.user.update).not.toBeCalled();
+    });
+
+    it('should cater for an undefined statDayStreak value', async () => {
+      prisma.user.findUnique.mockResolvedValue({
+        statLastActivity: new Date(mockDateYesterday),
+      } as any);
+      prisma.user.update.mockResolvedValue({} as any);
+
+      await service.updateUserStreak(mockUserId);
+
+      expect(prisma.user.findUnique).toBeCalledTimes(1);
+      expect(prisma.user.update.mock.calls[0][0]).toMatchSnapshot();
+    });
+
+    it('should cater for null found user', async () => {
+      prisma.user.findUnique.mockResolvedValue(null);
+
+      await service.updateUserStreak(mockUserId);
+
+      expect(prisma.user.findUnique).toBeCalledTimes(1);
+      expect(prisma.user.update).not.toBeCalled();
     });
   });
 });

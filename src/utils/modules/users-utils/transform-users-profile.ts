@@ -8,13 +8,15 @@ export const transformUserProfile = (
   userWithShareLink: UserWithShareLink,
   diaryDays: DiaryDay[],
 ): UserDto | null => {
+  const dateNow = new Date(Date.now());
+
   if (!userWithShareLink) {
     return null;
   }
 
-  const yesterday = setDaysFromDate(-1, new Date());
+  const yesterday = setDaysFromDate(-1, dateNow);
   const isLastActivityTodayOrYesterday =
-    getBothDatesEqual(userWithShareLink.statLastActivity, new Date()) ||
+    getBothDatesEqual(userWithShareLink.statLastActivity, dateNow) ||
     getBothDatesEqual(userWithShareLink.statLastActivity, yesterday);
   const statDayStreak = isLastActivityTodayOrYesterday
     ? userWithShareLink.statDayStreak

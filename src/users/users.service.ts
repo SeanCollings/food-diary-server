@@ -1,5 +1,6 @@
 import { PrismaService } from '@/prisma.service';
 import {
+  dateNow,
   getBothDatesEqual,
   getDateDaysAgo,
   getInclusiveDatesBetweenDates,
@@ -7,9 +8,7 @@ import {
 } from '@/utils/date-utils';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { UpdateUserDTO } from './dtos';
-import { UpdatePreferencesDTO } from './dtos';
-import { UserDto } from './dtos/user.dto';
+import { UpdateUserDTO, UpdatePreferencesDTO, UserDto } from '@/users/dtos';
 import {
   mapUserPreferenceUpdate,
   transformUserProfile,
@@ -65,6 +64,10 @@ export class UsersService {
   ) {
     const mapPreferenceUpdates = mapUserPreferenceUpdate(preferences);
 
+    if (!Object.keys(mapPreferenceUpdates).length) {
+      return;
+    }
+
     await this.prisma.user.update({
       where: {
         id: userId,
@@ -73,12 +76,11 @@ export class UsersService {
         ...mapPreferenceUpdates,
       },
     });
-
-    return;
   }
 
   async updateUserStreak(userId: number) {
-    const today = new Date();
+    let currentStreak = 1;
+    const today = dateNow();
     const yesterday = setDaysFromDate(-1, today);
 
     const user = await this.prisma.user.findUnique({
@@ -92,17 +94,17 @@ export class UsersService {
 
     const { statDayStreak, statLastActivity } = user;
 
-    if (!getBothDatesEqual(statLastActivity, today)) {
-      let currentStreak = 1;
-
-      if (getBothDatesEqual(statLastActivity, yesterday)) {
-        currentStreak = (statDayStreak ?? 0) + 1;
-      }
-
-      await this.prisma.user.update({
-        where: { id: userId },
-        data: { statLastActivity: today, statDayStreak: currentStreak },
-      });
+    if (getBothDatesEqual(statLastActivity, today)) {
+      return;
     }
+
+    if (getBothDatesEqual(statLastActivity, yesterday)) {
+      currentStreak = (statDayStreak ?? 0) + 1;
+    }
+
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { statLastActivity: today, statDayStreak: currentStreak },
+    });
   }
 }
