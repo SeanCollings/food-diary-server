@@ -59,6 +59,12 @@ export const setDateMidnightISOString = (date: TDate) => {
 /******************************** GET ***********************************/
 
 /**
+ * Get the current date using Date.now() to more easily mock date
+ * @returns Date
+ */
+export const dateNow = () => new Date(Date.now());
+
+/**
  * Compare 2 dates if they are equal
  * @param firstDate string | Date
  * @param secondDate string | Date
@@ -188,7 +194,7 @@ export const getPreviousMonthsRange = (date: TDate, months: number) => {
  */
 export const getInclusiveDatesBetweenDates = (
   first: TDate,
-  second: TDate = new Date(),
+  second: TDate = dateNow(),
 ) => {
   const firstDate = new Date(first);
   const secondDate = new Date(second);
@@ -254,7 +260,7 @@ export const getDateMonthsAgo = (date: TDate, monthsAgo: number) => {
  * @param daysAgo number
  * @returns string
  */
-export const getDateDaysAgo = (daysAgo: number, date: Date = new Date()) => {
+export const getDateDaysAgo = (daysAgo: number, date: Date = dateNow()) => {
   const daysAgoDate = new Date(date);
   daysAgoDate.setDate(daysAgoDate.getDate() - daysAgo);
 
