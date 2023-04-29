@@ -34,14 +34,15 @@ export class MealsController {
     @Body() body: CreateMealItemDTO,
   ) {
     try {
-      return this.mealsService.createMealEntry(
+      return await this.mealsService.createMealEntry(
         req.user.userId,
         query.date,
         body,
       );
     } catch (err) {
-      console.error('[meals::_post_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[meals::_post_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -53,14 +54,15 @@ export class MealsController {
     @Body() body: UpdateMealItemDto,
   ) {
     try {
-      return this.mealsService.updateMealEntry(
+      return await this.mealsService.updateMealEntry(
         req.user.userId,
         query.date,
         body,
       );
     } catch (err) {
-      console.error('[meals::_put_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[meals::_put_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -72,14 +74,15 @@ export class MealsController {
     @Body() body: DeleteMealItemDto,
   ) {
     try {
-      return this.mealsService.deleteMealEntry(
+      return await this.mealsService.deleteMealEntry(
         req.user.userId,
         query.date,
         body,
       );
     } catch (err) {
-      console.error('[meals::_delete_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[meals::_delete_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }
