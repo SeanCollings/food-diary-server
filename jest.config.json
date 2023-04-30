@@ -16,6 +16,7 @@
   "collectCoverageFrom": [
     "src/**/*.{js,jsx,ts,tsx}",
     "!src/**/*.module.{js,jsx,ts,tsx}",
+    "!src/**/*.guard.{js,jsx,ts,tsx}",
     "!**/node_modules/**"
   ],
   "coverageThreshold": {

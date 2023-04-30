@@ -21,8 +21,9 @@ export class AuthController {
     try {
       return await this.authService.signup(body);
     } catch (err) {
-      console.error('[auth::_post_signup]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[auth::_post_signup]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -30,11 +31,12 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   async login(@Request() req: RequestWithUser, @Body() body: LoginUserDTO) {
     try {
-      const { id, email } = req?.user || {};
+      const { id, email } = req.user;
       return await this.authService.login({ id, email, token: body.token });
     } catch (err) {
-      console.error('[auth::_post_login]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[auth::_post_login]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -44,8 +46,9 @@ export class AuthController {
       const { email, token } = body;
       return await this.authService.resetPassword({ email, token });
     } catch (err) {
-      console.error('[auth::_post_reset]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[auth::_post_reset]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }

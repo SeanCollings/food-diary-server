@@ -7,6 +7,7 @@ import { PrismaService } from '@/prisma.service';
 import { GoogleAdapter } from './adapter/google.adapter';
 import { CreateUserDTO, ResetPasswordDto } from './dtos';
 import { dateNow } from '@/utils/date-utils';
+import { SCRYPT_KEYLEN } from '@/auth/auth.constants';
 
 const scrypt = promisify(_scrypt);
 
@@ -24,7 +25,7 @@ export class AuthService {
 
     if (user) {
       const [salt, storedHash] = user.password.split('.');
-      const hash = (await scrypt(password, salt, 32)) as Buffer;
+      const hash = (await scrypt(password, salt, SCRYPT_KEYLEN)) as Buffer;
 
       if (storedHash === hash.toString('hex')) {
         return user;
@@ -48,7 +49,7 @@ export class AuthService {
     }
 
     const salt = randomBytes(8).toString('hex');
-    const hash = (await scrypt(password, salt, 32)) as Buffer;
+    const hash = (await scrypt(password, salt, SCRYPT_KEYLEN)) as Buffer;
     const result = salt + '.' + hash.toString('hex');
 
     return this.prisma.user.create({

@@ -32,8 +32,8 @@ export class GoogleAdapter {
         .post<RecaptchaResponse>(this.recaptchaVerifyUrl, null, { params })
         .pipe(
           catchError((error: AxiosError) => {
-            console.error(error.response?.data);
-            throw 'A verification error ocurred!';
+            console.error('recaptcha error:', error.response?.data);
+            throw new Error('A verification error ocurred!');
           }),
         ),
     );
