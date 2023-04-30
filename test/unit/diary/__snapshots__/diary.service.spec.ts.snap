@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiaryService getCalendarEntries should cater for no diary-days returned 1`] = `
+Object {
+  "entries": Object {},
+  "monthRange": Object {
+    "1-2023": true,
+    "2-2023": true,
+    "3-2023": true,
+  },
+}
+`;
+
+exports[`DiaryService getCalendarEntries should get calendar entries for a date and number of months back 1`] = `
+Object {
+  "entries": Object {
+    "3-2023": Array [
+      28,
+      27,
+    ],
+  },
+  "monthRange": Object {
+    "1-2023": true,
+    "2-2023": true,
+    "3-2023": true,
+  },
+}
+`;
+
+exports[`DiaryService getDiaryEntries should cater for no diary-day for specified date 1`] = `null`;
+
+exports[`DiaryService getDiaryEntries should get diary entries for a specified date 1`] = `
+Object {
+  "meals": Object {
+    "2023-04-26T22:00:00.000Z": Object {
+      "breakfast": Object {
+        "contents": Array [
+          Object {
+            "food": "mock_food_1.2",
+            "id": "1.2",
+            "serving": "mock_serving_1.2",
+          },
+        ],
+      },
+      "dinner": Object {
+        "contents": Array [
+          Object {
+            "food": "mock_food_2.2",
+            "id": "2.2",
+          },
+        ],
+      },
+      "lunch": Object {
+        "contents": Array [],
+      },
+      "snack_1": Object {
+        "contents": Array [],
+      },
+      "snack_2": Object {
+        "contents": Array [],
+      },
+    },
+    "2023-04-27T22:00:00.000Z": Object {
+      "breakfast": Object {
+        "contents": Array [
+          Object {
+            "description": "mock_description_1.1",
+            "food": "mock_food_1.1",
+            "id": "1",
+          },
+        ],
+      },
+      "dinner": Object {
+        "contents": Array [
+          Object {
+            "food": "mock_food_3.1",
+            "id": "3.1",
+          },
+        ],
+      },
+      "lunch": Object {
+        "contents": Array [],
+      },
+      "snack_1": Object {
+        "contents": Array [
+          Object {
+            "food": "mock_food_2.1",
+            "id": "2.1",
+          },
+        ],
+      },
+      "snack_2": Object {
+        "contents": Array [],
+      },
+    },
+  },
+  "wellness": Object {
+    "2023-04-26T22:00:00.000Z": Object {
+      "alcohol": Object {
+        "value": 0,
+      },
+      "excercise": Object {
+        "details": "",
+        "time": "",
+      },
+      "tea_coffee": Object {
+        "value": 2,
+      },
+      "water": Object {
+        "value": 4,
+      },
+    },
+    "2023-04-27T22:00:00.000Z": Object {
+      "alcohol": Object {
+        "value": 1,
+      },
+      "excercise": Object {
+        "details": "mock exercise details",
+        "time": "01:15",
+      },
+      "tea_coffee": Object {
+        "value": 0,
+      },
+      "water": Object {
+        "value": 2,
+      },
+    },
+  },
+}
+`;

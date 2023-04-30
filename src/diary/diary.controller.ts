@@ -27,15 +27,16 @@ export class DiaryController {
   @Get('/')
   @UseGuards(JwtAuthGuard)
   async getDiaryEntries(
-    @Query() query: GetDiaryEntriesQuery,
     @Request() req: RequestWithUser,
+    @Query() query: GetDiaryEntriesQuery,
   ) {
     try {
       const { date } = query;
-      return this.diaryService.getDiaryEntries(date, req.user.userId);
+      return await this.diaryService.getDiaryEntries(req.user.userId, date);
     } catch (err) {
-      console.error('[diary::_get_]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[diary::_get_]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 
@@ -47,14 +48,15 @@ export class DiaryController {
   ) {
     try {
       const { date, months } = query;
-      return this.diaryService.getCalendarEntries(
+      return await this.diaryService.getCalendarEntries(
         req.user.userId,
         date,
         months,
       );
     } catch (err) {
-      console.error('[diary::_get_calendar-entries]:', err.message);
-      throw new InternalServerErrorException(err.message || DEFAULT_ERROR_MSG);
+      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      console.error('[diary::_get_calendar-entries]:', errorMessage);
+      throw new InternalServerErrorException(errorMessage);
     }
   }
 }

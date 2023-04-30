@@ -1,72 +1,22 @@
 import { PrismaService } from '@/prisma.service';
 import {
-  formatMonthNumberYear,
   getMidnightISODaysInMonth,
   getMidnightISODaysInMonthRange,
   getMonthAndYearFromDate,
   getPreviousMonthsRange,
 } from '@/utils/date-utils';
+import {
+  getDiaryDayEntriesPerMonth,
+  getMealEntriesForMonth,
+  getWellessEntriesForMonth,
+} from '@/utils/diary-day-utils';
 import { Injectable } from '@nestjs/common';
-import { DiaryDay } from '@prisma/client';
-
-const getMealEntriesForMonth = (diaryDays: DiaryDay[]) => {
-  const mealsEntries = diaryDays.reduce((acc, day) => {
-    acc[day.date] = {
-      breakfast: { contents: day.mealBreakfast || [] },
-      snack_1: { contents: day.mealSnack1 || [] },
-      lunch: { contents: day.mealLunch || [] },
-      snack_2: { contents: day.mealSnack2 || [] },
-      dinner: { contents: day.mealDinner || [] },
-    };
-
-    return acc;
-  }, {} as any);
-
-  return mealsEntries;
-};
-export const getWellessEntriesForMonth = (diaryDays: DiaryDay[]) => {
-  const wellnessEntries = diaryDays.reduce((acc, entry) => {
-    acc[entry.date] = {
-      water: { value: entry.wellnessWater ?? 0 },
-      tea_coffee: { value: entry.wellnessTeaCoffee ?? 0 },
-      alcohol: { value: entry.wellnessAlcohol ?? 0 },
-      excercise: {
-        time: entry.wellnessExcercise || '',
-        details: entry.wellnessExcerciseDetails || '',
-      },
-    };
-
-    return acc;
-  }, {} as any);
-
-  return wellnessEntries;
-};
-export const getDiaryDayEntriesPerMonth = (diaryDays: DiaryDay[]) => {
-  const entries = diaryDays.reduce(
-    (acc, diaryDay) => {
-      const formattedDate = formatMonthNumberYear(diaryDay.date);
-      const diaryDate = new Date(diaryDay.date).getDate();
-
-      if (!acc[formattedDate]) {
-        acc[formattedDate] = [];
-      }
-
-      acc[formattedDate].push(diaryDate);
-      return acc;
-    },
-    {} as {
-      [date: string]: number[];
-    },
-  );
-
-  return entries;
-};
 
 @Injectable()
 export class DiaryService {
   constructor(private prisma: PrismaService) {}
 
-  async getDiaryEntries(date: string, userId: number) {
+  async getDiaryEntries(userId: number, date: string) {
     const [month, year] = getMonthAndYearFromDate(date);
     const datesInMonth = getMidnightISODaysInMonth(month, year);
 
