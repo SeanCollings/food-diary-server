@@ -44,8 +44,8 @@ describe('DiaryController', () => {
     it('should get diary entries for a given date', async () => {
       await controller.getDiaryEntries(mockUser, { date: mockDate });
       expect(diaryServiceMock.getDiaryEntries).toHaveBeenCalledWith(
-        mockDate,
         mockUserId,
+        mockDate,
       );
     });
 

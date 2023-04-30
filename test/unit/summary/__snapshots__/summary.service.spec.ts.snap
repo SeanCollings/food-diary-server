@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SummaryService getUserSummary should return a user summary 1`] = `
-Object {
-  "data": Object {
-    "2023-04-12T22:00:00.000Z": Object {
-      "breakfast": Array [
+{
+  "data": {
+    "2023-04-12T22:00:00.000Z": {
+      "breakfast": [
         "food_1",
       ],
       "dinner": undefined,
-      "lunch": Array [
+      "lunch": [
         "food_3",
       ],
-      "snack_1": Array [
+      "snack_1": [
         "food_2",
       ],
-      "snack_2": Array [
+      "snack_2": [
         "food_4",
       ],
     },
   },
-  "dates": Array [
+  "dates": [
     "2023-04-11T22:00:00.000Z",
     "2023-04-12T22:00:00.000Z",
   ],

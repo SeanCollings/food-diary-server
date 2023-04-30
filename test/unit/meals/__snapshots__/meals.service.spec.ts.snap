@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MealsService createMealEntry should create a new meal entry and update user streak when there is no current diary entry 1`] = `
-Object {
-  "create": Object {
+{
+  "create": {
     "date": "2023-04-12T22:00:00.000Z",
     "hasMealBreakfast": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -20,12 +20,12 @@ Object {
     ],
     "userId": 1234,
   },
-  "update": Object {
+  "update": {
     "hasMealBreakfast": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -36,8 +36,8 @@ Object {
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -46,12 +46,12 @@ Object {
 `;
 
 exports[`MealsService createMealEntry should create new meal entry if type doesnt exist but diary day entry does 1`] = `
-Object {
-  "create": Object {
+{
+  "create": {
     "date": "2023-04-12T22:00:00.000Z",
     "hasMealDinner": true,
-    "mealDinner": Array [
-      Object {
+    "mealDinner": [
+      {
         "description": "other_food_description_2",
         "food": "other_food_type_3",
         "id": "3",
@@ -59,18 +59,18 @@ Object {
     ],
     "userId": 1234,
   },
-  "update": Object {
+  "update": {
     "hasMealDinner": true,
-    "mealDinner": Array [
-      Object {
+    "mealDinner": [
+      {
         "description": "other_food_description_2",
         "food": "other_food_type_3",
         "id": "3",
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -79,19 +79,19 @@ Object {
 `;
 
 exports[`MealsService createMealEntry should update current meal entry type if exists and update user streak 1`] = `
-Object {
-  "create": Object {
+{
+  "create": {
     "date": "2023-04-12T22:00:00.000Z",
     "hasMealBreakfast": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
         "food": "mock_food_1",
         "id": "1",
       },
-      Object {
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -103,17 +103,17 @@ Object {
     ],
     "userId": 1234,
   },
-  "update": Object {
+  "update": {
     "hasMealBreakfast": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
         "food": "mock_food_1",
         "id": "1",
       },
-      Object {
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -124,8 +124,8 @@ Object {
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -134,19 +134,19 @@ Object {
 `;
 
 exports[`MealsService deleteMealEntry should cater for if trying to remove id that doesnt exist 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "hasMealBreakfast": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
         "food": "mock_food_1",
         "id": "1",
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -155,13 +155,13 @@ Object {
 `;
 
 exports[`MealsService deleteMealEntry should cater for if trying to remove meal-type that doesnt exist 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "hasMealSnack1": false,
-    "mealSnack1": Array [],
+    "mealSnack1": [],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -170,13 +170,13 @@ Object {
 `;
 
 exports[`MealsService deleteMealEntry should remove a meal by id from current meals 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "hasMealBreakfast": false,
-    "mealBreakfast": Array [],
+    "mealBreakfast": [],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -185,15 +185,15 @@ Object {
 `;
 
 exports[`MealsService updateMealEntry should cater for if current meal doesnt exist 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "hasMealSnack1": false,
     "hasMealSnack2": true,
-    "mealSnack1": Array [],
-    "mealSnack2": Array [
-      Object {
+    "mealSnack1": [],
+    "mealSnack2": [
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -204,8 +204,8 @@ Object {
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -214,21 +214,21 @@ Object {
 `;
 
 exports[`MealsService updateMealEntry should update a current meal contents to a new type 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "hasMealBreakfast": true,
     "hasMealDinner": true,
-    "mealBreakfast": Array [
-      Object {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
         "food": "mock_food_1",
         "id": "1",
       },
     ],
-    "mealDinner": Array [
-      Object {
+    "mealDinner": [
+      {
         "description": "mock_description_2",
-        "emoji": Object {
+        "emoji": {
           "name": "mock_emoji_name_2",
           "nativeSkin": "mock_emoji_native_skin_2",
         },
@@ -239,8 +239,8 @@ Object {
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },
@@ -249,18 +249,18 @@ Object {
 `;
 
 exports[`MealsService updateMealEntry should update a current meal contents with new meal contents if meal types are the same 1`] = `
-Object {
-  "data": Object {
-    "mealBreakfast": Array [
-      Object {
+{
+  "data": {
+    "mealBreakfast": [
+      {
         "description": "mock_description_2",
         "food": "mock_food_1",
         "id": "1",
       },
     ],
   },
-  "where": Object {
-    "userId_date": Object {
+  "where": {
+    "userId_date": {
       "date": "2023-04-12T22:00:00.000Z",
       "userId": 1234,
     },

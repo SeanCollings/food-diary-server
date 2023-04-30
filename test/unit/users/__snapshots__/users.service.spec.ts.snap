@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UsersService getUserProfile should get user profile 1`] = `
-Object {
+{
   "avatar": undefined,
   "email": "test@email.com",
   "name": "Mock Name",
-  "preferences": Object {
+  "preferences": {
     "isProfileShared": true,
     "showDayStreak": true,
     "showWeeklyExcercise": undefined,
     "showWeeklyWater": undefined,
   },
   "shareLink": "mock_sharelink",
-  "stats": Object {
+  "stats": {
     "dayStreak": 4,
     "weeklyExercise": 75,
     "weeklyWater": 6,
@@ -21,27 +21,27 @@ Object {
 `;
 
 exports[`UsersService getUserProfile should get user profile 2`] = `
-Object {
-  "include": Object {
-    "shareLink": Object {
-      "select": Object {
+{
+  "include": {
+    "shareLink": {
+      "select": {
         "isShared": true,
         "link": true,
       },
     },
   },
-  "where": Object {
+  "where": {
     "id": 1234,
   },
 }
 `;
 
 exports[`UsersService getUserProfile should get user profile 3`] = `
-Object {
-  "where": Object {
-    "AND": Object {
-      "date": Object {
-        "in": Array [
+{
+  "where": {
+    "AND": {
+      "date": {
+        "in": [
           "2023-04-21T22:00:00.000Z",
           "2023-04-22T22:00:00.000Z",
           "2023-04-23T22:00:00.000Z",
@@ -58,48 +58,48 @@ Object {
 `;
 
 exports[`UsersService updateUser should update user 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "name": "Mock Name",
   },
-  "where": Object {
+  "where": {
     "id": 1234,
   },
 }
 `;
 
 exports[`UsersService updateUserPreferences should update users preferences 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "userPreferenceShowDayStreak": true,
     "userPreferenceShowWeeklyExcercise": true,
     "userPreferenceShowWeeklyWater": true,
   },
-  "where": Object {
+  "where": {
     "id": 1234,
   },
 }
 `;
 
 exports[`UsersService updateUserStreak should cater for an undefined statDayStreak value 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "statDayStreak": 1,
     "statLastActivity": 2023-04-27T22:00:00.000Z,
   },
-  "where": Object {
+  "where": {
     "id": 1234,
   },
 }
 `;
 
 exports[`UsersService updateUserStreak should update a users streak if last activity date was yesterday 1`] = `
-Object {
-  "data": Object {
+{
+  "data": {
     "statDayStreak": 5,
     "statLastActivity": 2023-04-27T22:00:00.000Z,
   },
-  "where": Object {
+  "where": {
     "id": 1234,
   },
 }

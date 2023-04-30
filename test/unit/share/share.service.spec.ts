@@ -76,7 +76,7 @@ describe('ShareService', () => {
       const result = await service.generateShareLink(1234);
 
       expect(result).toMatchInlineSnapshot(`
-        Object {
+        {
           "shareLink": "mock_guid",
         }
       `);
@@ -136,7 +136,7 @@ describe('ShareService', () => {
 
       const result = await service.linkShareable(1234, true);
       expect(result).toMatchInlineSnapshot(`
-        Object {
+        {
           "id": 555,
           "isShared": true,
           "link": "mock_link",
