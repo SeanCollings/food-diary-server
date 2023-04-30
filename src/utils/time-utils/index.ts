@@ -5,7 +5,7 @@
  */
 export const getSplitTime = (value: string) => {
   const [hours, minutes] = value.split(':');
-  return [hours ?? '00', minutes ?? '00'];
+  return [hours || '00', minutes || '00'];
 };
 
 /**
