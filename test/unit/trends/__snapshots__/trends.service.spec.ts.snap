@@ -204,7 +204,7 @@ exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
   },
   "mealsPerDay": [
     {
-      "id": "day_1",
+      "id": "day_M",
       "meals": [
         0,
         0,
@@ -214,7 +214,7 @@ exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
       ],
     },
     {
-      "id": "day_2",
+      "id": "day_T",
       "meals": [
         1,
         0,
@@ -224,7 +224,7 @@ exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
       ],
     },
     {
-      "id": "day_3",
+      "id": "day_W",
       "meals": [
         1,
         1,
