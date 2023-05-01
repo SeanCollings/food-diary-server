@@ -1,7 +1,7 @@
 import { UserDto } from '@/users/dtos';
 import { UserWithShareLink } from '@/users/types';
 import { getBothDatesEqual, setDaysFromDate } from '@/utils/date-utils';
-import { getStatWeekly } from '@/utils/diary-day-utils';
+import { getWellnessStatsPerEntries } from '@/utils/diary-day-utils';
 import { DiaryDay } from '@prisma/client';
 
 export const transformUserProfile = (
@@ -22,7 +22,7 @@ export const transformUserProfile = (
     ? userWithShareLink.statDayStreak
     : 0;
 
-  const { statWeeklyExercise, statWeeklyWater } = getStatWeekly(diaryDays);
+  const { statsExercise, statsWater } = getWellnessStatsPerEntries(diaryDays);
 
   return {
     name: userWithShareLink.name,
@@ -37,8 +37,8 @@ export const transformUserProfile = (
     },
     stats: {
       dayStreak: statDayStreak,
-      weeklyExercise: statWeeklyExercise,
-      weeklyWater: statWeeklyWater,
+      weeklyExercise: statsExercise,
+      weeklyWater: statsWater,
     },
   };
 };

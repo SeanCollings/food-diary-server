@@ -1,4 +1,4 @@
-export * from './get-stat-weekly';
+export * from './get-wellness-stats-per-entries';
 export * from './get-diary-day-entries-per-month';
-export * from './get-meal-entries-for-month';
-export * from './get-wellness-entries-for-month';
+export * from './get-all-meal-entries-per-date';
+export * from './get-all-wellness-entries-per-date';

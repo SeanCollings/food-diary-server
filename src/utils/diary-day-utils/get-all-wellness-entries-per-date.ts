@@ -10,7 +10,7 @@ type WellnessEntries = {
   };
 };
 
-export const getWellessEntriesForMonth = (diaryDays: DiaryDay[]) =>
+export const getAllWellessEntriesPerDate = (diaryDays: DiaryDay[]) =>
   diaryDays.reduce((acc, entry) => {
     acc[entry.date] = {
       water: { value: entry.wellnessWater ?? 0 },

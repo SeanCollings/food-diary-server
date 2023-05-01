@@ -11,7 +11,7 @@ type MealEntries = {
   };
 };
 
-export const getMealEntriesForMonth = (diaryDays: DiaryDay[]) =>
+export const getAllMealEntriesPerDate = (diaryDays: DiaryDay[]) =>
   diaryDays.reduce((acc, day) => {
     const mealBreakfast = (day.mealBreakfast as unknown as MealContent[]) || [];
     const mealSnack1 = (day.mealSnack1 as unknown as MealContent[]) || [];

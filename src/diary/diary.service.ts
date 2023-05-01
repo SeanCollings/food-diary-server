@@ -7,8 +7,8 @@ import {
 } from '@/utils/date-utils';
 import {
   getDiaryDayEntriesPerMonth,
-  getMealEntriesForMonth,
-  getWellessEntriesForMonth,
+  getAllMealEntriesPerDate,
+  getAllWellessEntriesPerDate,
 } from '@/utils/diary-day-utils';
 import { Injectable } from '@nestjs/common';
 
@@ -28,8 +28,8 @@ export class DiaryService {
       return null;
     }
 
-    const meals = getMealEntriesForMonth(diaryDays);
-    const wellness = getWellessEntriesForMonth(diaryDays);
+    const meals = getAllMealEntriesPerDate(diaryDays);
+    const wellness = getAllWellessEntriesPerDate(diaryDays);
 
     const transformed = { meals, wellness };
 
