@@ -40,7 +40,7 @@ export interface MealContent {
   serving?: string;
   measurement?: string;
   description?: string;
-  emoji: { name: string; nativeSkin: string } | null;
+  emoji?: { name: string; nativeSkin: string } | null;
 }
 
 export type SetFieldOld<V, O extends object> = {

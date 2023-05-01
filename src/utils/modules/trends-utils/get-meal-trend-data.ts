@@ -1,5 +1,4 @@
-import { EMealType } from '@/lib/interfaces/meals';
-import { MealTypes } from '@/meals/types';
+import { MealTypes, MealTypesEnum } from '@/meals/types';
 import { TRENDS_WEEK_LEGEND } from '@/trends/trends.constants';
 import { TrendType } from '@/trends/types';
 import { getBothDatesEqual } from '@/utils/date-utils';
@@ -21,7 +20,7 @@ export const getMealTrendData = (
   allDates: string[],
   diaryDays: DiaryDay[],
 ): MealTrendData => {
-  const mealTotals: { [key in EMealType]: number } = {
+  const mealTotals: { [key in MealTypesEnum]: number } = {
     breakfast: 0,
     snack_1: 0,
     lunch: 0,

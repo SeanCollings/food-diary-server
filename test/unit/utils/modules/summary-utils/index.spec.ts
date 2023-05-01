@@ -1,5 +1,4 @@
-import { IMealContent } from '@/lib/interfaces/meals';
-import { MealContent } from '@/meals/dtos/create-meal-item.dto';
+import { MealContent } from '@/meals/types';
 import {
   formatMealContent,
   formatSummaryData,
@@ -32,7 +31,7 @@ describe('summry-utils', () => {
     { id: '5', food: 'mock_food' },
   ] as MealContent[] as any;
 
-  const mealContent: IMealContent[] = [
+  const mealContent: MealContent[] = [
     {
       id: '1',
       food: 'mock_food_1',

@@ -1,8 +1,8 @@
 import { DiaryDay } from '@prisma/client';
-import { IMealContent } from '@/lib/interfaces/meals';
 import { getBothDatesEqual } from '@/utils/date-utils';
+import { MealContent } from '@/meals/types';
 
-export const formatMealContent = (mealContent: IMealContent[] | undefined) => {
+export const formatMealContent = (mealContent: MealContent[] | undefined) => {
   if (!mealContent) {
     return;
   }
@@ -47,19 +47,17 @@ export const formatSummaryData = (
       if (entry) {
         acc[date] = {
           breakfast: formatMealContent(
-            entry.mealBreakfast as unknown as IMealContent[],
+            entry.mealBreakfast as unknown as MealContent[],
           ),
           snack_1: formatMealContent(
-            entry.mealSnack1 as unknown as IMealContent[],
+            entry.mealSnack1 as unknown as MealContent[],
           ),
-          lunch: formatMealContent(
-            entry.mealLunch as unknown as IMealContent[],
-          ),
+          lunch: formatMealContent(entry.mealLunch as unknown as MealContent[]),
           snack_2: formatMealContent(
-            entry.mealSnack2 as unknown as IMealContent[],
+            entry.mealSnack2 as unknown as MealContent[],
           ),
           dinner: formatMealContent(
-            entry.mealDinner as unknown as IMealContent[],
+            entry.mealDinner as unknown as MealContent[],
           ),
           ...formatWellnessEntry(entry),
         };
