@@ -15,8 +15,8 @@ export const transformToEntryDB = (
   entry: WellnessEntry,
 ): TransformedDiaryDay => {
   const hasWellnessExcercise =
-    (!!entry.excercise?.time.length &&
-      entry.excercise?.time !== EXERCISE_NO_TIME) ||
+    (!!entry.excercise?.time?.length &&
+      entry.excercise.time !== EXERCISE_NO_TIME) ||
     !!entry.excercise?.details?.length;
 
   return {
