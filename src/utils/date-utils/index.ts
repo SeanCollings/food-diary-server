@@ -72,7 +72,7 @@ export const dateNow = () => new Date(Date.now());
  */
 export const getBothDatesEqual = (
   firstDate: TDate | null,
-  secondDate?: TDate | null,
+  secondDate: TDate | null,
 ) => {
   if (!firstDate || !secondDate) {
     return false;
@@ -293,6 +293,6 @@ export const sortDateArray = (
 ) => {
   const dir = direction === 'asc' ? 1 : -1;
   return [...dateArray].sort(
-    (a, b) => new Date(a).valueOf() - dir * new Date(b).valueOf(),
+    (a, b) => dir * new Date(a).valueOf() - dir * new Date(b).valueOf(),
   );
 };
