@@ -1,5 +1,6 @@
 import { TRENDS_WEEK_LEGEND } from '@/trends/trends.constants';
 import { TrendType } from '@/trends/types';
+import { getBothDatesEqual } from '@/utils/date-utils';
 import { convertTimeStringToMinutes } from '@/utils/time-utils';
 import { DiaryDay } from '@prisma/client';
 
@@ -16,7 +17,7 @@ export const getExceriseTrendData = (
       : allDates.map((_, index) => `${index + 1}`);
 
   const excercisePerDay = allDates.reduce((acc, date) => {
-    const entry = diaryDays.find((day) => day.date === date);
+    const entry = diaryDays.find((day) => getBothDatesEqual(day.date, date));
 
     if (entry) {
       const excerciseTime = entry.wellnessExcercise || '';

@@ -8,6 +8,11 @@ import {
   sortDateArray,
 } from '@/utils/date-utils';
 
+/**
+ * Return sorted dats for trend-type
+ * @param type TrendType
+ * @returns string[]
+ */
 export const getAllDatesForType = (type: TrendType) => {
   const today = formatToServerDate(new Date(dateNow()));
   let dateRangeFromToday: string[];

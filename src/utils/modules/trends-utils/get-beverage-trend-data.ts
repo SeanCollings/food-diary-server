@@ -1,5 +1,6 @@
 import { TRENDS_WEEK_LEGEND } from '@/trends/trends.constants';
 import { BeverageTypes, TrendType } from '@/trends/types';
+import { getBothDatesEqual } from '@/utils/date-utils';
 import { DiaryDay } from '@prisma/client';
 
 export const getBeverageTrendData = (
@@ -22,7 +23,7 @@ export const getBeverageTrendData = (
       : allDates.map((_, index) => `${index + 1}`);
 
   const beveragesPerDay = allDates.reduce((acc, date) => {
-    const entry = diaryDays.find((day) => day.date === date);
+    const entry = diaryDays.find((day) => getBothDatesEqual(day.date, date));
 
     if (entry) {
       const water = entry.wellnessWater ?? 0;
