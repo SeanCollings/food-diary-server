@@ -1,8 +1,8 @@
+import { HasMealColumnKeys, MealColumnKeys } from '@/diary/types';
 import { MealTypes } from '@/meals/types';
-import { DiaryDay } from '@prisma/client';
 
 export const mealColumnNameLookup = (mealType: MealTypes) => {
-  const lookup: { [key in MealTypes]: keyof DiaryDay } = {
+  const lookup: { [key in MealTypes]: MealColumnKeys } = {
     breakfast: 'mealBreakfast',
     snack_1: 'mealSnack1',
     lunch: 'mealLunch',
@@ -10,19 +10,12 @@ export const mealColumnNameLookup = (mealType: MealTypes) => {
     dinner: 'mealDinner',
   };
 
-  return lookup[mealType] as string;
+  return lookup[mealType];
 };
 
 export const hasMealContentColumnLookup = (mealType: MealTypes) => {
   const lookup: {
-    [key in MealTypes]: keyof Pick<
-      DiaryDay,
-      | 'hasMealBreakfast'
-      | 'hasMealSnack1'
-      | 'hasMealLunch'
-      | 'hasMealSnack2'
-      | 'hasMealDinner'
-    >;
+    [key in MealTypes]: HasMealColumnKeys;
   } = {
     breakfast: 'hasMealBreakfast',
     snack_1: 'hasMealSnack1',
@@ -31,10 +24,12 @@ export const hasMealContentColumnLookup = (mealType: MealTypes) => {
     dinner: 'hasMealDinner',
   };
 
-  return lookup[mealType] as string;
+  return lookup[mealType];
 };
 
-export const mealsColumnLookup = (mealId: MealTypes) => {
+export const mealsColumnLookup = (
+  mealId: MealTypes,
+): [MealColumnKeys, HasMealColumnKeys] => {
   const mealColumnName = mealColumnNameLookup(mealId);
   const hasMealContentColumn = hasMealContentColumnLookup(mealId);
 

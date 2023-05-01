@@ -23,3 +23,17 @@ export class GetCalendarEntriesQuery {
   @Type(() => Number)
   months: string;
 }
+
+export type MealColumnKeys =
+  | 'mealBreakfast'
+  | 'mealSnack1'
+  | 'mealLunch'
+  | 'mealSnack2'
+  | 'mealDinner';
+
+export type HasMealColumnKeys =
+  | 'hasMealBreakfast'
+  | 'hasMealSnack1'
+  | 'hasMealLunch'
+  | 'hasMealSnack2'
+  | 'hasMealDinner';

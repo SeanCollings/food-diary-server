@@ -1,11 +1,12 @@
+import { HasMealColumnKeys, MealColumnKeys } from '@/diary/types';
 import { MealContent } from '@/meals/dtos/create-meal-item.dto';
 
-interface UpdateContentParams {
+export interface UpdateContentParams {
   content: MealContent;
-  currentMealColumnName: string;
-  newMealColumnName: string;
-  currentHasMealContentColumn: string;
-  newHasMealContentColumn: string;
+  currentMealColumnName: MealColumnKeys;
+  newMealColumnName: MealColumnKeys;
+  currentHasMealContentColumn: HasMealColumnKeys;
+  newHasMealContentColumn: HasMealColumnKeys;
   currentMealContents: MealContent[] | null;
   newMealContents: MealContent[] | null;
 }
@@ -34,15 +35,15 @@ export const updateMealContent = ({
     return { [currentMealColumnName]: updatedMealContents };
   }
 
-  const updatedOldMealContents = (currentMealContents || [])?.filter(
+  const updatedOldMealContents = (currentMealContents || []).filter(
     (content) => content.id !== contentId,
   );
   const updatedNewMealContents = [...(newMealContents || []), content];
 
   return {
     [currentMealColumnName]: updatedOldMealContents,
-    [currentHasMealContentColumn]: !!updatedOldMealContents?.length,
+    [currentHasMealContentColumn]: !!updatedOldMealContents.length,
     [newMealColumnName]: updatedNewMealContents,
-    [newHasMealContentColumn]: !!updatedNewMealContents?.length,
+    [newHasMealContentColumn]: !!updatedNewMealContents.length,
   };
 };
