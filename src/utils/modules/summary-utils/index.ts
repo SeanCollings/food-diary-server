@@ -1,16 +1,6 @@
-import {
-  getInclusiveDatesBetweenDates,
-  sortDateArray,
-} from '@/utils/date-utils';
 import { DiaryDay } from '@prisma/client';
 import { IMealContent } from '@/lib/interfaces/meals';
-
-export const getDatesInRange = (dateFrom: string, dateTo: string) => {
-  const dateRange = getInclusiveDatesBetweenDates(dateFrom, dateTo);
-  const sortedDates = sortDateArray(dateRange, 'asc');
-
-  return sortedDates;
-};
+import { getBothDatesEqual } from '@/utils/date-utils';
 
 export const formatMealContent = (mealContent: IMealContent[] | undefined) => {
   if (!mealContent) {
@@ -52,7 +42,7 @@ export const formatSummaryData = (
 ) => {
   const dataPerDay = allDates.reduce(
     (acc, date) => {
-      const entry = diaryDays.find((day) => day.date === date);
+      const entry = diaryDays.find((day) => getBothDatesEqual(day.date, date));
 
       if (entry) {
         acc[date] = {
@@ -77,7 +67,7 @@ export const formatSummaryData = (
 
       return acc;
     },
-    [] as {
+    {} as {
       [date: string]: {
         breakfast: string[];
         snack_1: string[];

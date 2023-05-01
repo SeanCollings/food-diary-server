@@ -267,6 +267,19 @@ export const getDateDaysAgo = (daysAgo: number, date: Date = dateNow()) => {
   return formatToServerDate(daysAgoDate);
 };
 
+/**
+ * Gets sorted date array of dates between `dateFrom` and `dateTo` inclusive
+ * @param dateFrom string | Date
+ * @param dateTo string | Date
+ * @returns string[]
+ */
+export const getSortedDatesInRange = (dateFrom: TDate, dateTo: TDate) => {
+  const dateRange = getInclusiveDatesBetweenDates(dateFrom, dateTo);
+  const sortedDates = sortDateArray(dateRange, 'asc');
+
+  return sortedDates;
+};
+
 /******************************** OTHER ***********************************/
 
 /**

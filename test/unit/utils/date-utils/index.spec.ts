@@ -10,6 +10,7 @@ import {
   getMonthAndYearFromDate,
   getNewMonth,
   getPreviousMonthsRange,
+  getSortedDatesInRange,
   isDateInFuture,
   setDateMidnightISOString,
   sortDateArray,
@@ -396,6 +397,22 @@ describe('date-utils', () => {
     it('should return a date that is n number of days before today if no date provided', () => {
       const result = getDateDaysAgo(6);
       expect(result).toMatchInlineSnapshot(`"2023-04-21T22:00:00.000Z"`);
+    });
+  });
+
+  describe('getSortedDatesInRange', () => {
+    it('should return all dates in range ascending between 2 dates', () => {
+      const result = getSortedDatesInRange('2023-01-28', '2023-02-02');
+      expect(result).toMatchInlineSnapshot(`
+        [
+          "2023-01-27T22:00:00.000Z",
+          "2023-01-28T22:00:00.000Z",
+          "2023-01-29T22:00:00.000Z",
+          "2023-01-30T22:00:00.000Z",
+          "2023-01-31T22:00:00.000Z",
+          "2023-02-01T22:00:00.000Z",
+        ]
+      `);
     });
   });
 

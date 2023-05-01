@@ -1,16 +1,14 @@
-import {
-  formatSummaryData,
-  getDatesInRange,
-} from '@/utils/modules/summary-utils';
+import { formatSummaryData } from '@/utils/modules/summary-utils';
 import { PrismaService } from '@/prisma.service';
 import { Injectable } from '@nestjs/common';
+import { getSortedDatesInRange } from '@/utils/date-utils';
 
 @Injectable()
 export class SummaryService {
   constructor(private prisma: PrismaService) {}
 
   async getUserSummary(userId: number, dateFrom: string, dateTo: string) {
-    const datesInRange = getDatesInRange(dateFrom, dateTo);
+    const datesInRange = getSortedDatesInRange(dateFrom, dateTo);
 
     const diaryDays = await this.prisma.diaryDay.findMany({
       where: {

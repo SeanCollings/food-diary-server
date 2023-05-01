@@ -1,18 +1,16 @@
-import {
-  formatSummaryData,
-  getDatesInRange,
-} from '@/utils/modules/summary-utils';
+import { formatSummaryData } from '@/utils/modules/summary-utils';
 import { PrismaService } from '@/prisma.service';
 import { createGuid } from '@/utils/string-utils';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { getSortedDatesInRange } from '@/utils/date-utils';
 
 @Injectable()
 export class ShareService {
   constructor(private prisma: PrismaService) {}
 
   async getSharedSummary(link: string, dateFrom: string, dateTo: string) {
-    const datesInRange = getDatesInRange(dateFrom, dateTo);
+    const datesInRange = getSortedDatesInRange(dateFrom, dateTo);
 
     const shareLink = await this.prisma.shareLink.findFirst({
       where: { link, AND: { isShared: true } },
