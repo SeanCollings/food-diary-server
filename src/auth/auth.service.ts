@@ -8,6 +8,7 @@ import { GoogleAdapter } from './adapter/google.adapter';
 import { CreateUserDTO, ResetPasswordDto } from './dtos';
 import { dateNow } from '@/utils/date-utils';
 import { SCRYPT_KEYLEN } from '@/auth/auth.constants';
+import { isValidPassword } from '@/lib/validation/validate-user';
 
 const scrypt = promisify(_scrypt);
 
@@ -22,17 +23,7 @@ export class AuthService {
 
   async validateUser(email: string, password: string) {
     const user = await this.userService.findOne(email);
-
-    if (user) {
-      const [salt, storedHash] = user.password.split('.');
-      const hash = (await scrypt(password, salt, SCRYPT_KEYLEN)) as Buffer;
-
-      if (storedHash === hash.toString('hex')) {
-        return user;
-      }
-    }
-
-    return null;
+    return isValidPassword(user, password);
   }
 
   async signup({ email, name, password, token }: CreateUserDTO) {
