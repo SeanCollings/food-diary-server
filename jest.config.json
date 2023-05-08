@@ -11,7 +11,7 @@
   },
   "coverageDirectory": "./coverage",
   "testEnvironment": "node",
-  "setupFilesAfterEnv": [],
+  "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
   "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/src/.", "/config/"],
   "collectCoverageFrom": [
     "src/**/*.{js,jsx,ts,tsx}",
