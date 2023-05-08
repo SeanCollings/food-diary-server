@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if date range is greater than MAX_SUMMARY_MONTH_RANGE = 6 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "dateFrom and dateTo max-range is 6 months",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if dateFrom and dateTo are empty 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "dateFrom should not be empty",
+    "dateFrom must be a valid ISO 8601 date string",
+    "dateFrom and dateTo max-range is 6 months",
+    "dateFrom must come before dateTo",
+    "dateTo should not be empty",
+    "dateTo must be a valid ISO 8601 date string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if dates are not in date format 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "dateFrom must be a valid ISO 8601 date string",
+    "dateFrom and dateTo max-range is 6 months",
+    "dateFrom must come before dateTo",
+    "dateTo must be a valid ISO 8601 date string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if from date is after before date 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "dateFrom must come before dateTo",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if google verification fails 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) negative should throw error if no user is found 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) positive should cater for empty dairy-day data 1`] = `
+{
+  "data": {},
+  "dates": [
+    "2023-04-22T22:00:00.000Z",
+    "2023-04-23T22:00:00.000Z",
+    "2023-04-24T22:00:00.000Z",
+    "2023-04-25T22:00:00.000Z",
+    "2023-04-26T22:00:00.000Z",
+    "2023-04-27T22:00:00.000Z",
+  ],
+  "totalDays": 6,
+}
+`;
+
+exports[`SummaryController (e2e) / (GET) positive should get a users summary between 2 dates 1`] = `
+{
+  "data": {
+    "2023-04-22T22:00:00.000Z": {
+      "alcohol": 0,
+      "breakfast": [
+        "1 cup - breakfast food 2 (description of food)",
+      ],
+      "dinner": [
+        "half bowl - dinner food 1",
+      ],
+      "lunch": [],
+      "snack_1": [],
+      "snack_2": [],
+      "tea_coffee": 0,
+      "water": 2,
+    },
+    "2023-04-25T22:00:00.000Z": {
+      "alcohol": 0,
+      "breakfast": [
+        "1 cup - breakfast food 2 (description of food)",
+      ],
+      "dinner": [
+        "half bowl - dinner food 1",
+      ],
+      "lunch": [
+        "lunch food 1",
+        "lunch food 2 (Nice and long destription about this meal that is wonderful to read)",
+      ],
+      "snack_1": [],
+      "snack_2": [],
+      "tea_coffee": 0,
+      "water": 4,
+    },
+    "2023-04-27T22:00:00.000Z": {
+      "alcohol": 1,
+      "breakfast": [
+        "breakfast food 1",
+        "1 cup - breakfast food 2 (description of food)",
+      ],
+      "dinner": [
+        "half bowl - dinner food 1",
+        "plate - longer dinner food 2",
+        "1/2 - dinner food 3",
+        "2 - dinner food 4",
+      ],
+      "lunch": [
+        "lunch food 1",
+        "lunch food 2 (Nice and long destription about this meal that is wonderful to read)",
+        "4 - lunch food 3",
+      ],
+      "snack_1": [
+        "snack 1 food",
+      ],
+      "snack_2": [
+        "snack 2 food",
+      ],
+      "tea_coffee": 2,
+      "water": 4,
+    },
+  },
+  "dates": [
+    "2023-04-22T22:00:00.000Z",
+    "2023-04-23T22:00:00.000Z",
+    "2023-04-24T22:00:00.000Z",
+    "2023-04-25T22:00:00.000Z",
+    "2023-04-26T22:00:00.000Z",
+    "2023-04-27T22:00:00.000Z",
+  ],
+  "totalDays": 6,
+}
+`;
