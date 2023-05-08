@@ -25,6 +25,10 @@ export function IsWithinDateRange(
             relatedPropertyName
           ] as string;
 
+          if (isNaN(Date.parse(value)) || isNaN(Date.parse(relatedValue))) {
+            return false;
+          }
+
           const earliestAllowedDate = formatToServerDate(
             getDateMonthsAgo(value, MAX_SUMMARY_MONTH_RANGE),
           );

@@ -23,6 +23,10 @@ export function IsDateAfter(
             relatedPropertyName
           ] as string;
 
+          if (isNaN(Date.parse(value)) || isNaN(Date.parse(relatedValue))) {
+            return false;
+          }
+
           return new Date(value) >= new Date(relatedValue);
         },
       },
