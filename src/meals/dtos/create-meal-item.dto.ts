@@ -62,6 +62,7 @@ export class CreateMealItemDTO {
   @IsIn(MEAL_TYPE_ARRAY)
   mealId: MealTypes;
 
+  @IsNotEmpty()
   @ValidateNested({ each: true })
   @Type(() => MealContent)
   content: MealContent;

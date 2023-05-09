@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of body 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "mealId must be one of the following values: breakfast, snack_1, lunch, snack_2, dinner",
+    "mealId should not be empty",
+    "mealId must be a string",
+    "id must be shorter than or equal to 13 characters",
+    "id must be longer than or equal to 13 characters",
+    "id should not be empty",
+    "id must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of date query 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "date must be a valid ISO 8601 date string",
+    "date should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (DELETE) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`SummaryController (e2e) / (DELETE) positive should delete a meal entry 1`] = `{}`;
+
+exports[`SummaryController (e2e) / (POST) negative should cater for bad content format 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "content.id must be shorter than or equal to 13 characters",
+    "content.id must be longer than or equal to 13 characters",
+    "content.id should not be empty",
+    "content.id must be a string",
+    "content.food must be shorter than or equal to 100 characters",
+    "content.food should not be empty",
+    "content.food must be a string",
+    "content.serving must be shorter than or equal to 100 characters",
+    "content.serving must be a string",
+    "content.measurement must be shorter than or equal to 100 characters",
+    "content.measurement must be a string",
+    "content.description must be shorter than or equal to 256 characters",
+    "content.description must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (POST) negative should cater for lack of body 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "mealId must be one of the following values: breakfast, snack_1, lunch, snack_2, dinner",
+    "mealId should not be empty",
+    "mealId must be a string",
+    "content should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (POST) negative should cater for lack of date query 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "date must be a valid ISO 8601 date string",
+    "date should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (POST) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`SummaryController (e2e) / (POST) positive should create a new meal entry 1`] = `{}`;
+
+exports[`SummaryController (e2e) / (PUT) negative should cater for bad content format 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "content.id must be shorter than or equal to 13 characters",
+    "content.id must be longer than or equal to 13 characters",
+    "content.id should not be empty",
+    "content.id must be a string",
+    "content.food must be shorter than or equal to 100 characters",
+    "content.food should not be empty",
+    "content.food must be a string",
+    "content.serving must be shorter than or equal to 100 characters",
+    "content.serving must be a string",
+    "content.measurement must be shorter than or equal to 100 characters",
+    "content.measurement must be a string",
+    "content.description must be shorter than or equal to 256 characters",
+    "content.description must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (PUT) negative should cater for lack of body 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "newMealId must be one of the following values: breakfast, snack_1, lunch, snack_2, dinner",
+    "newMealId should not be empty",
+    "newMealId must be a string",
+    "oldMealId must be one of the following values: breakfast, snack_1, lunch, snack_2, dinner",
+    "oldMealId should not be empty",
+    "oldMealId must be a string",
+    "content should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (PUT) negative should cater for lack of date query 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "date must be a valid ISO 8601 date string",
+    "date should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`SummaryController (e2e) / (PUT) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`SummaryController (e2e) / (PUT) positive should update a meal entry 1`] = `{}`;
