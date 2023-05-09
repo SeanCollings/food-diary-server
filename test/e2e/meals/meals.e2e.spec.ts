@@ -24,7 +24,7 @@ jest.mock('@/lib/validation/validate-user');
 
 const mockError = jest.fn();
 
-describe('SummaryController (e2e)', () => {
+describe('MealsController (e2e)', () => {
   let app: INestApplication;
   let prisma: DeepMockProxy<PrismaClient>;
   let mockUsersService: jest.Mocked<Partial<UsersService>>;

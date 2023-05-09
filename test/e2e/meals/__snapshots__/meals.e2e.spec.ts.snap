@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of body 1`] = `
+exports[`MealsController (e2e) / (DELETE) negative should cater for lack of body 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -16,7 +16,7 @@ exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of bo
 }
 `;
 
-exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of date query 1`] = `
+exports[`MealsController (e2e) / (DELETE) negative should cater for lack of date query 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -27,16 +27,16 @@ exports[`SummaryController (e2e) / (DELETE) negative should cater for lack of da
 }
 `;
 
-exports[`SummaryController (e2e) / (DELETE) negative should not allow non-logged in users 1`] = `
+exports[`MealsController (e2e) / (DELETE) negative should not allow non-logged in users 1`] = `
 {
   "message": "Unauthorized",
   "statusCode": 401,
 }
 `;
 
-exports[`SummaryController (e2e) / (DELETE) positive should delete a meal entry 1`] = `{}`;
+exports[`MealsController (e2e) / (DELETE) positive should delete a meal entry 1`] = `{}`;
 
-exports[`SummaryController (e2e) / (POST) negative should cater for bad content format 1`] = `
+exports[`MealsController (e2e) / (POST) negative should cater for bad content format 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -58,7 +58,7 @@ exports[`SummaryController (e2e) / (POST) negative should cater for bad content 
 }
 `;
 
-exports[`SummaryController (e2e) / (POST) negative should cater for lack of body 1`] = `
+exports[`MealsController (e2e) / (POST) negative should cater for lack of body 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -71,7 +71,7 @@ exports[`SummaryController (e2e) / (POST) negative should cater for lack of body
 }
 `;
 
-exports[`SummaryController (e2e) / (POST) negative should cater for lack of date query 1`] = `
+exports[`MealsController (e2e) / (POST) negative should cater for lack of date query 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -82,16 +82,16 @@ exports[`SummaryController (e2e) / (POST) negative should cater for lack of date
 }
 `;
 
-exports[`SummaryController (e2e) / (POST) negative should not allow non-logged in users 1`] = `
+exports[`MealsController (e2e) / (POST) negative should not allow non-logged in users 1`] = `
 {
   "message": "Unauthorized",
   "statusCode": 401,
 }
 `;
 
-exports[`SummaryController (e2e) / (POST) positive should create a new meal entry 1`] = `{}`;
+exports[`MealsController (e2e) / (POST) positive should create a new meal entry 1`] = `{}`;
 
-exports[`SummaryController (e2e) / (PUT) negative should cater for bad content format 1`] = `
+exports[`MealsController (e2e) / (PUT) negative should cater for bad content format 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -113,7 +113,7 @@ exports[`SummaryController (e2e) / (PUT) negative should cater for bad content f
 }
 `;
 
-exports[`SummaryController (e2e) / (PUT) negative should cater for lack of body 1`] = `
+exports[`MealsController (e2e) / (PUT) negative should cater for lack of body 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -129,7 +129,7 @@ exports[`SummaryController (e2e) / (PUT) negative should cater for lack of body 
 }
 `;
 
-exports[`SummaryController (e2e) / (PUT) negative should cater for lack of date query 1`] = `
+exports[`MealsController (e2e) / (PUT) negative should cater for lack of date query 1`] = `
 {
   "error": "Bad Request",
   "message": [
@@ -140,11 +140,11 @@ exports[`SummaryController (e2e) / (PUT) negative should cater for lack of date 
 }
 `;
 
-exports[`SummaryController (e2e) / (PUT) negative should not allow non-logged in users 1`] = `
+exports[`MealsController (e2e) / (PUT) negative should not allow non-logged in users 1`] = `
 {
   "message": "Unauthorized",
   "statusCode": 401,
 }
 `;
 
-exports[`SummaryController (e2e) / (PUT) positive should update a meal entry 1`] = `{}`;
+exports[`MealsController (e2e) / (PUT) positive should update a meal entry 1`] = `{}`;
