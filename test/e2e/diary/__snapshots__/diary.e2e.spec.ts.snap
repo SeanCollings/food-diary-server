@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiaryController (e2e) / (GET) negative should cater for missing date query 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "date must be a valid ISO 8601 date string",
+    "date should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`DiaryController (e2e) / (GET) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`DiaryController (e2e) / (GET) positive should get diary entries for entire month of date 1`] = `
+{
+  "meals": {
+    "2023-04-22T22:00:00.000Z": {
+      "breakfast": {
+        "contents": [
+          {
+            "description": "description of food",
+            "emoji": {
+              "name": "food_emoji",
+              "nativeSkin": "emoji_skin",
+            },
+            "food": "breakfast food 2",
+            "id": "12",
+            "measurement": "cup",
+            "serving": "1",
+          },
+        ],
+      },
+      "dinner": {
+        "contents": [
+          {
+            "emoji": {
+              "name": "emoji_food",
+              "nativeSkin": "food_skin",
+            },
+            "food": "dinner food 1",
+            "id": "51",
+            "measurement": "bowl",
+            "serving": "half",
+          },
+        ],
+      },
+      "lunch": {
+        "contents": [],
+      },
+      "snack_1": {
+        "contents": [],
+      },
+      "snack_2": {
+        "contents": [],
+      },
+    },
+    "2023-04-25T22:00:00.000Z": {
+      "breakfast": {
+        "contents": [
+          {
+            "description": "description of food",
+            "emoji": {
+              "name": "food_emoji",
+              "nativeSkin": "emoji_skin",
+            },
+            "food": "breakfast food 2",
+            "id": "12",
+            "measurement": "cup",
+            "serving": "1",
+          },
+        ],
+      },
+      "dinner": {
+        "contents": [
+          {
+            "emoji": {
+              "name": "emoji_food",
+              "nativeSkin": "food_skin",
+            },
+            "food": "dinner food 1",
+            "id": "51",
+            "measurement": "bowl",
+            "serving": "half",
+          },
+        ],
+      },
+      "lunch": {
+        "contents": [
+          {
+            "food": "lunch food 1",
+            "id": "31",
+          },
+          {
+            "description": "Nice and long destription about this meal that is wonderful to read",
+            "food": "lunch food 2",
+            "id": "32",
+          },
+        ],
+      },
+      "snack_1": {
+        "contents": [],
+      },
+      "snack_2": {
+        "contents": [],
+      },
+    },
+    "2023-04-27T22:00:00.000Z": {
+      "breakfast": {
+        "contents": [
+          {
+            "food": "breakfast food 1",
+            "id": "11",
+          },
+          {
+            "description": "description of food",
+            "emoji": {
+              "name": "food_emoji",
+              "nativeSkin": "emoji_skin",
+            },
+            "food": "breakfast food 2",
+            "id": "12",
+            "measurement": "cup",
+            "serving": "1",
+          },
+        ],
+      },
+      "dinner": {
+        "contents": [
+          {
+            "emoji": {
+              "name": "emoji_food",
+              "nativeSkin": "food_skin",
+            },
+            "food": "dinner food 1",
+            "id": "51",
+            "measurement": "bowl",
+            "serving": "half",
+          },
+          {
+            "food": "longer dinner food 2",
+            "id": "52",
+            "measurement": "plate",
+          },
+          {
+            "food": "dinner food 3",
+            "id": "53",
+            "serving": "1/2",
+          },
+          {
+            "emoji": {
+              "name": "dinner_emoji",
+            },
+            "food": "dinner food 4",
+            "id": "54",
+            "serving": "2",
+          },
+        ],
+      },
+      "lunch": {
+        "contents": [
+          {
+            "food": "lunch food 1",
+            "id": "31",
+          },
+          {
+            "description": "Nice and long destription about this meal that is wonderful to read",
+            "food": "lunch food 2",
+            "id": "32",
+          },
+          {
+            "food": "lunch food 3",
+            "id": "33",
+            "serving": "4",
+          },
+        ],
+      },
+      "snack_1": {
+        "contents": [
+          {
+            "food": "snack 1 food",
+            "id": "21",
+          },
+        ],
+      },
+      "snack_2": {
+        "contents": [
+          {
+            "food": "snack 2 food",
+            "id": "41",
+          },
+        ],
+      },
+    },
+  },
+  "wellness": {
+    "2023-04-22T22:00:00.000Z": {
+      "alcohol": {
+        "value": 0,
+      },
+      "excercise": {
+        "details": "",
+        "time": "",
+      },
+      "tea_coffee": {
+        "value": 0,
+      },
+      "water": {
+        "value": 2,
+      },
+    },
+    "2023-04-25T22:00:00.000Z": {
+      "alcohol": {
+        "value": 0,
+      },
+      "excercise": {
+        "details": "",
+        "time": "00:35",
+      },
+      "tea_coffee": {
+        "value": 0,
+      },
+      "water": {
+        "value": 4,
+      },
+    },
+    "2023-04-27T22:00:00.000Z": {
+      "alcohol": {
+        "value": 1,
+      },
+      "excercise": {
+        "details": "Run and walk",
+        "time": "01:15",
+      },
+      "tea_coffee": {
+        "value": 2,
+      },
+      "water": {
+        "value": 4,
+      },
+    },
+  },
+}
+`;
+
+exports[`DiaryController (e2e) /calendar-entries (GET) negative should cater for missing query 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "date must be a valid ISO 8601 date string",
+    "date should not be empty",
+    "months must not be greater than 6",
+    "months must be a number conforming to the specified constraints",
+    "months should not be empty",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`DiaryController (e2e) /calendar-entries (GET) negative should cater for month range greater than the max = 6 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "months must not be greater than 6",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`DiaryController (e2e) /calendar-entries (GET) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`DiaryController (e2e) /calendar-entries (GET) positive should get calendar-entries for date and number months back 1`] = `
+{
+  "entries": {
+    "3-2023": [
+      28,
+      26,
+      23,
+    ],
+  },
+  "monthRange": {
+    "1-2023": true,
+    "2-2023": true,
+    "3-2023": true,
+  },
+}
+`;
