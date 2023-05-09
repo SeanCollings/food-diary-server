@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthController (e2e) /login (POST) negative should fail if cant validate user 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`AuthController (e2e) /login (POST) negative should fail if email not valid 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`AuthController (e2e) /login (POST) negative should fail if google captcha fails 1`] = `
+{
+  "error": "Internal Server Error",
+  "message": "Something went wrong!",
+  "statusCode": 500,
+}
+`;
+
+exports[`AuthController (e2e) /login (POST) negative should fail if no body sent 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`AuthController (e2e) /login (POST) negative should fail if password not valid 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`AuthController (e2e) /login (POST) positive should login a user 1`] = `
+{
+  "access_token": "mock_new_token",
+}
+`;
+
+exports[`AuthController (e2e) /reset (POST) negative should fail if google captcha fails 1`] = `
+{
+  "error": "Internal Server Error",
+  "message": "Something went wrong!",
+  "statusCode": 500,
+}
+`;
+
+exports[`AuthController (e2e) /reset (POST) positive should reset a user password 1`] = `
+{
+  "message": "Reset link sent",
+}
+`;
+
+exports[`AuthController (e2e) /signup (POST) negative should fail if no body sent 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "name must be shorter than or equal to 100 characters",
+    "name should not be empty",
+    "name must be a string",
+    "email must be shorter than or equal to 100 characters",
+    "email must be longer than or equal to 6 characters",
+    "email should not be empty",
+    "email must be an email",
+    "password must be shorter than or equal to 100 characters",
+    "password must be longer than or equal to 8 characters",
+    "password should not be empty",
+    "password must be a string",
+    "token should not be empty",
+    "token must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`AuthController (e2e) /signup (POST) negative should fail if user name is missing 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "name must be shorter than or equal to 100 characters",
+    "name should not be empty",
+    "name must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`AuthController (e2e) /signup (POST) positive should signup a new user 1`] = `
+{
+  "avatar": "",
+  "email": "test@email.com",
+  "name": "Mock User",
+}
+`;

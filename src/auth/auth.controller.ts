@@ -11,12 +11,15 @@ import { LocalAuthGuard } from '@/auth//local-auth.guard';
 import { RequestWithUser } from './types';
 import { CreateUserDTO, LoginUserDTO, ResetPasswordDto } from './dtos';
 import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
+import { Serialize } from '@/interceptors/serialize.interceptor';
+import { UserDto } from '@/users/dtos';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('/signup')
+  @Serialize(UserDto)
   async createUser(@Body() body: CreateUserDTO) {
     try {
       return await this.authService.signup(body);
