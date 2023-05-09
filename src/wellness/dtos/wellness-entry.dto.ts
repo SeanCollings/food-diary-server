@@ -28,15 +28,16 @@ export class BeverageValue {
 }
 
 export class ExcerciseValue {
-  @ValidateIf((object, value) => value?.length > 0)
+  @IsNotEmpty()
   @IsString()
   @MinLength(5)
   @MaxLength(5)
   @Matches(/^(?=\D*\d)[0-2](?=\D*\d)[0-9]:(?=\D*\d)[0-5](?=\D*\d)[0-9]$/, {
-    message: 'Invalid syntax',
+    message: 'time has invalid syntax',
   })
   time: string;
 
+  @ValidateIf((object, value) => value?.length > 0)
   @IsString()
   @MaxLength(TEXTAREA_MAX_LENGTH)
   details?: string;
