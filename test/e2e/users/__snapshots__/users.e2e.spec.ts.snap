@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealsController (e2e) / (PATCH) negative should not allow empty name 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "name must be shorter than or equal to 100 characters",
+    "name should not be empty",
+    "name must be a string",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`MealsController (e2e) / (PATCH) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`MealsController (e2e) / (PATCH) positive should update a users profile 1`] = `{}`;
+
+exports[`MealsController (e2e) /preferences (PATCH) negative should cater for incorrect attributes 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "showWeeklyWater must be a boolean value",
+    "showWeeklyExcercise must be a boolean value",
+    "showDayStreak must be a boolean value",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`MealsController (e2e) /preferences (PATCH) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`MealsController (e2e) /preferences (PATCH) positive should handle empty preferences body 1`] = `{}`;
+
+exports[`MealsController (e2e) /preferences (PATCH) positive should update a users preferences 1`] = `{}`;
+
+exports[`MealsController (e2e) /profile (GET) negative should not allow non-logged in users 1`] = `
+{
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`MealsController (e2e) /profile (GET) positive should get a users profile 1`] = `
+{
+  "avatar": "",
+  "email": "test@email.com",
+  "name": "Mock User",
+  "preferences": {
+    "isProfileShared": null,
+    "showDayStreak": true,
+    "showWeeklyExcercise": true,
+    "showWeeklyWater": true,
+  },
+  "shareLink": null,
+  "stats": {
+    "dayStreak": 4,
+    "weeklyExercise": 110,
+    "weeklyWater": 10,
+  },
+}
+`;
