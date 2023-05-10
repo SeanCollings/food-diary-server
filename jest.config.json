@@ -29,5 +29,6 @@
     }
   },
   "setupFiles": [],
-  "modulePathIgnorePatterns": []
+  "modulePathIgnorePatterns": [],
+  "globalSetup": "./global-setup.ts"
 }
