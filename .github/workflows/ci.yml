@@ -24,6 +24,11 @@ jobs:
       - run: cp .env.dist .env
       - name: Install packages
         run: npm ci
-      - name: Run all tests
-        run: npm run test:cov
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v4.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm run coverage
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
 
