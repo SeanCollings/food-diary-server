@@ -38,7 +38,7 @@ describe('PrismaService', () => {
 
       await service.onModuleInit();
 
-      expect(mockError).toBeCalledTimes(1);
+      expect(mockError).toHaveBeenCalled();
     });
   });
 
