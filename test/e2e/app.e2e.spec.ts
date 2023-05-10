@@ -6,6 +6,10 @@ import { AppModule } from '@/app.module';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
+  });
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
