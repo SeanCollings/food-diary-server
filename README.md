@@ -1,5 +1,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0ddb87847f7346d964c9/test_coverage)](https://codeclimate.com/github/SeanCollings/food-diary-server/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0ddb87847f7346d964c9/maintainability)](https://codeclimate.com/github/SeanCollings/food-diary-server/maintainability)
+![ci](https://github.com/SeanCollings/food-diary-server/actions/workflows/ci.yml/badge.svg)
 
 # Food & Wellness Diary - server
 
