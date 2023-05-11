@@ -21,7 +21,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: cp .env.dist .env
       - name: Install packages
         run: npm ci
       - name: Test & publish code coverage
@@ -31,4 +30,3 @@ jobs:
         with:
           coverageCommand: npm run test:cov
           coverageLocations: ${{ github.workspace }}/coverage/lcov.info:lcov
-
