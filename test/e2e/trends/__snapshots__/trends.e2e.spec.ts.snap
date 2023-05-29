@@ -23,11 +23,6 @@ exports[`TrendsController (e2e) /beverage-trends (GET) positive should get bever
 {
   "beveragesPerDay": [
     {
-      "alcohol": 1,
-      "tea_coffee": 0,
-      "water": 2,
-    },
-    {
       "alcohol": 0,
       "tea_coffee": 4,
       "water": 6,
@@ -172,6 +167,11 @@ exports[`TrendsController (e2e) /beverage-trends (GET) positive should get bever
       "tea_coffee": 0,
       "water": 0,
     },
+    {
+      "alcohol": 0,
+      "tea_coffee": 0,
+      "water": 0,
+    },
   ],
   "highestValue": 6,
   "legend": [
@@ -212,11 +212,6 @@ exports[`TrendsController (e2e) /beverage-trends (GET) positive should get bever
 exports[`TrendsController (e2e) /beverage-trends (GET) positive should get beverage trends for week 1`] = `
 {
   "beveragesPerDay": [
-    {
-      "alcohol": 0,
-      "tea_coffee": 0,
-      "water": 0,
-    },
     {
       "alcohol": 0,
       "tea_coffee": 0,
@@ -273,7 +268,6 @@ exports[`TrendsController (e2e) /excercise-trends (GET) negative should not allo
 exports[`TrendsController (e2e) /excercise-trends (GET) positive should get excercise trends for month 1`] = `
 {
   "excercisePerDay": [
-    75,
     0,
     0,
     30,
@@ -301,6 +295,7 @@ exports[`TrendsController (e2e) /excercise-trends (GET) positive should get exce
     35,
     0,
     75,
+    0,
     0,
     0,
   ],
@@ -343,7 +338,6 @@ exports[`TrendsController (e2e) /excercise-trends (GET) positive should get exce
 exports[`TrendsController (e2e) /excercise-trends (GET) positive should get excercise trends for week 1`] = `
 {
   "excercisePerDay": [
-    0,
     0,
     35,
     0,
@@ -416,29 +410,29 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     "30",
   ],
   "mealTotals": {
-    "breakfast": 7,
-    "dinner": 6,
-    "lunch": 6,
-    "snack_1": 3,
-    "snack_2": 2,
+    "breakfast": 6,
+    "dinner": 5,
+    "lunch": 5,
+    "snack_1": 2,
+    "snack_2": 1,
   },
   "mealsPerDay": [
     {
       "id": "day_1",
       "meals": [
         1,
+        0,
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
       ],
     },
     {
       "id": "day_2",
       "meals": [
-        1,
         0,
-        1,
+        0,
+        0,
         0,
         0,
       ],
@@ -446,18 +440,18 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     {
       "id": "day_3",
       "meals": [
+        1,
+        1,
+        1,
         0,
-        0,
-        0,
-        0,
-        0,
+        1,
       ],
     },
     {
       "id": "day_4",
       "meals": [
         1,
-        1,
+        0,
         1,
         0,
         1,
@@ -466,11 +460,11 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     {
       "id": "day_5",
       "meals": [
-        1,
         0,
-        1,
         0,
-        1,
+        0,
+        0,
+        0,
       ],
     },
     {
@@ -636,21 +630,21 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     {
       "id": "day_22",
       "meals": [
+        1,
         0,
         0,
         0,
-        0,
-        0,
+        1,
       ],
     },
     {
       "id": "day_23",
       "meals": [
-        1,
         0,
         0,
         0,
-        1,
+        0,
+        0,
       ],
     },
     {
@@ -666,41 +660,41 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     {
       "id": "day_25",
       "meals": [
+        1,
         0,
+        1,
         0,
-        0,
-        0,
-        0,
+        1,
       ],
     },
     {
       "id": "day_26",
       "meals": [
-        1,
         0,
-        1,
         0,
-        1,
+        0,
+        0,
+        0,
       ],
     },
     {
       "id": "day_27",
       "meals": [
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
+        1,
       ],
     },
     {
       "id": "day_28",
       "meals": [
-        1,
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
+        0,
       ],
     },
     {
@@ -760,35 +754,25 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
     {
       "id": "day_T",
       "meals": [
+        1,
         0,
+        1,
         0,
-        0,
-        0,
-        0,
+        1,
       ],
     },
     {
       "id": "day_W",
       "meals": [
-        1,
         0,
-        1,
         0,
-        1,
+        0,
+        0,
+        0,
       ],
     },
     {
       "id": "day_T",
-      "meals": [
-        0,
-        0,
-        0,
-        0,
-        0,
-      ],
-    },
-    {
-      "id": "day_F",
       "meals": [
         1,
         1,

@@ -15,8 +15,8 @@ exports[`DiaryService getCalendarEntries should get calendar entries for a date 
 {
   "entries": {
     "3-2023": [
-      28,
       27,
+      26,
     ],
   },
   "monthRange": {

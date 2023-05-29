@@ -284,9 +284,9 @@ exports[`DiaryController (e2e) /calendar-entries (GET) positive should get calen
 {
   "entries": {
     "3-2023": [
-      28,
-      26,
-      23,
+      27,
+      25,
+      22,
     ],
   },
   "monthRange": {
