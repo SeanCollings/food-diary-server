@@ -40,14 +40,14 @@ describe('SummaryController', () => {
 
     it('should get a user summary', async () => {
       await controller.getUserSummary(mockUser, {
-        dateFrom: '2023-04-12T22:00:00.000Z',
-        dateTo: '2022-01-01T22:00:00.000Z',
+        dateFrom: '2023-04-13',
+        dateTo: '2022-01-02',
       });
 
       expect(summaryServiceMock.getUserSummary).toBeCalledWith(
         1234,
-        '2023-04-12T22:00:00.000Z',
-        '2022-01-01T22:00:00.000Z',
+        '2023-04-13',
+        '2022-01-02',
       );
     });
 
@@ -58,8 +58,8 @@ describe('SummaryController', () => {
 
       try {
         await controller.getUserSummary(mockUser, {
-          dateFrom: '2023-04-12T22:00:00.000Z',
-          dateTo: '2022-01-01T22:00:00.000Z',
+          dateFrom: '2023-04-13',
+          dateTo: '2022-01-02',
         });
       } catch (err) {
         expect(err).toBeInstanceOf(InternalServerErrorException);
@@ -77,8 +77,8 @@ describe('SummaryController', () => {
 
       try {
         await controller.getUserSummary(mockUser, {
-          dateFrom: '2023-04-12T22:00:00.000Z',
-          dateTo: '2022-01-01T22:00:00.000Z',
+          dateFrom: '2023-04-13',
+          dateTo: '2022-01-02',
         });
       } catch (err) {
         expect(mockError).toHaveBeenCalledWith(

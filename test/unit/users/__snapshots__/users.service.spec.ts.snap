@@ -42,13 +42,13 @@ exports[`UsersService getUserProfile should get user profile 3`] = `
     "AND": {
       "date": {
         "in": [
-          "2023-04-21T00:00:00.000Z",
-          "2023-04-22T00:00:00.000Z",
-          "2023-04-23T00:00:00.000Z",
-          "2023-04-24T00:00:00.000Z",
-          "2023-04-25T00:00:00.000Z",
-          "2023-04-26T00:00:00.000Z",
-          "2023-04-27T00:00:00.000Z",
+          "2023-04-22",
+          "2023-04-23",
+          "2023-04-24",
+          "2023-04-25",
+          "2023-04-26",
+          "2023-04-27",
+          "2023-04-28",
         ],
       },
     },
@@ -85,7 +85,7 @@ exports[`UsersService updateUserStreak should cater for an undefined statDayStre
 {
   "data": {
     "statDayStreak": 1,
-    "statLastActivity": 2023-04-27T22:00:00.000Z,
+    "statLastActivity": 2023-04-28T00:00:00.000Z,
   },
   "where": {
     "id": 1234,
@@ -97,7 +97,7 @@ exports[`UsersService updateUserStreak should update a users streak if last acti
 {
   "data": {
     "statDayStreak": 5,
-    "statLastActivity": 2023-04-27T22:00:00.000Z,
+    "statLastActivity": 2023-04-28T00:00:00.000Z,
   },
   "where": {
     "id": 1234,

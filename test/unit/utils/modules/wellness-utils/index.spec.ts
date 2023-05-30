@@ -4,7 +4,7 @@ import { WellnessEntry } from '@/wellness/dtos/wellness-entry.dto';
 describe('wellness-utils', () => {
   describe('transformToEntryDB', () => {
     const wellnessEntry: WellnessEntry = {
-      date: '2023-04-27T22:00:00.000Z',
+      date: '2023-04-28',
       water: { value: 4 },
       tea_coffee: { value: 2 },
       alcohol: { value: 1 },
@@ -27,7 +27,7 @@ describe('wellness-utils', () => {
 
     it('should transform empty wellness-entry', () => {
       const result = transformToEntryDB({
-        date: '2023-04-27T22:00:00.000Z',
+        date: '2023-04-28',
       });
       expect(result).toMatchInlineSnapshot(`
         {
@@ -43,7 +43,7 @@ describe('wellness-utils', () => {
 
     it('should transform excercise without time', () => {
       const result = transformToEntryDB({
-        date: '2023-04-27T22:00:00.000Z',
+        date: '2023-04-28',
         excercise: { time: '00:00', details: '' },
       });
       expect(result).toMatchInlineSnapshot(`
@@ -60,7 +60,7 @@ describe('wellness-utils', () => {
 
     it('should transform excercise with only details', () => {
       const result = transformToEntryDB({
-        date: '2023-04-27T22:00:00.000Z',
+        date: '2023-04-28',
         excercise: { time: undefined, details: 'Run and walk' } as any,
       });
       expect(result).toMatchInlineSnapshot(`
@@ -77,7 +77,7 @@ describe('wellness-utils', () => {
 
     it('should handle empty excercise', () => {
       const result = transformToEntryDB({
-        date: '2023-04-27T22:00:00.000Z',
+        date: '2023-04-28',
         excercise: {} as any,
       });
       expect(result).toMatchInlineSnapshot(`

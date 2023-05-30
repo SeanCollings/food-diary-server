@@ -45,8 +45,8 @@ describe('ShareService', () => {
 
       const result = await service.getSharedSummary(
         'mock_link',
-        '2023-04-12T22:00:00.000Z',
-        '2023-04-01T22:00:00.000Z',
+        '2023-04-02',
+        '2023-04-13',
       );
 
       expect(result).toMatchSnapshot();
@@ -56,11 +56,7 @@ describe('ShareService', () => {
       prisma.shareLink.findFirst.mockResolvedValue(undefined as any);
 
       try {
-        await service.getSharedSummary(
-          'mock_link',
-          '2023-04-12T22:00:00.000Z',
-          '2023-04-01T22:00:00.000Z',
-        );
+        await service.getSharedSummary('mock_link', '2023-04-02', '2023-04-13');
       } catch (err) {
         expect(err.message).toMatchInlineSnapshot(
           `"Share page with link: mock_link does not exist"`,

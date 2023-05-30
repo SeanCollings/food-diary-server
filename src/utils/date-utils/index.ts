@@ -3,13 +3,12 @@ type TDate = Date | string;
 /******************************** FORMAT ***********************************/
 
 /**
- * Formats date to server date `2022-11-15T22:00:00.000Z`
+ * Formats date to server date `2022-11-16`
  * @param date string | Date
  * @returns string
  */
 export const formatToServerDate = (date: TDate) => {
-  const zeroHourDate = new Date(date).setHours(0, 0, 0, 0);
-  return new Date(zeroHourDate).toISOString();
+  return new Date(new Date(date)).toLocaleString('sv').split(' ')[0];
 };
 
 /**
@@ -166,7 +165,7 @@ export const getNewMonth = (
  * for number of months back from today inclusive
  * @param date string | date
  * @param months number
- * @returns [ { `10-2022`: `true` }, [ `2022-11-15T22:00:00.000Z` ] ]
+ * @returns [ { `10-2022`: `true` }, [ `2022-11-16` ] ]
  */
 export const getPreviousMonthsRange = (date: TDate, months: number) => {
   let previousMonth = new Date(date);
@@ -174,12 +173,12 @@ export const getPreviousMonthsRange = (date: TDate, months: number) => {
   const monthNumberYear: { [date: string]: boolean } = {
     [formatMonthNumberYear(date)]: true,
   };
-  const serverDateRange: string[] = [setDateMidnightISOString(date)];
+  const serverDateRange: string[] = [formatToServerDate(date)];
 
   while (monthRange > 1) {
     previousMonth = getNewMonth(previousMonth, 'previous');
     monthNumberYear[formatMonthNumberYear(previousMonth)] = true;
-    serverDateRange.push(setDateMidnightISOString(previousMonth));
+    serverDateRange.push(formatToServerDate(previousMonth));
     monthRange -= 1;
   }
 
@@ -207,7 +206,7 @@ export const getInclusiveDatesBetweenDates = (
   const dates: string[] = [];
 
   while (date <= endDate) {
-    dates.push(setDateMidnightISOString(new Date(date)));
+    dates.push(formatToServerDate(new Date(date)));
     date.setDate(date.getDate() + 1);
   }
 
@@ -225,7 +224,7 @@ export const getDateRangeBackTillDayOfWeek = (
   dayOfWeek: 1 | 2 | 3 | 4 | 5 | 6 | 7,
 ) => {
   const d = new Date(date);
-  const dateRange: string[] = [setDateMidnightISOString(d)];
+  const dateRange: string[] = [formatToServerDate(d)];
   let currentDay = d.getDay();
 
   if (dayOfWeek > currentDay) {
@@ -234,7 +233,7 @@ export const getDateRangeBackTillDayOfWeek = (
 
   while (currentDay !== dayOfWeek) {
     d.setDate(d.getDate() - 1);
-    dateRange.push(setDateMidnightISOString(d));
+    dateRange.push(formatToServerDate(d));
     currentDay -= 1;
   }
 

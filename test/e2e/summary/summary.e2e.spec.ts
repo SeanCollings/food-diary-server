@@ -74,8 +74,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
           });
 
         expect(response.status).toEqual(200);
@@ -95,8 +95,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
           });
 
         expect(response.status).toEqual(200);
@@ -116,8 +116,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
           });
 
         expect(response.status).toEqual(401);
@@ -135,8 +135,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
           });
 
         expect(response.status).toEqual(401);
@@ -154,8 +154,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2023-04-27T22:00:00.000Z',
-            dateTo: '2023-04-22T22:00:00.000Z',
+            dateFrom: '2023-04-28',
+            dateTo: '2023-04-23',
           });
 
         expect(response.status).toEqual(400);
@@ -173,8 +173,8 @@ describe('SummaryController (e2e)', () => {
           .get('/summary')
           .set('Authorization', 'Bearer ' + access_token)
           .query({
-            dateFrom: '2020-04-27T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2020-04-28',
+            dateTo: '2023-04-28',
           });
 
         expect(response.status).toEqual(400);

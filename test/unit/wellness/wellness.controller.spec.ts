@@ -39,7 +39,7 @@ describe('WellnessController', () => {
     } as RequestWithUser;
     const mockData = [
       {
-        date: '2023-04-12T22:00:00.000Z',
+        date: '2023-04-13',
         water: { value: 2 },
         tea_coffee: { value: 2 },
         alcohol: { value: 2 },

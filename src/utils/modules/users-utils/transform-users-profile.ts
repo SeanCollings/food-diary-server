@@ -1,6 +1,10 @@
 import { UserDto } from '@/users/dtos';
 import { UserWithShareLink } from '@/users/types';
-import { getBothDatesEqual, setDaysFromDate } from '@/utils/date-utils';
+import {
+  getBothDatesEqual,
+  setDateToMidnight,
+  setDaysFromDate,
+} from '@/utils/date-utils';
 import { getWellnessStatsPerEntries } from '@/utils/diary-day-utils';
 import { DiaryDay } from '@prisma/client';
 
@@ -8,7 +12,7 @@ export const transformUserProfile = (
   userWithShareLink: UserWithShareLink,
   diaryDays: DiaryDay[],
 ): UserDto | null => {
-  const dateNow = new Date(Date.now());
+  const dateNow = setDateToMidnight();
 
   if (!userWithShareLink) {
     return null;

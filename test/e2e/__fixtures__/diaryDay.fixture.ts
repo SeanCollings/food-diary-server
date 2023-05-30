@@ -4,7 +4,7 @@ import { DiaryDay } from '@prisma/client';
 export const diaryDaySingle_fixture: DiaryDay = {
   id: 'diary_day_id_1',
   userId: 1234,
-  date: '2023-04-27T22:00:00.000Z',
+  date: '2023-04-28',
   hasMealBreakfast: true,
   hasMealSnack1: true,
   hasMealLunch: true,
@@ -63,7 +63,7 @@ export const diaryDays_fixture: DiaryDay[] = [
   {
     id: 'diary_day_id_2',
     userId: 1234,
-    date: '2023-04-25T22:00:00.000Z',
+    date: '2023-04-26',
     hasMealBreakfast: true,
     hasMealSnack1: false,
     hasMealLunch: true,
@@ -109,7 +109,7 @@ export const diaryDays_fixture: DiaryDay[] = [
   {
     id: 'diary_day_id_3',
     userId: 1234,
-    date: '2023-04-22T22:00:00.000Z',
+    date: '2023-04-23',
     hasMealBreakfast: true,
     hasMealSnack1: false,
     hasMealLunch: false,
@@ -150,7 +150,7 @@ export const diaryDaysMonth_fixture: DiaryDay[] = [
   {
     id: '1',
     userId: 1234,
-    date: '2023-03-31T22:00:00.000Z',
+    date: '2023-04-01',
     hasMealBreakfast: true,
     hasMealSnack1: true,
     hasMealLunch: true,
@@ -171,7 +171,7 @@ export const diaryDaysMonth_fixture: DiaryDay[] = [
   {
     id: '2',
     userId: 1234,
-    date: '2023-04-01T22:00:00.000Z',
+    date: '2023-04-02',
     hasMealBreakfast: true,
     hasMealSnack1: false,
     hasMealLunch: true,
@@ -192,7 +192,7 @@ export const diaryDaysMonth_fixture: DiaryDay[] = [
   {
     id: '3',
     userId: 1234,
-    date: '2023-04-03T22:00:00.000Z',
+    date: '2023-04-04',
     hasMealBreakfast: true,
     hasMealSnack1: true,
     hasMealLunch: true,
@@ -213,7 +213,7 @@ export const diaryDaysMonth_fixture: DiaryDay[] = [
   {
     id: '4',
     userId: 1234,
-    date: '2023-04-04T22:00:00.000Z',
+    date: '2023-04-05',
     hasMealBreakfast: true,
     hasMealSnack1: false,
     hasMealLunch: true,

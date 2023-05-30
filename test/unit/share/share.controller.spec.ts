@@ -39,13 +39,13 @@ describe('ShareController', () => {
     it('should get shared-summary', async () => {
       await controller.getSharedSummary({
         link: 'mock_link',
-        dateFrom: '2023-04-12T22:00:00.000Z',
-        dateTo: '2022-01-01T22:00:00.000Z',
+        dateFrom: '2023-04-13',
+        dateTo: '2022-01-02',
       });
       expect(shareServiceMock.getSharedSummary).toBeCalledWith(
         'mock_link',
-        '2023-04-12T22:00:00.000Z',
-        '2022-01-01T22:00:00.000Z',
+        '2023-04-13',
+        '2022-01-02',
       );
     });
 
@@ -57,8 +57,8 @@ describe('ShareController', () => {
       try {
         await controller.getSharedSummary({
           link: 'mock_link',
-          dateFrom: '2023-04-12T22:00:00.000Z',
-          dateTo: '2022-01-01T22:00:00.000Z',
+          dateFrom: '2023-04-13',
+          dateTo: '2022-01-02',
         });
       } catch (err) {
         expect(err).toBeInstanceOf(InternalServerErrorException);
@@ -77,8 +77,8 @@ describe('ShareController', () => {
       try {
         await controller.getSharedSummary({
           link: 'mock_link',
-          dateFrom: '2023-04-12T22:00:00.000Z',
-          dateTo: '2022-01-01T22:00:00.000Z',
+          dateFrom: '2023-04-13',
+          dateTo: '2022-01-02',
         });
       } catch (err) {
         expect(mockError).toHaveBeenCalledWith(

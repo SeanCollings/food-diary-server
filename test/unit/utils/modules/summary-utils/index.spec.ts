@@ -7,7 +7,7 @@ import {
 import { DiaryDay } from '@prisma/client';
 
 describe('summry-utils', () => {
-  const mockDate = '2023-04-27T22:00:00.000Z';
+  const mockDate = '2023-04-28';
   const mockMealBreakfast = [
     {
       id: '1',
@@ -49,7 +49,7 @@ describe('summry-utils', () => {
   const diaryDay: DiaryDay = {
     ...mealContent,
     id: 'id_dd',
-    date: '2023-04-27T22:00:00.000Z',
+    date: '2023-04-28',
     userId: 1234,
     wellnessWater: 4,
     wellnessTeaCoffee: 2,
@@ -119,13 +119,10 @@ describe('summry-utils', () => {
 
   describe('formatSummaryData', () => {
     it('should format summary data', () => {
-      const result = formatSummaryData(
-        [mockDate, '2023-04-26T22:00:00.000Z'],
-        diaryDays,
-      );
+      const result = formatSummaryData([mockDate, '2023-04-27'], diaryDays);
       expect(result).toMatchInlineSnapshot(`
         {
-          "2023-04-27T22:00:00.000Z": {
+          "2023-04-28": {
             "alcohol": 1,
             "breakfast": [
               "2 cups - food (a long description abouth the food)",
@@ -150,7 +147,7 @@ describe('summry-utils', () => {
     });
 
     it('should cater date with no entries date', () => {
-      const result = formatSummaryData(['2023-04-26T22:00:00.000Z'], diaryDays);
+      const result = formatSummaryData(['2023-04-27'], diaryDays);
       expect(result).toMatchInlineSnapshot(`{}`);
     });
   });

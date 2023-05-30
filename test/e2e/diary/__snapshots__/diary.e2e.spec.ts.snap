@@ -21,7 +21,7 @@ exports[`DiaryController (e2e) / (GET) negative should not allow non-logged in u
 exports[`DiaryController (e2e) / (GET) positive should get diary entries for entire month of date 1`] = `
 {
   "meals": {
-    "2023-04-22T22:00:00.000Z": {
+    "2023-04-23": {
       "breakfast": {
         "contents": [
           {
@@ -61,7 +61,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
         "contents": [],
       },
     },
-    "2023-04-25T22:00:00.000Z": {
+    "2023-04-26": {
       "breakfast": {
         "contents": [
           {
@@ -111,7 +111,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
         "contents": [],
       },
     },
-    "2023-04-27T22:00:00.000Z": {
+    "2023-04-28": {
       "breakfast": {
         "contents": [
           {
@@ -200,7 +200,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
     },
   },
   "wellness": {
-    "2023-04-22T22:00:00.000Z": {
+    "2023-04-23": {
       "alcohol": {
         "value": 0,
       },
@@ -215,7 +215,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
         "value": 2,
       },
     },
-    "2023-04-25T22:00:00.000Z": {
+    "2023-04-26": {
       "alcohol": {
         "value": 0,
       },
@@ -230,7 +230,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
         "value": 4,
       },
     },
-    "2023-04-27T22:00:00.000Z": {
+    "2023-04-28": {
       "alcohol": {
         "value": 1,
       },
@@ -284,9 +284,9 @@ exports[`DiaryController (e2e) /calendar-entries (GET) positive should get calen
 {
   "entries": {
     "3-2023": [
-      27,
-      25,
-      22,
+      28,
+      26,
+      23,
     ],
   },
   "monthRange": {

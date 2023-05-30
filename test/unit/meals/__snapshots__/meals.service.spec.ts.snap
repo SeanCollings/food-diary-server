@@ -3,7 +3,7 @@
 exports[`MealsService createMealEntry should create a new meal entry and update user streak when there is no current diary entry 1`] = `
 {
   "create": {
-    "date": "2023-04-12T22:00:00.000Z",
+    "date": "2023-04-13",
     "hasMealBreakfast": true,
     "mealBreakfast": [
       {
@@ -38,7 +38,7 @@ exports[`MealsService createMealEntry should create a new meal entry and update 
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -48,7 +48,7 @@ exports[`MealsService createMealEntry should create a new meal entry and update 
 exports[`MealsService createMealEntry should create new meal entry if type doesnt exist but diary day entry does 1`] = `
 {
   "create": {
-    "date": "2023-04-12T22:00:00.000Z",
+    "date": "2023-04-13",
     "hasMealDinner": true,
     "mealDinner": [
       {
@@ -71,7 +71,7 @@ exports[`MealsService createMealEntry should create new meal entry if type doesn
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -81,7 +81,7 @@ exports[`MealsService createMealEntry should create new meal entry if type doesn
 exports[`MealsService createMealEntry should update current meal entry type if exists and update user streak 1`] = `
 {
   "create": {
-    "date": "2023-04-12T22:00:00.000Z",
+    "date": "2023-04-13",
     "hasMealBreakfast": true,
     "mealBreakfast": [
       {
@@ -126,7 +126,7 @@ exports[`MealsService createMealEntry should update current meal entry type if e
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -147,7 +147,7 @@ exports[`MealsService deleteMealEntry should cater for if trying to remove id th
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -162,7 +162,7 @@ exports[`MealsService deleteMealEntry should cater for if trying to remove meal-
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -177,7 +177,7 @@ exports[`MealsService deleteMealEntry should remove a meal by id from current me
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -206,7 +206,7 @@ exports[`MealsService updateMealEntry should cater for if current meal doesnt ex
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -241,7 +241,7 @@ exports[`MealsService updateMealEntry should update a current meal contents to a
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },
@@ -261,7 +261,7 @@ exports[`MealsService updateMealEntry should update a current meal contents with
   },
   "where": {
     "userId_date": {
-      "date": "2023-04-12T22:00:00.000Z",
+      "date": "2023-04-13",
       "userId": 1234,
     },
   },

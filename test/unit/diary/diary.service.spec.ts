@@ -7,7 +7,7 @@ import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 describe('DiaryService', () => {
   const mockUserId = 1234;
-  const mockDate = '2023-04-27T22:00:00.000Z';
+  const mockDate = '2023-04-28';
 
   let service: DiaryService;
   let prisma: DeepMockProxy<PrismaClient>;
@@ -37,7 +37,7 @@ describe('DiaryService', () => {
     {
       id: '2',
       userId: mockUserId,
-      date: '2023-04-26T22:00:00.000Z',
+      date: '2023-04-27',
       hasMealBreakfast: true,
       hasMealLunch: true,
       wellnessWater: 4,

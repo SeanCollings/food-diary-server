@@ -34,7 +34,7 @@ describe('SummaryService', () => {
         {
           id: 1,
           userId: 1234,
-          date: '2023-04-12T22:00:00.000Z',
+          date: '2023-04-13',
           mealBreakfast: [{ food: 'food_1' }] as any,
           mealSnack1: [{ food: 'food_2' }] as any,
           mealLunch: [{ food: 'food_3' }] as any,
@@ -46,8 +46,8 @@ describe('SummaryService', () => {
 
       const result = await service.getUserSummary(
         1234,
-        '2023-04-12T22:00:00.000Z',
-        '2023-04-11T22:00:00.000Z',
+        '2023-04-12',
+        '2023-04-13',
       );
 
       expect(result).toMatchSnapshot();

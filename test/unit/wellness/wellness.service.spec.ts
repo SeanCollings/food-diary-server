@@ -43,11 +43,11 @@ describe('WellnessService', () => {
   });
 
   describe('updateWellnessEntries', () => {
-    const mockEntry: WellnessEntry = { date: '2023-04-12T22:00:00.000Z' };
+    const mockEntry: WellnessEntry = { date: '2023-04-13' };
     const mockEntries: WellnessEntry[] = [
-      { date: '2023-04-12T22:00:00.000Z' },
-      { date: '2023-04-11T22:00:00.000Z' },
-      { date: '2023-04-10T22:00:00.000Z' },
+      { date: '2023-04-13' },
+      { date: '2023-04-12' },
+      { date: '2023-04-11' },
     ];
 
     it('should update a single wellness entry and user streak', async () => {

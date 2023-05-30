@@ -74,8 +74,8 @@ describe('ShareController (e2e)', () => {
         const response = await request(app.getHttpServer())
           .get('/share')
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
             link: mockUUID,
           });
 
@@ -90,8 +90,8 @@ describe('ShareController (e2e)', () => {
         const response = await request(app.getHttpServer())
           .get('/share')
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
             link: mockUUID,
           });
 
@@ -108,8 +108,8 @@ describe('ShareController (e2e)', () => {
         const response = await request(app.getHttpServer())
           .get('/share')
           .query({
-            dateFrom: '2023-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-04-23',
+            dateTo: '2023-04-28',
             link: mockUUID,
           });
 
@@ -136,8 +136,8 @@ describe('ShareController (e2e)', () => {
         const response = await request(app.getHttpServer())
           .get('/share')
           .query({
-            dateFrom: '2023-05-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2023-05-23',
+            dateTo: '2023-04-28',
             link: mockUUID,
           });
 
@@ -168,8 +168,8 @@ describe('ShareController (e2e)', () => {
         const response = await request(app.getHttpServer())
           .get('/share')
           .query({
-            dateFrom: '2020-04-22T22:00:00.000Z',
-            dateTo: '2023-04-27T22:00:00.000Z',
+            dateFrom: '2020-04-23',
+            dateTo: '2023-04-28',
             link: mockUUID,
           });
 

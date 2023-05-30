@@ -67,13 +67,13 @@ describe('MealsController', () => {
     it('should create a meal entry', async () => {
       await controller.createMealEntry(
         mockUser,
-        { date: '2023-04-12T22:00:00.000Z' },
+        { date: '2023-04-13' },
         mockCreateMealItemDto,
       );
 
       expect(mealsServiceMock.createMealEntry).toBeCalledWith(
         1234,
-        '2023-04-12T22:00:00.000Z',
+        '2023-04-13',
         mockCreateMealItemDto,
       );
     });
@@ -86,7 +86,7 @@ describe('MealsController', () => {
       try {
         await controller.createMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockCreateMealItemDto,
         );
       } catch (err) {
@@ -106,7 +106,7 @@ describe('MealsController', () => {
       try {
         await controller.createMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockCreateMealItemDto,
         );
       } catch (err) {
@@ -122,13 +122,13 @@ describe('MealsController', () => {
     it('should update a meal entry', async () => {
       await controller.updateMealEntry(
         mockUser,
-        { date: '2023-04-12T22:00:00.000Z' },
+        { date: '2023-04-13' },
         mockUpdateMealItemDto,
       );
 
       expect(mealsServiceMock.updateMealEntry).toBeCalledWith(
         1234,
-        '2023-04-12T22:00:00.000Z',
+        '2023-04-13',
         mockUpdateMealItemDto,
       );
     });
@@ -141,7 +141,7 @@ describe('MealsController', () => {
       try {
         await controller.updateMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockUpdateMealItemDto,
         );
       } catch (err) {
@@ -161,7 +161,7 @@ describe('MealsController', () => {
       try {
         await controller.updateMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockUpdateMealItemDto,
         );
       } catch (err) {
@@ -177,13 +177,13 @@ describe('MealsController', () => {
     it('should delete a meal entry', async () => {
       await controller.deleteMealEntry(
         mockUser,
-        { date: '2023-04-12T22:00:00.000Z' },
+        { date: '2023-04-13' },
         mockDeleteMealItemDto,
       );
 
       expect(mealsServiceMock.deleteMealEntry).toBeCalledWith(
         1234,
-        '2023-04-12T22:00:00.000Z',
+        '2023-04-13',
         mockDeleteMealItemDto,
       );
     });
@@ -196,7 +196,7 @@ describe('MealsController', () => {
       try {
         await controller.deleteMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockDeleteMealItemDto,
         );
       } catch (err) {
@@ -216,7 +216,7 @@ describe('MealsController', () => {
       try {
         await controller.deleteMealEntry(
           mockUser,
-          { date: '2023-04-12T22:00:00.000Z' },
+          { date: '2023-04-13' },
           mockDeleteMealItemDto,
         );
       } catch (err) {

@@ -28,10 +28,6 @@ describe('AuthService', () => {
 
   const mockStoredPassword = 'password_salt.stored_hash';
 
-  beforeAll(() => {
-    jest.spyOn(Date, 'now').mockImplementation(() => 1682632800000); // '2022-04-27'
-  });
-
   beforeEach(async () => {
     mockUsersService = {
       findOne: jest.fn(),
@@ -181,7 +177,7 @@ describe('AuthService', () => {
       expect(prisma.user.update.mock.calls[0][0]).toMatchInlineSnapshot(`
         {
           "data": {
-            "lastLogin": 2023-04-27T22:00:00.000Z,
+            "lastLogin": 2023-04-28T00:00:00.000Z,
           },
           "where": {
             "id": 1234,

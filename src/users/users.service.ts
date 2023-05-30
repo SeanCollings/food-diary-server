@@ -1,9 +1,9 @@
 import { PrismaService } from '@/prisma.service';
 import {
-  dateNow,
   getBothDatesEqual,
   getDateDaysAgo,
   getInclusiveDatesBetweenDates,
+  setDateToMidnight,
   setDaysFromDate,
 } from '@/utils/date-utils';
 import { Injectable } from '@nestjs/common';
@@ -80,7 +80,7 @@ export class UsersService {
 
   async updateUserStreak(userId: number) {
     let currentStreak = 1;
-    const today = dateNow();
+    const today = setDateToMidnight();
     const yesterday = setDaysFromDate(-1, today);
 
     const user = await this.prisma.user.findUnique({

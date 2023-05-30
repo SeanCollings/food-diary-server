@@ -64,7 +64,7 @@ exports[`ShareController (e2e) / (GET) negative should cater for sharelink not f
 exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] = `
 {
   "data": {
-    "2023-04-22T00:00:00.000Z": {
+    "2023-04-23": {
       "alcohol": 0,
       "breakfast": [
         "1 cup - breakfast food 2 (description of food)",
@@ -78,7 +78,7 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
       "tea_coffee": 0,
       "water": 2,
     },
-    "2023-04-25T00:00:00.000Z": {
+    "2023-04-26": {
       "alcohol": 0,
       "breakfast": [
         "1 cup - breakfast food 2 (description of food)",
@@ -95,7 +95,7 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
       "tea_coffee": 0,
       "water": 4,
     },
-    "2023-04-27T00:00:00.000Z": {
+    "2023-04-28": {
       "alcohol": 1,
       "breakfast": [
         "breakfast food 1",
@@ -123,12 +123,12 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
     },
   },
   "dates": [
-    "2023-04-22T00:00:00.000Z",
-    "2023-04-23T00:00:00.000Z",
-    "2023-04-24T00:00:00.000Z",
-    "2023-04-25T00:00:00.000Z",
-    "2023-04-26T00:00:00.000Z",
-    "2023-04-27T00:00:00.000Z",
+    "2023-04-23",
+    "2023-04-24",
+    "2023-04-25",
+    "2023-04-26",
+    "2023-04-27",
+    "2023-04-28",
   ],
   "totalDays": 6,
   "user": "Mock Name",
@@ -139,12 +139,12 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary if d
 {
   "data": {},
   "dates": [
-    "2023-04-22T00:00:00.000Z",
-    "2023-04-23T00:00:00.000Z",
-    "2023-04-24T00:00:00.000Z",
-    "2023-04-25T00:00:00.000Z",
-    "2023-04-26T00:00:00.000Z",
-    "2023-04-27T00:00:00.000Z",
+    "2023-04-23",
+    "2023-04-24",
+    "2023-04-25",
+    "2023-04-26",
+    "2023-04-27",
+    "2023-04-28",
   ],
   "totalDays": 6,
   "user": "Mock Name",

@@ -10,12 +10,12 @@ import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 jest.mock('@/utils/date-utils', () => ({
   ...jest.requireActual('@/utils/date-utils'),
-  formatToServerDate: jest.fn().mockReturnValue('2023-04-12T22:00:00.000Z'),
+  formatToServerDate: jest.fn().mockReturnValue('2023-04-13'),
 }));
 
 describe('MealsService', () => {
   const mockUserId = 1234;
-  const mockDate = '2023-04-12T22:00:00.000Z';
+  const mockDate = '2023-04-13';
   const mockCreateMealItemDto: CreateMealItemDTO = {
     mealId: 'breakfast',
     content: {

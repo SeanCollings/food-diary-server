@@ -8,8 +8,8 @@ import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 describe('UsersService', () => {
   const mockUserId = 1234;
-  const mockDateToday = '2023-04-27T22:00:00.000Z';
-  const mockDateYesterday = '2023-04-26T22:00:00.000Z';
+  const mockDateToday = '2023-04-28';
+  const mockDateYesterday = '2023-04-27';
   let service: UsersService;
   let prisma: DeepMockProxy<PrismaClient>;
 
@@ -36,10 +36,6 @@ describe('UsersService', () => {
       wellnessTeaCoffee: 2,
     },
   ];
-
-  beforeAll(() => {
-    jest.spyOn(Date, 'now').mockImplementation(() => 1682632800000); // '2022-04-27'
-  });
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

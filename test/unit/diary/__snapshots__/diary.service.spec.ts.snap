@@ -15,8 +15,8 @@ exports[`DiaryService getCalendarEntries should get calendar entries for a date 
 {
   "entries": {
     "3-2023": [
+      28,
       27,
-      26,
     ],
   },
   "monthRange": {
@@ -32,7 +32,7 @@ exports[`DiaryService getDiaryEntries should cater for no diary-day for specifie
 exports[`DiaryService getDiaryEntries should get diary entries for a specified date 1`] = `
 {
   "meals": {
-    "2023-04-26T22:00:00.000Z": {
+    "2023-04-27": {
       "breakfast": {
         "contents": [
           {
@@ -60,7 +60,7 @@ exports[`DiaryService getDiaryEntries should get diary entries for a specified d
         "contents": [],
       },
     },
-    "2023-04-27T22:00:00.000Z": {
+    "2023-04-28": {
       "breakfast": {
         "contents": [
           {
@@ -95,7 +95,7 @@ exports[`DiaryService getDiaryEntries should get diary entries for a specified d
     },
   },
   "wellness": {
-    "2023-04-26T22:00:00.000Z": {
+    "2023-04-27": {
       "alcohol": {
         "value": 0,
       },
@@ -110,7 +110,7 @@ exports[`DiaryService getDiaryEntries should get diary entries for a specified d
         "value": 4,
       },
     },
-    "2023-04-27T22:00:00.000Z": {
+    "2023-04-28": {
       "alcohol": {
         "value": 1,
       },

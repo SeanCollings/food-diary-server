@@ -3,13 +3,9 @@ import { transformUserProfile } from '@/utils/modules/users-utils';
 import { DiaryDay } from '@prisma/client';
 
 describe('users-utils', () => {
-  beforeAll(() => {
-    jest.spyOn(Date, 'now').mockImplementation(() => 1682632800000); // '2022-04-27'
-  });
-
   describe('transformUserProfile', () => {
     const mockUserWithSharelink: Partial<UserWithShareLink> = {
-      statLastActivity: new Date('2023-04-27T22:00:00.000Z'),
+      statLastActivity: new Date('2023-04-28'),
       name: 'Mock Name',
       email: 'test@email.com',
       avatar: '//avatar',
@@ -22,19 +18,19 @@ describe('users-utils', () => {
     const diaryDays: Partial<DiaryDay>[] = [
       {
         id: '1',
-        date: '2023-04-27T22:00:00.000Z',
+        date: '2023-04-28',
         wellnessWater: 3,
         wellnessExcercise: '01:15',
       },
       {
         id: '2',
-        date: '2023-04-26T22:00:00.000Z',
+        date: '2023-04-27',
         wellnessWater: 2,
         wellnessExcercise: '0:34',
       },
       {
         id: '3',
-        date: '2023-04-26T22:00:00.000Z',
+        date: '2023-04-27',
         wellnessWater: 6,
         wellnessExcercise: '02:11',
       },
@@ -69,7 +65,7 @@ describe('users-utils', () => {
     it('should handle last activiy yesterday', () => {
       const yesterdayActivityUser: Partial<UserWithShareLink> = {
         ...mockUserWithSharelink,
-        statLastActivity: new Date('2023-04-26T22:00:00.000Z'),
+        statLastActivity: new Date('2023-04-27'),
       };
 
       const result = transformUserProfile(
@@ -100,7 +96,7 @@ describe('users-utils', () => {
     it('should handle last activiy a long time ago', () => {
       const longTimeAgoActivityUser: Partial<UserWithShareLink> = {
         ...mockUserWithSharelink,
-        statLastActivity: new Date('2022-04-26T22:00:00.000Z'),
+        statLastActivity: new Date('2022-04-27'),
       };
 
       const result = transformUserProfile(

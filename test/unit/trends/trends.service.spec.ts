@@ -12,23 +12,19 @@ jest.mock('@utils/modules/trends-utils', () => ({
 
 describe('TrendsService', () => {
   const mockUserId = 1234;
-  const mockWeekDates = [
-    '2023-04-25T22:00:00.000Z',
-    '2023-04-26T22:00:00.000Z',
-    '2023-04-27T22:00:00.000Z',
-  ];
+  const mockWeekDates = ['2023-04-26', '2023-04-27', '2023-04-28'];
   const mockMonthDates = [
-    '2023-03-31T22:00:00.000Z',
-    '2023-04-01T22:00:00.000Z',
-    '2023-04-02T22:00:00.000Z',
-    '2023-04-03T22:00:00.000Z',
-    '2023-04-04T22:00:00.000Z',
+    '2023-04-01',
+    '2023-04-02',
+    '2023-04-03',
+    '2023-04-04',
+    '2023-04-05',
   ];
   const mockDiaryDaysWeek: Partial<DiaryDay>[] = [
     {
       id: '1',
       userId: mockUserId,
-      date: '2023-04-27T22:00:00.000Z',
+      date: '2023-04-28',
       hasMealBreakfast: true,
       hasMealSnack1: true,
       hasMealDinner: true,
@@ -40,7 +36,7 @@ describe('TrendsService', () => {
     {
       id: '2',
       userId: mockUserId,
-      date: '2023-04-26T22:00:00.000Z',
+      date: '2023-04-27',
       hasMealBreakfast: true,
       hasMealLunch: true,
       wellnessWater: 4,
@@ -51,7 +47,7 @@ describe('TrendsService', () => {
     {
       id: '1',
       userId: mockUserId,
-      date: '2023-03-31T22:00:00.000Z',
+      date: '2023-04-01',
       hasMealBreakfast: true,
       hasMealSnack1: true,
       hasMealLunch: true,
@@ -65,7 +61,7 @@ describe('TrendsService', () => {
     {
       id: '2',
       userId: mockUserId,
-      date: '2023-04-01T22:00:00.000Z',
+      date: '2023-04-02',
       hasMealBreakfast: true,
       hasMealLunch: true,
       wellnessWater: 4,
@@ -73,7 +69,7 @@ describe('TrendsService', () => {
     {
       id: '3',
       userId: mockUserId,
-      date: '2023-04-03T22:00:00.000Z',
+      date: '2023-04-04',
       hasMealBreakfast: true,
       hasMealSnack1: true,
       hasMealLunch: true,
@@ -86,7 +82,7 @@ describe('TrendsService', () => {
     {
       id: '4',
       userId: mockUserId,
-      date: '2023-04-04T22:00:00.000Z',
+      date: '2023-04-05',
       hasMealBreakfast: true,
       hasMealLunch: true,
       hasMealDinner: true,
