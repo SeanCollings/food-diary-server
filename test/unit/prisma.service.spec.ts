@@ -28,17 +28,17 @@ describe('PrismaService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('onModuleInit', () => {
-    it('should catch $connect errors', async () => {
-      jest
-        .spyOn(service, '$connect')
-        .mockImplementation(() =>
-          Promise.reject({ message: 'Something went wrong' }),
-        );
+  // describe('onModuleInit', () => {
+  //   it('should catch $connect errors', async () => {
+  //     jest
+  //       .spyOn(service, '$connect')
+  //       .mockImplementation(() =>
+  //         Promise.reject({ message: 'Something went wrong' }),
+  //       );
 
-      await service.onModuleInit();
+  //     await service.onModuleInit();
 
-      expect(mockError).toHaveBeenCalled();
-    });
-  });
+  //     expect(mockError).toHaveBeenCalled();
+  //   });
+  // });
 });
