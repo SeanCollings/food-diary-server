@@ -6,9 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist && npm run test && node-prune",
+    "prebuild": "rimraf dist && npm run test && node-prune && npm run production:only",
     "build": "nest build",
-    "prepublish": "npm run migrate",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "dev": "nest start --watch",
@@ -21,7 +20,8 @@
     "test:unit": "jest ./test/unit --coverage",
     "test:e2e": "jest ./test/e2e --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "migrate": "npx prisma migrate deploy"
+    "migrate": "npx prisma migrate deploy",
+    "production:only": "node -e \"if (process.env.NODE_ENV === 'production'){process.exit(1)} \" || npm run migrate"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.0",
