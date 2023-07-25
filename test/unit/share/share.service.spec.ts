@@ -89,11 +89,10 @@ describe('ShareService', () => {
     });
 
     it('should handle Prisma.PrismaClientKnownRequestErrors with code P2002', async () => {
-      const error = new Prisma.PrismaClientKnownRequestError(
-        'Error occurred',
-        'P2002',
-        'v1',
-      );
+      const error = new Prisma.PrismaClientKnownRequestError('Error occurred', {
+        code: 'P2002',
+        clientVersion: 'v1',
+      });
       prisma.shareLink.upsert.mockRejectedValue(error);
 
       try {
@@ -106,11 +105,10 @@ describe('ShareService', () => {
     });
 
     it('should handle Prisma.PrismaClientKnownRequestErrors that is not code P2002', async () => {
-      const error = new Prisma.PrismaClientKnownRequestError(
-        'Error occurred',
-        'Other',
-        'v1',
-      );
+      const error = new Prisma.PrismaClientKnownRequestError('Error occurred', {
+        code: 'Other',
+        clientVersion: 'v1',
+      });
       prisma.shareLink.upsert.mockRejectedValue(error);
 
       try {

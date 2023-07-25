@@ -214,11 +214,10 @@ describe('ShareController (e2e)', () => {
 
       it('should cater for link update error', async () => {
         prisma.shareLink.upsert.mockRejectedValue(
-          new Prisma.PrismaClientKnownRequestError(
-            'Error occurred',
-            'P2002',
-            'v1',
-          ),
+          new Prisma.PrismaClientKnownRequestError('Error occurred', {
+            code: 'P2002',
+            clientVersion: 'v1',
+          }),
         );
         (mockUsersService.findOne as jest.Mock).mockResolvedValue(user_fixture);
         (isValidPassword as jest.Mock).mockResolvedValue(user_fixture);

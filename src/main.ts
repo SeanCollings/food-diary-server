@@ -7,6 +7,7 @@ async function bootstrap() {
 
   app.enableCors();
   app.use(helmet());
+  app.enableShutdownHooks();
 
   const port = process.env.PORT || 3000;
 
