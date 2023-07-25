@@ -22,7 +22,7 @@
     "test:e2e": "jest ./test/e2e --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "migrate": "npx prisma migrate deploy",
-    "production:only": "node -e \"if (process.env.NODE_ENV === 'production'){process.exit(1)} \" || npm run migrate"
+    "production:only": "node -e \"if (process.env.HOST === 'cyclic'){process.exit(1)} \" || npm run migrate"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.0",
