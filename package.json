@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "rimraf dist && npm run test && node-prune",
     "build": "nest build",
+    "prepublish": "npm run migrate",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "dev": "nest start --watch",
@@ -19,7 +20,8 @@
     "test:cov": "jest --coverage",
     "test:unit": "jest ./test/unit --coverage",
     "test:e2e": "jest ./test/e2e --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.0",
