@@ -8,7 +8,6 @@
   "scripts": {
     "prebuild": "rimraf dist && npm run test && node-prune",
     "build": "nest build",
-    "postbuild": "npm run production:only",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "dev": "nest start --watch",
