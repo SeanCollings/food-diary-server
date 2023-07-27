@@ -123,7 +123,7 @@ describe('ShareService', () => {
   describe('linkShareable', () => {
     it('should update a sharelink shareability and return that shareLink', async () => {
       prisma.shareLink.update.mockResolvedValue({
-        id: 555,
+        id: 'mock_share_id',
         userId: mockUserId,
         isShared: true,
         link: 'mock_link',
@@ -132,7 +132,7 @@ describe('ShareService', () => {
       const result = await service.linkShareable(mockUserId, true);
       expect(result).toMatchInlineSnapshot(`
         {
-          "id": 555,
+          "id": "mock_share_id",
           "isShared": true,
           "link": "mock_link",
           "userId": "mock_user_id",
