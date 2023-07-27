@@ -18,7 +18,7 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "ShareLink" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "link" TEXT NOT NULL,
     "isShared" BOOLEAN NOT NULL,
