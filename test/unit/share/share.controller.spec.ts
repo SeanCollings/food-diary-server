@@ -6,6 +6,7 @@ import { InternalServerErrorException } from '@nestjs/common';
 import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 
 describe('ShareController', () => {
+  const mockUserId = 'mock_user_id';
   const mockError = jest.fn();
   let controller: ShareController;
   let shareServiceMock: jest.Mocked<Partial<ShareService>>;
@@ -92,10 +93,10 @@ describe('ShareController', () => {
   describe('put /generate-link', () => {
     it('should return a share-link', async () => {
       await controller.generateShareLink({
-        user: { userId: 1234, email: 'test@email.com' },
+        user: { userId: mockUserId, email: 'test@email.com' },
       } as RequestWithUser);
 
-      expect(shareServiceMock.generateShareLink).toBeCalledWith(1234);
+      expect(shareServiceMock.generateShareLink).toBeCalledWith(mockUserId);
     });
 
     it('should handle errors', async () => {
@@ -105,7 +106,7 @@ describe('ShareController', () => {
 
       try {
         await controller.generateShareLink({
-          user: { userId: 1234, email: 'test@email.com' },
+          user: { userId: mockUserId, email: 'test@email.com' },
         } as RequestWithUser);
       } catch (err) {
         expect(err).toBeInstanceOf(InternalServerErrorException);
@@ -123,7 +124,7 @@ describe('ShareController', () => {
 
       try {
         await controller.generateShareLink({
-          user: { userId: 1234, email: 'test@email.com' },
+          user: { userId: mockUserId, email: 'test@email.com' },
         } as RequestWithUser);
       } catch (err) {
         expect(mockError).toHaveBeenCalledWith(
@@ -138,12 +139,12 @@ describe('ShareController', () => {
     it('should toggle a link as shareable', async () => {
       await controller.linkShareable(
         {
-          user: { userId: 1234, email: 'test@email.com' },
+          user: { userId: mockUserId, email: 'test@email.com' },
         } as RequestWithUser,
         { isShared: true },
       );
 
-      expect(shareServiceMock.linkShareable).toBeCalledWith(1234, true);
+      expect(shareServiceMock.linkShareable).toBeCalledWith(mockUserId, true);
     });
 
     it('should handle errors', async () => {
@@ -154,7 +155,7 @@ describe('ShareController', () => {
       try {
         await controller.linkShareable(
           {
-            user: { userId: 1234, email: 'test@email.com' },
+            user: { userId: mockUserId, email: 'test@email.com' },
           } as RequestWithUser,
           { isShared: true },
         );
@@ -175,7 +176,7 @@ describe('ShareController', () => {
       try {
         await controller.linkShareable(
           {
-            user: { userId: 1234, email: 'test@email.com' },
+            user: { userId: mockUserId, email: 'test@email.com' },
           } as RequestWithUser,
           { isShared: true },
         );

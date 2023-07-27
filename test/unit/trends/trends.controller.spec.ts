@@ -10,7 +10,7 @@ describe('TrendsController', () => {
   let controller: TrendsController;
   let trendsServiceMock: jest.Mocked<Partial<TrendsService>>;
 
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockUser = {
     user: {
       email: 'test@email.com',

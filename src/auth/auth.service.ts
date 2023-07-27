@@ -43,12 +43,17 @@ export class AuthService {
     const hash = (await scrypt(password, salt, SCRYPT_KEYLEN)) as Buffer;
     const result = salt + '.' + hash.toString('hex');
 
-    return this.prisma.user.create({
+    const newUser = await this.prisma.user.create({
       data: { email, name, password: result },
     });
+
+    if (newUser) {
+    }
+
+    return newUser;
   }
 
-  async login(args: { email: string; id: number; token: string }) {
+  async login(args: { email: string; id: string; token: string }) {
     const isVerified = await this.googleAdapter.verifySite(args.token);
 
     if (!isVerified) {

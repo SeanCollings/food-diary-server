@@ -9,7 +9,7 @@ import { InternalServerErrorException } from '@nestjs/common';
 describe('UsersController', () => {
   const mockError = jest.fn();
   const mockUser = {
-    user: { userId: 1234, email: 'test@email.com' },
+    user: { userId: 'mock_user_id', email: 'test@email.com' },
   } as RequestWithUser;
 
   let controller: UsersController;
@@ -43,7 +43,7 @@ describe('UsersController', () => {
   describe('get /profile', () => {
     it('should get users profile', async () => {
       await controller.getUserProfile(mockUser);
-      expect(usersServiceMock.getUserProfile).toBeCalledWith(1234);
+      expect(usersServiceMock.getUserProfile).toBeCalledWith('mock_user_id');
     });
 
     it('should handle errors', async () => {
@@ -83,7 +83,10 @@ describe('UsersController', () => {
 
     it('should update users details', async () => {
       await controller.updateUser(mockUser, mockUpdateUser);
-      expect(usersServiceMock.updateUser).toBeCalledWith(1234, mockUpdateUser);
+      expect(usersServiceMock.updateUser).toBeCalledWith(
+        'mock_user_id',
+        mockUpdateUser,
+      );
     });
 
     it('should handle errors', async () => {
@@ -126,7 +129,7 @@ describe('UsersController', () => {
     it('should update users preferences', async () => {
       await controller.updateUserPreferences(mockUser, mockUpdateUser);
       expect(usersServiceMock.updateUserPreferences).toBeCalledWith(
-        1234,
+        'mock_user_id',
         mockUpdateUser,
       );
     });

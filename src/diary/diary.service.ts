@@ -16,7 +16,7 @@ import { Injectable } from '@nestjs/common';
 export class DiaryService {
   constructor(private prisma: PrismaService) {}
 
-  async getDiaryEntries(userId: number, date: string) {
+  async getDiaryEntries(userId: string, date: string) {
     const [month, year] = getMonthAndYearFromDate(date);
     const datesInMonth = getMidnightISODaysInMonth(month, year);
 
@@ -36,7 +36,7 @@ export class DiaryService {
     return transformed;
   }
 
-  async getCalendarEntries(userId: number, date: string, months: string) {
+  async getCalendarEntries(userId: string, date: string, months: string) {
     const { monthNumberYear, serverDateRange } = getPreviousMonthsRange(
       date,
       parseInt(months),

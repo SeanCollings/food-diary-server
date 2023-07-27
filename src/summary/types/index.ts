@@ -4,7 +4,7 @@ import { IsWithinDateRange } from '@/lib/validation/validators/is-within-date-ra
 import { IsDateString, IsNotEmpty } from 'class-validator';
 
 export interface RequestWithUser extends Request {
-  user: { userId: number; email: string };
+  user: { userId: string; email: string };
 }
 
 export class GetUserSummaryQuery {

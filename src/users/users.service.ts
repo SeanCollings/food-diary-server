@@ -22,7 +22,7 @@ export class UsersService {
     return this.prisma.user.findUnique({ where: { email } });
   }
 
-  async findOneSelect(userId: number, select?: Prisma.UserSelect) {
+  async findOneSelect(userId: string, select?: Prisma.UserSelect) {
     const selected = select || {};
     return this.prisma.user.findUnique({
       where: { id: userId },
@@ -30,7 +30,7 @@ export class UsersService {
     });
   }
 
-  async getUserProfile(userId: number): Promise<UserDto | null> {
+  async getUserProfile(userId: string): Promise<UserDto | null> {
     const dateAgo = getDateDaysAgo(6);
     const past7DaysDates = getInclusiveDatesBetweenDates(dateAgo);
 
@@ -45,7 +45,7 @@ export class UsersService {
     return transformUserProfile(userWithShareLink, pastDiaryDays);
   }
 
-  async updateUser(userId: number, details: UpdateUserDTO) {
+  async updateUser(userId: string, details: UpdateUserDTO) {
     await this.prisma.user.update({
       where: {
         id: userId,
@@ -59,7 +59,7 @@ export class UsersService {
   }
 
   async updateUserPreferences(
-    userId: number,
+    userId: string,
     preferences: UpdatePreferencesDTO,
   ) {
     const mapPreferenceUpdates = mapUserPreferenceUpdate(preferences);
@@ -78,7 +78,7 @@ export class UsersService {
     });
   }
 
-  async updateUserStreak(userId: number) {
+  async updateUserStreak(userId: string) {
     let currentStreak = 1;
     const today = setDateToMidnight();
     const yesterday = setDaysFromDate(-1, today);

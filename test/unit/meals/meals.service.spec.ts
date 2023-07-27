@@ -14,7 +14,7 @@ jest.mock('@/utils/date-utils', () => ({
 }));
 
 describe('MealsService', () => {
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockDate = '2023-04-13';
   const mockCreateMealItemDto: CreateMealItemDTO = {
     mealId: 'breakfast',
@@ -91,7 +91,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.upsert.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should update current meal entry type if exists and update user streak', async () => {
@@ -106,7 +108,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.upsert.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should create new meal entry if type doesnt exist but diary day entry does', async () => {
@@ -121,7 +125,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.upsert.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
   });
 
@@ -156,7 +162,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should update a current meal contents with new meal contents if meal types are the same', async () => {
@@ -168,7 +176,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should cater for if current meal doesnt exist', async () => {
@@ -180,7 +190,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should cater for diary-day not existing and not update', async () => {
@@ -221,7 +233,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should cater for if trying to remove id that doesnt exist', async () => {
@@ -229,7 +243,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should cater for if trying to remove meal-type that doesnt exist', async () => {
@@ -237,7 +253,9 @@ describe('MealsService', () => {
 
       expect(prisma.diaryDay.findUnique).toHaveBeenCalled();
       expect(prisma.diaryDay.update.mock.calls[0][0]).toMatchSnapshot();
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should cater for diary-day not existing and not update', async () => {

@@ -35,7 +35,7 @@ describe('WellnessController', () => {
 
   describe('put /', () => {
     const mockUser = {
-      user: { userId: 1234, email: 'test@email.com' },
+      user: { userId: 'mock_user_id', email: 'test@email.com' },
     } as RequestWithUser;
     const mockData = [
       {
@@ -53,7 +53,7 @@ describe('WellnessController', () => {
       });
 
       expect(wellnessServiceMock.updateWellnessEntries).toBeCalledWith(
-        1234,
+        'mock_user_id',
         mockData,
       );
     });

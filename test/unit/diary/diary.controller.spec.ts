@@ -8,7 +8,7 @@ import { InternalServerErrorException } from '@nestjs/common';
 describe('DiaryController', () => {
   const mockError = jest.fn();
   const mockDate = '2023-04-28';
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockUser = {
     user: { email: 'test@email.com', userId: mockUserId },
   } as RequestWithUser;

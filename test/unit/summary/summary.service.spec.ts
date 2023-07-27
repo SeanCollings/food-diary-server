@@ -5,6 +5,7 @@ import { DiaryDay, PrismaClient } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 describe('SummaryService', () => {
+  const mockUserId = 'mock_user_id';
   let service: SummaryService;
   let prisma: DeepMockProxy<PrismaClient>;
 
@@ -33,7 +34,7 @@ describe('SummaryService', () => {
       prisma.diaryDay.findMany.mockResolvedValue([
         {
           id: 1,
-          userId: 1234,
+          userId: mockUserId,
           date: '2023-04-13',
           mealBreakfast: [{ food: 'food_1' }] as any,
           mealSnack1: [{ food: 'food_2' }] as any,
@@ -45,7 +46,7 @@ describe('SummaryService', () => {
       ] as unknown as DiaryDay[]);
 
       const result = await service.getUserSummary(
-        1234,
+        mockUserId,
         '2023-04-12',
         '2023-04-13',
       );

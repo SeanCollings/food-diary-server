@@ -28,7 +28,7 @@ describe('ShareController (e2e)', () => {
   let mockGoogleAdapter: jest.Mocked<Partial<GoogleAdapter>>;
 
   const mockUUID = 'd9e28047-0ad5-4898-964d-7079f7a4a0ed';
-  const mockShareLink = { userId: 1234, user: { name: 'Mock Name' } };
+  const mockShareLink = { userId: 'mock_user_id', user: { name: 'Mock Name' } };
 
   beforeAll(() => {
     jest.spyOn(console, 'error').mockImplementation(mockError);

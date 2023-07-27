@@ -38,7 +38,7 @@ export class ShareService {
     };
   }
 
-  async generateShareLink(userId: number) {
+  async generateShareLink(userId: string) {
     const shareLink = createGuid();
 
     try {
@@ -67,7 +67,7 @@ export class ShareService {
     }
   }
 
-  async linkShareable(userId: number, isShared: boolean) {
+  async linkShareable(userId: string, isShared: boolean) {
     return this.prisma.shareLink.update({
       where: { userId },
       data: { isShared },

@@ -1,7 +1,7 @@
 import { User } from '@prisma/client';
 
 export const user_fixture: User = {
-  id: 1234,
+  id: 'mock_user_id',
   email: 'test@email.com',
   password: 'password',
   name: 'Mock User',

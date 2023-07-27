@@ -12,7 +12,7 @@ const mockError = jest.fn();
 
 describe('MealsController', () => {
   const mockUser = {
-    user: { userId: 1234, email: 'test@email.com' },
+    user: { userId: 'mock_user_id', email: 'test@email.com' },
   } as RequestWithUser;
   const mockCreateMealItemDto: CreateMealItemDTO = {
     mealId: 'breakfast',
@@ -72,7 +72,7 @@ describe('MealsController', () => {
       );
 
       expect(mealsServiceMock.createMealEntry).toBeCalledWith(
-        1234,
+        'mock_user_id',
         '2023-04-13',
         mockCreateMealItemDto,
       );
@@ -127,7 +127,7 @@ describe('MealsController', () => {
       );
 
       expect(mealsServiceMock.updateMealEntry).toBeCalledWith(
-        1234,
+        'mock_user_id',
         '2023-04-13',
         mockUpdateMealItemDto,
       );
@@ -182,7 +182,7 @@ describe('MealsController', () => {
       );
 
       expect(mealsServiceMock.deleteMealEntry).toBeCalledWith(
-        1234,
+        'mock_user_id',
         '2023-04-13',
         mockDeleteMealItemDto,
       );

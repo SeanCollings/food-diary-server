@@ -7,7 +7,7 @@ import { DiaryDay, PrismaClient } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 describe('UsersService', () => {
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockDateToday = '2023-04-28';
   const mockDateYesterday = '2023-04-27';
   let service: UsersService;
@@ -77,7 +77,7 @@ describe('UsersService', () => {
         email: 'test@email.com',
       } as any);
 
-      const result = await service.findOneSelect(1234, {
+      const result = await service.findOneSelect(mockUserId, {
         name: true,
         email: true,
       });
@@ -99,7 +99,7 @@ describe('UsersService', () => {
     it('should cater for no select given', async () => {
       prisma.user.findUnique.mockResolvedValue({} as any);
 
-      await service.findOneSelect(1234);
+      await service.findOneSelect(mockUserId);
       expect(prisma.user.findUnique).toHaveBeenCalledWith(
         expect.objectContaining({
           select: {},
@@ -138,7 +138,7 @@ describe('UsersService', () => {
 
     it('should update user', async () => {
       prisma.user.update.mockResolvedValue({} as any);
-      await service.updateUser(1234, mockUserUpdate);
+      await service.updateUser(mockUserId, mockUserUpdate);
       expect(prisma.user.update.mock.calls[0][0]).toMatchSnapshot();
     });
   });

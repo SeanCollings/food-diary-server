@@ -20,7 +20,7 @@ export class MealsService {
     private usersService: UsersService,
   ) {}
 
-  async createMealEntry(userId: number, date: string, meal: CreateMealItemDTO) {
+  async createMealEntry(userId: string, date: string, meal: CreateMealItemDTO) {
     const serverDate = formatToServerDate(date);
     const [mealColumnName, hasMealContentColumn] = mealsColumnLookup(
       meal.mealId,
@@ -60,7 +60,7 @@ export class MealsService {
     return this.usersService.updateUserStreak(userId);
   }
 
-  async updateMealEntry(userId: number, date: string, meal: UpdateMealItemDto) {
+  async updateMealEntry(userId: string, date: string, meal: UpdateMealItemDto) {
     const serverDate = formatToServerDate(date);
     const [newMealColumnName, newHasMealContentColumn] = mealsColumnLookup(
       meal.newMealId,
@@ -111,7 +111,7 @@ export class MealsService {
     return this.usersService.updateUserStreak(userId);
   }
 
-  async deleteMealEntry(userId: number, date: string, meal: DeleteMealItemDto) {
+  async deleteMealEntry(userId: string, date: string, meal: DeleteMealItemDto) {
     const serverDate = formatToServerDate(date);
     const [mealColumnName, hasMealContentColumn] = mealsColumnLookup(
       meal.mealId,

@@ -11,7 +11,7 @@ jest.mock('@utils/modules/trends-utils', () => ({
 }));
 
 describe('TrendsService', () => {
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockWeekDates = ['2023-04-26', '2023-04-27', '2023-04-28'];
   const mockMonthDates = [
     '2023-04-01',

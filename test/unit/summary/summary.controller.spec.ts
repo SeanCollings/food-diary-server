@@ -35,7 +35,7 @@ describe('SummaryController', () => {
 
   describe('get /', () => {
     const mockUser = {
-      user: { userId: 1234, email: 'test@email.com' },
+      user: { userId: 'mock_user_id', email: 'test@email.com' },
     } as RequestWithUser;
 
     it('should get a user summary', async () => {
@@ -45,7 +45,7 @@ describe('SummaryController', () => {
       });
 
       expect(summaryServiceMock.getUserSummary).toBeCalledWith(
-        1234,
+        'mock_user_id',
         '2023-04-13',
         '2022-01-02',
       );

@@ -6,7 +6,7 @@ import { DiaryDay, PrismaClient } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
 describe('DiaryService', () => {
-  const mockUserId = 1234;
+  const mockUserId = 'mock_user_id';
   const mockDate = '2023-04-28';
 
   let service: DiaryService;

@@ -13,7 +13,7 @@ import {
 export class TrendsService {
   constructor(private prisma: PrismaService) {}
 
-  async getMealTrends(userId: number, type: TrendType) {
+  async getMealTrends(userId: string, type: TrendType) {
     const allDates = getAllDatesForType(type);
 
     const diaryDays = await this.prisma.diaryDay.findMany({
@@ -31,7 +31,7 @@ export class TrendsService {
     };
   }
 
-  async getBeverageTrends(userId: number, type: TrendType) {
+  async getBeverageTrends(userId: string, type: TrendType) {
     const allDates = getAllDatesForType(type);
 
     const diaryDays = await this.prisma.diaryDay.findMany({
@@ -44,7 +44,7 @@ export class TrendsService {
     return getBeverageTrendData(type, allDates, diaryDays);
   }
 
-  async getExcerciseTrends(userId: number, type: TrendType) {
+  async getExcerciseTrends(userId: string, type: TrendType) {
     const allDates = getAllDatesForType(type);
 
     const diaryDays = await this.prisma.diaryDay.findMany({

@@ -9,6 +9,7 @@ jest.mock('@/utils/string-utils', () => ({
 }));
 
 describe('ShareService', () => {
+  const mockUserId = 'mock_user_id';
   let service: ShareService;
   let prisma: DeepMockProxy<PrismaClient>;
 
@@ -38,7 +39,7 @@ describe('ShareService', () => {
         id: 1,
         isShared: true,
         link: 'share_link',
-        userId: 1234,
+        userId: mockUserId,
         user: { name: 'Test User' },
       } as any);
       prisma.diaryDay.findMany.mockResolvedValue([]);
@@ -69,7 +70,7 @@ describe('ShareService', () => {
     it('should create and return a share-link', async () => {
       prisma.shareLink.upsert.mockResolvedValue({} as any);
 
-      const result = await service.generateShareLink(1234);
+      const result = await service.generateShareLink(mockUserId);
 
       expect(result).toMatchInlineSnapshot(`
         {
@@ -82,7 +83,7 @@ describe('ShareService', () => {
       prisma.shareLink.upsert.mockRejectedValue({ message: 'Error occurred' });
 
       try {
-        await service.generateShareLink(1234);
+        await service.generateShareLink(mockUserId);
       } catch (err) {
         expect(err.message).toMatchInlineSnapshot(`"Error occurred"`);
       }
@@ -96,7 +97,7 @@ describe('ShareService', () => {
       prisma.shareLink.upsert.mockRejectedValue(error);
 
       try {
-        await service.generateShareLink(1234);
+        await service.generateShareLink(mockUserId);
       } catch (err) {
         expect(err.message).toMatchInlineSnapshot(
           `"There is a unique constraint violation, a new ShareLink cannot be created with this userid"`,
@@ -112,7 +113,7 @@ describe('ShareService', () => {
       prisma.shareLink.upsert.mockRejectedValue(error);
 
       try {
-        await service.generateShareLink(1234);
+        await service.generateShareLink(mockUserId);
       } catch (err) {
         expect(err.message).toMatchInlineSnapshot(`"Error occurred"`);
       }
@@ -123,18 +124,18 @@ describe('ShareService', () => {
     it('should update a sharelink shareability and return that shareLink', async () => {
       prisma.shareLink.update.mockResolvedValue({
         id: 555,
-        userId: 1234,
+        userId: mockUserId,
         isShared: true,
         link: 'mock_link',
       });
 
-      const result = await service.linkShareable(1234, true);
+      const result = await service.linkShareable(mockUserId, true);
       expect(result).toMatchInlineSnapshot(`
         {
           "id": 555,
           "isShared": true,
           "link": "mock_link",
-          "userId": 1234,
+          "userId": "mock_user_id",
         }
       `);
     });

@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "ShareLink" (
     "id" SERIAL NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
     "link" TEXT NOT NULL,
     "isShared" BOOLEAN NOT NULL,
 
@@ -29,7 +29,7 @@ CREATE TABLE "ShareLink" (
 -- CreateTable
 CREATE TABLE "DiaryDay" (
     "id" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
     "date" TEXT NOT NULL,
     "mealBreakfast" JSONB,
     "mealSnack1" JSONB,

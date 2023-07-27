@@ -41,7 +41,7 @@ describe('AuthController', () => {
     const createUser: CreateUserDTO = {
       email: 'test@email.com',
       name: 'Test Name',
-      token: '1234',
+      token: 'mock_user_id',
       password: 'password',
     };
 
@@ -82,7 +82,7 @@ describe('AuthController', () => {
 
   describe('post /login', () => {
     const mockUserRequest = {
-      user: { id: 1234, email: 'test@email.com' },
+      user: { id: 'mock_user_id', email: 'test@email.com' },
     } as RequestWithUser;
     const loginUser: LoginUserDTO = {
       email: 'test@email.com',
@@ -93,7 +93,7 @@ describe('AuthController', () => {
     it('should login a user', async () => {
       await controller.login(mockUserRequest, loginUser);
       expect(authServiceMock.login).toHaveBeenCalledWith({
-        id: 1234,
+        id: 'mock_user_id',
         email: 'test@email.com',
         token: 'mock_token',
       });

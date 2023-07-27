@@ -12,7 +12,7 @@ export class WellnessService {
     private usersService: UsersService,
   ) {}
 
-  async updateWellnessEntries(userId: number, entries: WellnessEntry[]) {
+  async updateWellnessEntries(userId: string, entries: WellnessEntry[]) {
     let entryUpdated = false;
 
     const promises = await Promise.allSettled(

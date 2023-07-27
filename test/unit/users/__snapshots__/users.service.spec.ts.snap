@@ -31,7 +31,7 @@ exports[`UsersService getUserProfile should get user profile 2`] = `
     },
   },
   "where": {
-    "id": 1234,
+    "id": "mock_user_id",
   },
 }
 `;
@@ -52,7 +52,7 @@ exports[`UsersService getUserProfile should get user profile 3`] = `
         ],
       },
     },
-    "userId": 1234,
+    "userId": "mock_user_id",
   },
 }
 `;
@@ -63,7 +63,7 @@ exports[`UsersService updateUser should update user 1`] = `
     "name": "Mock Name",
   },
   "where": {
-    "id": 1234,
+    "id": "mock_user_id",
   },
 }
 `;
@@ -76,7 +76,7 @@ exports[`UsersService updateUserPreferences should update users preferences 1`] 
     "userPreferenceShowWeeklyWater": true,
   },
   "where": {
-    "id": 1234,
+    "id": "mock_user_id",
   },
 }
 `;
@@ -88,7 +88,7 @@ exports[`UsersService updateUserStreak should cater for an undefined statDayStre
     "statLastActivity": 2023-04-28T00:00:00.000Z,
   },
   "where": {
-    "id": 1234,
+    "id": "mock_user_id",
   },
 }
 `;
@@ -100,7 +100,7 @@ exports[`UsersService updateUserStreak should update a users streak if last acti
     "statLastActivity": 2023-04-28T00:00:00.000Z,
   },
   "where": {
-    "id": 1234,
+    "id": "mock_user_id",
   },
 }
 `;

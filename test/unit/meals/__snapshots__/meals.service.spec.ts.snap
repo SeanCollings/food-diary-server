@@ -18,7 +18,7 @@ exports[`MealsService createMealEntry should create a new meal entry and update 
         "serving": "mock_serving_2",
       },
     ],
-    "userId": 1234,
+    "userId": "mock_user_id",
   },
   "update": {
     "hasMealBreakfast": true,
@@ -39,7 +39,7 @@ exports[`MealsService createMealEntry should create a new meal entry and update 
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -57,7 +57,7 @@ exports[`MealsService createMealEntry should create new meal entry if type doesn
         "id": "3",
       },
     ],
-    "userId": 1234,
+    "userId": "mock_user_id",
   },
   "update": {
     "hasMealDinner": true,
@@ -72,7 +72,7 @@ exports[`MealsService createMealEntry should create new meal entry if type doesn
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -101,7 +101,7 @@ exports[`MealsService createMealEntry should update current meal entry type if e
         "serving": "mock_serving_2",
       },
     ],
-    "userId": 1234,
+    "userId": "mock_user_id",
   },
   "update": {
     "hasMealBreakfast": true,
@@ -127,7 +127,7 @@ exports[`MealsService createMealEntry should update current meal entry type if e
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -148,7 +148,7 @@ exports[`MealsService deleteMealEntry should cater for if trying to remove id th
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -163,7 +163,7 @@ exports[`MealsService deleteMealEntry should cater for if trying to remove meal-
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -178,7 +178,7 @@ exports[`MealsService deleteMealEntry should remove a meal by id from current me
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -207,7 +207,7 @@ exports[`MealsService updateMealEntry should cater for if current meal doesnt ex
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -242,7 +242,7 @@ exports[`MealsService updateMealEntry should update a current meal contents to a
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }
@@ -262,7 +262,7 @@ exports[`MealsService updateMealEntry should update a current meal contents with
   "where": {
     "userId_date": {
       "date": "2023-04-13",
-      "userId": 1234,
+      "userId": "mock_user_id",
     },
   },
 }

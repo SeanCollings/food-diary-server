@@ -50,7 +50,7 @@ describe('summry-utils', () => {
     ...mealContent,
     id: 'id_dd',
     date: '2023-04-28',
-    userId: 1234,
+    userId: 'mock_user_id',
     wellnessWater: 4,
     wellnessTeaCoffee: 2,
     wellnessAlcohol: 1,

@@ -148,7 +148,7 @@ describe('AuthService', () => {
     it('should throw error if user already exists', async () => {
       (mockGoogleAdapter.verifySite as jest.Mock).mockResolvedValue(true);
       (mockUsersService.findOne as jest.Mock).mockResolvedValueOnce({
-        id: '1234',
+        id: 'mock_user_id',
       } as any);
 
       try {
@@ -163,7 +163,7 @@ describe('AuthService', () => {
   describe('login', () => {
     const loginUser = {
       email: 'test@email.com',
-      id: 1234,
+      id: 'mock_user_id',
       token: 'mock_google_token',
     };
 
@@ -180,7 +180,7 @@ describe('AuthService', () => {
             "lastLogin": 2023-04-28T00:00:00.000Z,
           },
           "where": {
-            "id": 1234,
+            "id": "mock_user_id",
           },
         }
       `);

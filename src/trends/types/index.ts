@@ -2,7 +2,7 @@ import { IsIn, IsNotEmpty, IsString } from 'class-validator';
 import { WellnessTypesEnum } from '@/wellness/types';
 
 export interface RequestWithUser extends Request {
-  user: { userId: number; email: string };
+  user: { userId: string; email: string };
 }
 
 export type TrendType = 'week' | 'month';

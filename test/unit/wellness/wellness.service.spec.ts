@@ -13,6 +13,7 @@ jest.mock('@/utils/date-utils', () => ({
 }));
 
 describe('WellnessService', () => {
+  const mockUserId = 'mock_user_id';
   let wellnessService: WellnessService;
   let prisma: DeepMockProxy<PrismaClient>;
 
@@ -54,21 +55,25 @@ describe('WellnessService', () => {
       prisma.diaryDay.upsert.mockResolvedValue({ id: '1' } as any);
       (isDateInFuture as jest.Mock).mockReturnValue(false);
 
-      await wellnessService.updateWellnessEntries(1234, [mockEntry]);
+      await wellnessService.updateWellnessEntries(mockUserId, [mockEntry]);
 
       expect(prisma.diaryDay.upsert).toHaveBeenCalledTimes(1);
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should update multiple wellness entries and user streak', async () => {
       prisma.diaryDay.upsert.mockResolvedValue({ id: '1' } as any);
       (isDateInFuture as jest.Mock).mockReturnValue(false);
 
-      await wellnessService.updateWellnessEntries(1234, mockEntries);
+      await wellnessService.updateWellnessEntries(mockUserId, mockEntries);
 
       expect(prisma.diaryDay.upsert).toHaveBeenCalledTimes(3);
       expect(mockUsersService.updateUserStreak).toHaveBeenCalledTimes(1);
-      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(1234);
+      expect(mockUsersService.updateUserStreak).toHaveBeenCalledWith(
+        mockUserId,
+      );
     });
 
     it('should update user streak if at least 1 entry is updated and throw error if 1 fails', async () => {
@@ -79,7 +84,7 @@ describe('WellnessService', () => {
         .mockRejectedValueOnce('Error 2 occurred');
 
       try {
-        await wellnessService.updateWellnessEntries(1234, mockEntries);
+        await wellnessService.updateWellnessEntries(mockUserId, mockEntries);
       } catch (err) {
         expect(prisma.diaryDay.upsert).toHaveBeenCalledTimes(3);
         expect(mockUsersService.updateUserStreak).toHaveBeenCalledTimes(1);
@@ -90,7 +95,7 @@ describe('WellnessService', () => {
     it('should not update entry nor streak if date in future', async () => {
       (isDateInFuture as jest.Mock).mockReturnValue(true);
 
-      await wellnessService.updateWellnessEntries(1234, [mockEntry]);
+      await wellnessService.updateWellnessEntries(mockUserId, [mockEntry]);
 
       expect(prisma.diaryDay.upsert).not.toHaveBeenCalled();
       expect(mockUsersService.updateUserStreak).not.toHaveBeenCalled();
@@ -99,7 +104,7 @@ describe('WellnessService', () => {
     it('should not update entries nor streak if all dates in future', async () => {
       (isDateInFuture as jest.Mock).mockReturnValue(true);
 
-      await wellnessService.updateWellnessEntries(1234, mockEntries);
+      await wellnessService.updateWellnessEntries(mockUserId, mockEntries);
 
       expect(prisma.diaryDay.upsert).not.toHaveBeenCalled();
       expect(mockUsersService.updateUserStreak).not.toHaveBeenCalled();
@@ -110,7 +115,7 @@ describe('WellnessService', () => {
       (isDateInFuture as jest.Mock).mockReturnValue(false);
 
       try {
-        await wellnessService.updateWellnessEntries(1234, [mockEntry]);
+        await wellnessService.updateWellnessEntries(mockUserId, [mockEntry]);
       } catch (err) {
         expect(prisma.diaryDay.upsert).toHaveBeenCalled();
         expect(mockUsersService.updateUserStreak).not.toHaveBeenCalled();

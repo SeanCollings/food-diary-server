@@ -13,7 +13,7 @@ jest.mock('crypto', () => ({
 
 describe('Validation', () => {
   const mockUser: Partial<User> = {
-    id: 1234,
+    id: 'mock_user_id',
     password: 'password_salt.mock_hash',
   };
   const mockPassword = 'mock_salt.mock_hash';
