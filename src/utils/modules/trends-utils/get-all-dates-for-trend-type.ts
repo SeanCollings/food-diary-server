@@ -18,7 +18,7 @@ export const getAllDatesForType = (type: TrendType) => {
   let dateRangeFromToday: string[];
 
   if (type === 'week') {
-    dateRangeFromToday = getDateRangeBackTillDayOfWeek(today, 1);
+    dateRangeFromToday = getDateRangeBackTillDayOfWeek(today, 0);
   } else {
     const [month, year] = getMonthAndYearFromDate();
     dateRangeFromToday = getMidnightISODaysInMonth(month, year);

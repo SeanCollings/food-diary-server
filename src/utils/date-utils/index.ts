@@ -221,7 +221,7 @@ export const getInclusiveDatesBetweenDates = (
  */
 export const getDateRangeBackTillDayOfWeek = (
   date: TDate,
-  dayOfWeek: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  dayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6,
 ) => {
   const d = new Date(date);
   const dateRange: string[] = [formatToServerDate(d)];
