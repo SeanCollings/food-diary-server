@@ -6,6 +6,7 @@ describe('trend-utils', () => {
       const result = getAllDatesForType('week');
       expect(result).toMatchInlineSnapshot(`
         [
+          "2023-04-23",
           "2023-04-24",
           "2023-04-25",
           "2023-04-26",

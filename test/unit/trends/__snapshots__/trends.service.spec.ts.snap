@@ -61,12 +61,12 @@ exports[`TrendsService getBeverageTrends should get beverage trends for a week 1
   ],
   "highestValue": 4,
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
-    "S",
     "S",
   ],
 }
@@ -101,12 +101,12 @@ exports[`TrendsService getExcerciseTrends should get excercise trends for a week
   ],
   "highestValue": 75,
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
-    "S",
     "S",
   ],
 }
@@ -187,12 +187,12 @@ exports[`TrendsService getMealTrends should get meal trends for a month 1`] = `
 exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
 {
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
-    "S",
     "S",
   ],
   "mealTotals": {
@@ -204,27 +204,27 @@ exports[`TrendsService getMealTrends should get meal trends for a week 1`] = `
   },
   "mealsPerDay": [
     {
-      "id": "day_M",
+      "id": "day_S",
       "meals": [
         0,
         0,
         0,
+        0,
+        0,
+      ],
+    },
+    {
+      "id": "day_M",
+      "meals": [
+        1,
+        0,
+        1,
         0,
         0,
       ],
     },
     {
       "id": "day_T",
-      "meals": [
-        1,
-        0,
-        1,
-        0,
-        0,
-      ],
-    },
-    {
-      "id": "day_W",
       "meals": [
         1,
         1,

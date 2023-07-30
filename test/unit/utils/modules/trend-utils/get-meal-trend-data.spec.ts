@@ -17,12 +17,12 @@ describe('trend-utils', () => {
       expect(result).toMatchInlineSnapshot(`
         {
           "legend": [
+            "S",
             "M",
             "T",
             "W",
             "T",
             "F",
-            "S",
             "S",
           ],
           "mealTotals": {
@@ -34,7 +34,7 @@ describe('trend-utils', () => {
           },
           "mealsPerDay": [
             {
-              "id": "day_M",
+              "id": "day_S",
               "meals": [
                 0,
                 0,
@@ -44,13 +44,23 @@ describe('trend-utils', () => {
               ],
             },
             {
-              "id": "day_T",
+              "id": "day_M",
               "meals": [
                 0,
                 0,
                 0,
                 1,
                 1,
+              ],
+            },
+            {
+              "id": "day_T",
+              "meals": [
+                0,
+                0,
+                0,
+                0,
+                0,
               ],
             },
             {
@@ -70,21 +80,11 @@ describe('trend-utils', () => {
                 0,
                 0,
                 0,
-                0,
-              ],
-            },
-            {
-              "id": "day_F",
-              "meals": [
-                0,
-                0,
-                0,
-                0,
                 1,
               ],
             },
             {
-              "id": "day_S",
+              "id": "day_F",
               "meals": [
                 1,
                 1,

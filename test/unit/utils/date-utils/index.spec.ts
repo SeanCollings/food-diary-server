@@ -364,7 +364,7 @@ describe('date-utils', () => {
     });
 
     it('should return empty array if day of week after date', () => {
-      const result = getDateRangeBackTillDayOfWeek(mockSimpleDate, 7);
+      const result = getDateRangeBackTillDayOfWeek('2022-02-11', 6);
       expect(result).toMatchInlineSnapshot(`[]`);
     });
 

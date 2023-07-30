@@ -215,6 +215,11 @@ exports[`TrendsController (e2e) /beverage-trends (GET) positive should get bever
     {
       "alcohol": 0,
       "tea_coffee": 0,
+      "water": 2,
+    },
+    {
+      "alcohol": 0,
+      "tea_coffee": 0,
       "water": 0,
     },
     {
@@ -240,12 +245,12 @@ exports[`TrendsController (e2e) /beverage-trends (GET) positive should get bever
   ],
   "highestValue": 4,
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
-    "S",
     "S",
   ],
 }
@@ -345,18 +350,19 @@ exports[`TrendsController (e2e) /excercise-trends (GET) positive should get exce
   "excercisePerDay": [
     0,
     0,
+    0,
     35,
     0,
     75,
   ],
   "highestValue": 75,
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
-    "S",
     "S",
   ],
 }
@@ -731,22 +737,32 @@ exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal tren
 exports[`TrendsController (e2e) /meal-trends (GET) positive should get meal trends for week 1`] = `
 {
   "legend": [
+    "S",
     "M",
     "T",
     "W",
     "T",
     "F",
     "S",
-    "S",
   ],
   "mealTotals": {
-    "breakfast": 2,
-    "dinner": 2,
+    "breakfast": 3,
+    "dinner": 3,
     "lunch": 2,
     "snack_1": 1,
     "snack_2": 1,
   },
   "mealsPerDay": [
+    {
+      "id": "day_S",
+      "meals": [
+        1,
+        0,
+        0,
+        0,
+        1,
+      ],
+    },
     {
       "id": "day_M",
       "meals": [

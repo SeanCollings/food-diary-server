@@ -214,7 +214,7 @@ export const getInclusiveDatesBetweenDates = (
 };
 
 /**
- * Return an array of dates from date till day of week staring with Monday as 1
+ * Return an array of dates from date till day of week staring with Sunday as 0
  * @param date string | Date
  * @param dayOfWeek number
  * @returns string []

@@ -27,12 +27,12 @@ describe('trend-utils', () => {
           ],
           "highestValue": 90,
           "legend": [
+            "S",
             "M",
             "T",
             "W",
             "T",
             "F",
-            "S",
             "S",
           ],
         }
