@@ -108,7 +108,7 @@ describe('getAllWellessEntriesPerDate', () => {
           },
           "excercise": {
             "details": "",
-            "time": "",
+            "time": "00:00",
           },
           "tea_coffee": {
             "value": 1,
@@ -168,7 +168,7 @@ describe('getAllWellessEntriesPerDate', () => {
           },
           "excercise": {
             "details": "",
-            "time": "",
+            "time": "00:00",
           },
           "tea_coffee": {
             "value": 0,
@@ -183,7 +183,7 @@ describe('getAllWellessEntriesPerDate', () => {
           },
           "excercise": {
             "details": "",
-            "time": "",
+            "time": "00:00",
           },
           "tea_coffee": {
             "value": 0,
@@ -228,7 +228,7 @@ describe('getAllWellessEntriesPerDate', () => {
           },
           "excercise": {
             "details": "",
-            "time": "",
+            "time": "00:00",
           },
           "tea_coffee": {
             "value": 0,
@@ -243,7 +243,7 @@ describe('getAllWellessEntriesPerDate', () => {
           },
           "excercise": {
             "details": "",
-            "time": "",
+            "time": "00:00",
           },
           "tea_coffee": {
             "value": 6,

@@ -206,7 +206,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
       },
       "excercise": {
         "details": "",
-        "time": "",
+        "time": "00:00",
       },
       "tea_coffee": {
         "value": 0,

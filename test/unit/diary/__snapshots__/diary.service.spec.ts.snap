@@ -101,7 +101,7 @@ exports[`DiaryService getDiaryEntries should get diary entries for a specified d
       },
       "excercise": {
         "details": "",
-        "time": "",
+        "time": "00:00",
       },
       "tea_coffee": {
         "value": 2,
