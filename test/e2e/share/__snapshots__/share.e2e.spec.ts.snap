@@ -67,10 +67,10 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
     "2023-04-23": {
       "alcohol": 0,
       "breakfast": [
-        "1 cup - breakfast food 2 (description of food)",
+        "1 1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half bowl - dinner food 1",
+        "half half bowl - dinner food 1",
       ],
       "lunch": [],
       "snack_1": [],
@@ -81,10 +81,10 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
     "2023-04-26": {
       "alcohol": 0,
       "breakfast": [
-        "1 cup - breakfast food 2 (description of food)",
+        "1 1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half bowl - dinner food 1",
+        "half half bowl - dinner food 1",
       ],
       "lunch": [
         "lunch food 1",
@@ -99,10 +99,10 @@ exports[`ShareController (e2e) / (GET) positive should return share-summary 1`] 
       "alcohol": 1,
       "breakfast": [
         "breakfast food 1",
-        "1 cup - breakfast food 2 (description of food)",
+        "1 1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half bowl - dinner food 1",
+        "half half bowl - dinner food 1",
         "plate - longer dinner food 2",
         "1/2 - dinner food 3",
         "2 - dinner food 4",

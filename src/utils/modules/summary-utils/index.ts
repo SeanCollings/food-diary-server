@@ -9,12 +9,12 @@ export const formatMealContent = (mealContent: MealContent[] | undefined) => {
 
   return mealContent.reduce((acc, content) => {
     const serving = content.serving ? `${content.serving} ` : '';
-    const measurement = content.measurement ? `${content.measurement} ` : '';
-    const separator = !!content.serving || !!content.measurement ? '- ' : '';
+    const quantity = content.quantity ? `${content.quantity} ` : '';
+    const separator = !!content.serving || !!content.quantity ? '- ' : '';
     const food = content.food;
     const description = content.description ? ` (${content.description})` : '';
 
-    const formattedContent = `${serving}${measurement}${separator}${food}${description}`;
+    const formattedContent = `${serving}${quantity}${separator}${food}${description}`;
 
     acc.push(formattedContent);
 

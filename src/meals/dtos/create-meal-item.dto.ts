@@ -45,7 +45,7 @@ export class MealContent {
 
   @IsString()
   @MaxLength(INPUT_MAX_LENGTH)
-  measurement?: string;
+  quantity?: string;
 
   @IsString()
   @MaxLength(TEXTAREA_MAX_LENGTH)

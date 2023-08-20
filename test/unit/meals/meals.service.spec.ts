@@ -22,7 +22,7 @@ describe('MealsService', () => {
       id: '2',
       food: 'mock_food_2',
       description: 'mock_description_2',
-      measurement: 'mock_measurement_2',
+      quantity: 'mock_quantity_2',
       serving: 'mock_serving_2',
       emoji: {
         name: 'mock_emoji_name_2',

@@ -10,7 +10,7 @@ describe('getAllMealEntriesPerDate', () => {
     { id: '2', food: 'mock_food' },
   ] as MealContent[] as any;
   const mockMealLunch = [
-    { id: '3', food: 'mock_food', measurement: 'mock_measurement' },
+    { id: '3', food: 'mock_food', quantity: 'mock_quantity' },
   ] as MealContent[] as any;
   const mockMealSnack2 = [
     { id: '4', food: 'mock_food' },
@@ -214,7 +214,7 @@ describe('getAllMealEntriesPerDate', () => {
               {
                 "food": "mock_food",
                 "id": "3",
-                "measurement": "mock_measurement",
+                "quantity": "mock_quantity",
               },
             ],
           },
@@ -252,7 +252,7 @@ describe('getAllMealEntriesPerDate', () => {
               {
                 "food": "mock_food",
                 "id": "3",
-                "measurement": "mock_measurement",
+                "quantity": "mock_quantity",
               },
             ],
           },
@@ -280,7 +280,7 @@ describe('getAllMealEntriesPerDate', () => {
               {
                 "food": "mock_food",
                 "id": "3",
-                "measurement": "mock_measurement",
+                "quantity": "mock_quantity",
               },
             ],
           },

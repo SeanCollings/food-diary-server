@@ -4,7 +4,7 @@ export const mealContentDto_fixture: MealContent = {
   id: '1234567890123',
   food: 'Mock food',
   description: 'This is a fixture for meal content food description',
-  measurement: 'cup',
+  quantity: '2 cups',
   serving: '2',
   emoji: { name: 'food_emoji', nativeSkin: 'nativeSkin' },
 };

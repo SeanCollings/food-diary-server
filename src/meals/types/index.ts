@@ -38,7 +38,7 @@ export interface MealContent {
   id: string;
   food: string;
   serving?: string;
-  measurement?: string;
+  quantity?: string;
   description?: string;
   emoji?: { name: string; nativeSkin: string } | null;
 }
