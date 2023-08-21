@@ -21,7 +21,6 @@ describe('MealsController', () => {
       food: 'mock_food',
       description: 'mock_description',
       quantity: 'mock_quantity',
-      serving: 'mock_serving',
       emoji: { name: 'mock_emoji_name', nativeSkin: 'mock_emoji_native_skin' },
     },
   };

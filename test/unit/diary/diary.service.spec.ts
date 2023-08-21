@@ -43,7 +43,7 @@ describe('DiaryService', () => {
       wellnessWater: 4,
       wellnessTeaCoffee: 2,
       mealBreakfast: [
-        { id: '1.2', food: 'mock_food_1.2', serving: 'mock_serving_1.2' },
+        { id: '1.2', food: 'mock_food_1.2', quantity: 'mock_quantity_1.2' },
       ] as MealContent[] as any,
       mealDinner: [
         { id: '2.2', food: 'mock_food_2.2' },

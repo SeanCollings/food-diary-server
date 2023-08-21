@@ -37,7 +37,6 @@ export interface RequestWithUser extends Request {
 export interface MealContent {
   id: string;
   food: string;
-  serving?: string;
   quantity?: string;
   description?: string;
   emoji?: { name: string; nativeSkin: string } | null;

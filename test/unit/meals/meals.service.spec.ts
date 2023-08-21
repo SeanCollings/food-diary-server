@@ -23,7 +23,6 @@ describe('MealsService', () => {
       food: 'mock_food_2',
       description: 'mock_description_2',
       quantity: 'mock_quantity_2',
-      serving: 'mock_serving_2',
       emoji: {
         name: 'mock_emoji_name_2',
         nativeSkin: 'mock_emoji_native_skin_2',

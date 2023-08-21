@@ -41,10 +41,6 @@ export class MealContent {
 
   @IsString()
   @MaxLength(INPUT_MAX_LENGTH)
-  serving?: string;
-
-  @IsString()
-  @MaxLength(INPUT_MAX_LENGTH)
   quantity?: string;
 
   @IsString()

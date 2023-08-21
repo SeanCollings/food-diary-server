@@ -83,10 +83,10 @@ exports[`SummaryController (e2e) / (GET) positive should get a users summary bet
     "2023-04-23": {
       "alcohol": 0,
       "breakfast": [
-        "1 1 cup - breakfast food 2 (description of food)",
+        "1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half half bowl - dinner food 1",
+        "half bowl - dinner food 1",
       ],
       "lunch": [],
       "snack_1": [],
@@ -97,10 +97,10 @@ exports[`SummaryController (e2e) / (GET) positive should get a users summary bet
     "2023-04-26": {
       "alcohol": 0,
       "breakfast": [
-        "1 1 cup - breakfast food 2 (description of food)",
+        "1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half half bowl - dinner food 1",
+        "half bowl - dinner food 1",
       ],
       "lunch": [
         "lunch food 1",
@@ -115,13 +115,13 @@ exports[`SummaryController (e2e) / (GET) positive should get a users summary bet
       "alcohol": 1,
       "breakfast": [
         "breakfast food 1",
-        "1 1 cup - breakfast food 2 (description of food)",
+        "1 cup - breakfast food 2 (description of food)",
       ],
       "dinner": [
-        "half half bowl - dinner food 1",
+        "half bowl - dinner food 1",
         "plate - longer dinner food 2",
         "1/2 - dinner food 3",
-        "2 - dinner food 4",
+        "dinner food 4",
       ],
       "lunch": [
         "lunch food 1",

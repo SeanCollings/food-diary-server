@@ -33,7 +33,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "breakfast food 2",
             "id": "12",
             "quantity": "1 cup",
-            "serving": "1",
           },
         ],
       },
@@ -47,7 +46,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "dinner food 1",
             "id": "51",
             "quantity": "half bowl",
-            "serving": "half",
           },
         ],
       },
@@ -73,7 +71,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "breakfast food 2",
             "id": "12",
             "quantity": "1 cup",
-            "serving": "1",
           },
         ],
       },
@@ -87,7 +84,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "dinner food 1",
             "id": "51",
             "quantity": "half bowl",
-            "serving": "half",
           },
         ],
       },
@@ -127,7 +123,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "breakfast food 2",
             "id": "12",
             "quantity": "1 cup",
-            "serving": "1",
           },
         ],
       },
@@ -141,7 +136,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             "food": "dinner food 1",
             "id": "51",
             "quantity": "half bowl",
-            "serving": "half",
           },
           {
             "food": "longer dinner food 2",
@@ -151,7 +145,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
           {
             "food": "dinner food 3",
             "id": "53",
-            "serving": "1/2",
+            "quantity": "1/2",
           },
           {
             "emoji": {
@@ -159,7 +153,6 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
             },
             "food": "dinner food 4",
             "id": "54",
-            "serving": "2",
           },
         ],
       },
@@ -177,7 +170,7 @@ exports[`DiaryController (e2e) / (GET) positive should get diary entries for ent
           {
             "food": "lunch food 3",
             "id": "33",
-            "serving": "4",
+            "quantity": "4",
           },
         ],
       },

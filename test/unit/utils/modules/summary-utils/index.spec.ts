@@ -13,7 +13,6 @@ describe('summry-utils', () => {
       id: '1',
       food: 'food',
       description: 'a long description abouth the food',
-      serving: '2',
       quantity: '2 cups',
       emoji: { name: 'emoji_name', nativeSkin: 'emoji_nativeSkin' },
     },
@@ -25,7 +24,7 @@ describe('summry-utils', () => {
     { id: '3', food: 'mock_food', quantity: '2 cups' },
   ] as MealContent[] as any;
   const mockMealSnack2 = [
-    { id: '4', food: 'mock_food', serving: '2' },
+    { id: '4', food: 'mock_food', quantity: '2' },
   ] as MealContent[] as any;
   const mockMealDinner = [
     { id: '5', food: 'mock_food' },
@@ -36,14 +35,13 @@ describe('summry-utils', () => {
       id: '1',
       food: 'mock_food_1',
       description: 'a long mock description about the food',
-      serving: '2.5',
       quantity: '2.5 spoons',
       emoji: {
         name: 'mock_emoji_name_1',
         nativeSkin: 'mock_emoji_nativeSkin_1',
       },
     },
-    { id: '2', food: 'mock_food_2', serving: '2' },
+    { id: '2', food: 'mock_food_2', quantity: '2' },
     { id: '3', food: 'mock_food_3', quantity: '1 cup' },
   ];
   const diaryDay: DiaryDay = {
@@ -75,7 +73,7 @@ describe('summry-utils', () => {
       const result = formatMealContent(mealContent);
       expect(result).toMatchInlineSnapshot(`
         [
-          "2.5 2.5 spoons - mock_food_1 (a long mock description about the food)",
+          "2.5 spoons - mock_food_1 (a long mock description about the food)",
           "2 - mock_food_2",
           "1 cup - mock_food_3",
         ]
@@ -125,7 +123,7 @@ describe('summry-utils', () => {
           "2023-04-28": {
             "alcohol": 1,
             "breakfast": [
-              "2 2 cups - food (a long description abouth the food)",
+              "2 cups - food (a long description abouth the food)",
             ],
             "dinner": [
               "mock_food",
