@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { UsersService } from '@/users/users.service';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
@@ -35,13 +35,20 @@ export class AuthService {
 
     const user = await this.userService.findOne(email);
 
-    if (user) {
-      throw new Error('Email in use!');
+    if (user && !user.resetPassword) {
+      throw new ConflictException('Email in use!');
     }
 
     const salt = randomBytes(8).toString('hex');
     const hash = (await scrypt(password, salt, SCRYPT_KEYLEN)) as Buffer;
     const result = salt + '.' + hash.toString('hex');
+
+    if (user?.resetPassword) {
+      return await this.prisma.user.update({
+        where: { id: user.id },
+        data: { resetPassword: false, password: result },
+      });
+    }
 
     const newUser = await this.prisma.user.create({
       data: { email, name, password: result },

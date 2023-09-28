@@ -106,6 +106,25 @@ describe('AuthController (e2e)', () => {
         expect(response.status).toEqual(400);
         expect(response.body).toMatchSnapshot();
       });
+
+      it('should cater for email in use error', async () => {
+        (mockGoogleAdapter.verifySite as jest.Mock).mockResolvedValue(true);
+        prisma.user.findUnique.mockResolvedValue(user_fixture);
+        prisma.user.create.mockResolvedValue(user_fixture);
+
+        const response = await request(app.getHttpServer())
+          .post('/auth/signup')
+          .send({
+            name: 'New User',
+            email: 'test@email.com',
+            password: 'password',
+            token: 'mock_token',
+          });
+
+        expect(prisma.user.create).not.toBeCalled();
+        expect(response.status).toEqual(409);
+        expect(response.body).toMatchSnapshot();
+      });
     });
   });
 

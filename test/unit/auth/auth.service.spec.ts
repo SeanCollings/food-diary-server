@@ -158,6 +158,40 @@ describe('AuthService', () => {
         expect(prisma.user.create).not.toBeCalled();
       }
     });
+
+    it('should reset a users password if passwordReset flag is true', async () => {
+      (mockGoogleAdapter.verifySite as jest.Mock).mockResolvedValue(true);
+      (mockUsersService.findOne as jest.Mock).mockResolvedValueOnce({
+        id: 'mock_user_id',
+        resetPassword: true,
+      });
+      (randomBytes as jest.Mock).mockReturnValue('mock_salt');
+      (scrypt as jest.Mock).mockResolvedValue('mock_hash');
+      prisma.user.update.mockResolvedValue({
+        id: '124',
+        name: 'Test Name',
+      } as any);
+
+      const result = await service.signup(createUser);
+
+      expect(prisma.user.update.mock.calls[0][0]).toMatchInlineSnapshot(`
+        {
+          "data": {
+            "password": "mock_salt.mock_hash",
+            "resetPassword": false,
+          },
+          "where": {
+            "id": "mock_user_id",
+          },
+        }
+      `);
+      expect(result).toMatchInlineSnapshot(`
+        {
+          "id": "124",
+          "name": "Test Name",
+        }
+      `);
+    });
   });
 
   describe('login', () => {

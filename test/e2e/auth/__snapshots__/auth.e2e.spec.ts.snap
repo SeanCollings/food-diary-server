@@ -56,6 +56,14 @@ exports[`AuthController (e2e) /reset (POST) positive should reset a user passwor
 }
 `;
 
+exports[`AuthController (e2e) /signup (POST) negative should cater for email in use error 1`] = `
+{
+  "error": "Conflict",
+  "message": "Email in use!",
+  "statusCode": 409,
+}
+`;
+
 exports[`AuthController (e2e) /signup (POST) negative should fail if no body sent 1`] = `
 {
   "error": "Bad Request",

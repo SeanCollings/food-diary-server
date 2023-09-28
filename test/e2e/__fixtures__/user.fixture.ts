@@ -13,4 +13,5 @@ export const user_fixture: User = {
   userPreferenceShowDayStreak: true,
   userPreferenceShowWeeklyExcercise: true,
   userPreferenceShowWeeklyWater: true,
+  resetPassword: false,
 };

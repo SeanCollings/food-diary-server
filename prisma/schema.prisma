@@ -32,6 +32,8 @@ model User {
 
   statLastActivity DateTime?
   statDayStreak    Int?
+
+  resetPassword Boolean @default(false)
 }
 
 model ShareLink {

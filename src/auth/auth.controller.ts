@@ -13,6 +13,7 @@ import { CreateUserDTO, LoginUserDTO, ResetPasswordDto } from './dtos';
 import { DEFAULT_ERROR_MSG } from '@/lib/validation/validation.constants';
 import { Serialize } from '@/interceptors/serialize.interceptor';
 import { UserDto } from '@/users/dtos';
+import { AxiosError } from 'axios';
 
 @Controller('auth')
 export class AuthController {
@@ -24,8 +25,14 @@ export class AuthController {
     try {
       return await this.authService.signup(body);
     } catch (err) {
-      const errorMessage = err.message || DEFAULT_ERROR_MSG;
+      const error = err as AxiosError;
+      const errorMessage = error.message || DEFAULT_ERROR_MSG;
       console.error('[auth::_post_signup]:', errorMessage);
+
+      if (error.status === 409) {
+        throw error;
+      }
+
       throw new InternalServerErrorException(errorMessage);
     }
   }
